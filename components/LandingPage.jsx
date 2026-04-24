@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import AdSlot from './AdSlot';
 import Logo from './Logo';
+import LogoMartini from './LogoMartini';
 
 const MODELS = [
   { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', color: '#ff1493' },
@@ -171,6 +172,16 @@ export default function LandingPage() {
             style={{ bottom: '10%', right: '-10%', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
           <div className="aurora-blob w-[400px] h-[400px]"
             style={{ top: '40%', left: '-8%', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
+        </div>
+
+        {/* Martini girl — desktop decoration */}
+        <div className="hidden lg:block absolute right-6 xl:right-20 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          style={{ opacity: 0.55 }}>
+          <LogoMartini size="lg" />
+        </div>
+        <div className="hidden lg:block absolute left-6 xl:left-20 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          style={{ opacity: 0.35, transform: 'translateY(-50%) scaleX(-1)' }}>
+          <LogoMartini size="md" />
         </div>
 
         <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
@@ -469,6 +480,9 @@ export default function LandingPage() {
         <div className="absolute inset-0 pointer-events-none opacity-10"
           style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
+          <div className="flex justify-center mb-6">
+            <LogoMartini size="md" showText />
+          </div>
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
             Ready to <span className="gradient-text">Start Earning?</span>
           </h2>
