@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import AdSlot from './AdSlot';
 
-// ─── Replace these src paths with your AI-generated model images ──────────────
-// Add images to /public/models/ and update the src values below
+// ─── Model images ─────────────────────────────────────────────────────────────
+// Add AI-generated images to /public/models/ matching each src below.
+// Suggested prompt (Leonardo.ai / Midjourney / DALL-E):
+// "attractive young woman, long wavy hair, sitting in gaming chair,
+//  pink and purple LED room lighting, cute casual outfit, smiling,
+//  photorealistic, high quality, dark bedroom background"
 const MODELS = [
-  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', gradient: 'from-pink-900 to-purple-900' },
-  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', src: '/models/model2.jpg', gradient: 'from-rose-900 to-pink-900' },
-  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', src: '/models/model3.jpg', gradient: 'from-purple-900 to-indigo-900' },
-  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', src: '/models/model4.jpg', gradient: 'from-fuchsia-900 to-pink-900' },
+  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', color: '#ff1493' },
+  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', src: '/models/model2.jpg', color: '#e11d91' },
+  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', src: '/models/model3.jpg', color: '#a855f7' },
+  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', src: '/models/model4.jpg', color: '#c026d3' },
 ];
 
 const PLATFORMS = [
@@ -143,35 +147,43 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {MODELS.map(({ name, tag, earnings, src, gradient }) => (
+            {MODELS.map(({ name, tag, earnings, src, color }) => (
               <div key={name}
-                className="relative rounded-3xl overflow-hidden border border-white/5 card-hover group"
-                style={{ height: '380px' }}>
-                {/* AI-generated model image — add to /public/models/ */}
-                <img src={src} alt={name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-                {/* Gradient placeholder shown until real image is added */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-80`} />
-                <div className="absolute inset-0 opacity-10"
-                  style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
-                <div className="absolute top-4 left-4">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full"
-                    style={{ background: 'rgba(255,20,147,0.3)', border: '1px solid rgba(255,20,147,0.5)', color: '#ff69b4' }}>
+                className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer"
+                style={{ height: '420px', border: '1px solid rgba(255,255,255,0.06)' }}>
+
+                {/* Placeholder background (hidden once image loads) */}
+                <div className="absolute inset-0"
+                  style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}55 0%, #0a0a14 70%)` }} />
+                <div className="absolute inset-0 opacity-5"
+                  style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+
+                {/* Model photo */}
+                <img src={src} alt={`Model ${name}`}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  style={{ transition: 'transform 0.4s ease' }}
+                  onError={(e) => { e.currentTarget.style.opacity = '0'; }} />
+
+                {/* Permanent bottom gradient for text legibility */}
+                <div className="absolute inset-0"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
+
+                {/* Top badge */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="text-xs font-bold px-3 py-1.5 rounded-full"
+                    style={{ background: `${color}33`, border: `1px solid ${color}88`, color: '#ffb6d9' }}>
                     {tag}
                   </span>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5"
-                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)' }}>
-                  <p className="font-display font-bold text-lg">{name}</p>
-                  <p className="text-pink-400 text-sm">{earnings}</p>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'rgba(255,20,147,0.12)' }}>
+
+                {/* Bottom info */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                  <p className="font-display font-bold text-xl mb-0.5">{name}</p>
+                  <p className="text-sm font-medium mb-4" style={{ color }}>{earnings}</p>
                   <a href="/register"
-                    className="px-5 py-2 rounded-full text-white text-sm font-bold"
-                    style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
-                    Join Like {name}
+                    className="inline-block w-full text-center py-2.5 rounded-xl text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    style={{ background: `linear-gradient(135deg, ${color}, #a855f7)` }}>
+                    Earn Like {name} →
                   </a>
                 </div>
               </div>
