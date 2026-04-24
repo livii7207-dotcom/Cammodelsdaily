@@ -55,7 +55,7 @@ export default function LandingPage() {
               <a key={href} href={href} className="hover:text-white transition-colors">{label}</a>
             ))}
             <a
-              href="#apply"
+              href="/register"
               className="px-5 py-2 rounded-full text-white font-semibold glow-btn"
               style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}
             >
@@ -74,7 +74,7 @@ export default function LandingPage() {
             {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
               <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
             ))}
-            <a href="#apply" onClick={() => setMenuOpen(false)}
+            <a href="/register" onClick={() => setMenuOpen(false)}
               className="text-center py-3 rounded-full text-white font-semibold"
               style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
               Start Earning
@@ -109,7 +109,7 @@ export default function LandingPage() {
             Webcam · 18+ · All body types · Fully discreet · Work from home
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#apply"
+            <a href="/register"
               className="px-8 py-4 rounded-full text-white text-lg font-bold glow-btn"
               style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
               Apply as a Model →
@@ -168,7 +168,7 @@ export default function LandingPage() {
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{ background: 'rgba(255,20,147,0.12)' }}>
-                  <a href="#apply"
+                  <a href="/register"
                     className="px-5 py-2 rounded-full text-white text-sm font-bold"
                     style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
                     Join Like {name}
@@ -321,7 +321,7 @@ export default function LandingPage() {
           <p className="text-gray-400 mb-10 text-lg">
             Free to join. No lock-in. Start earning daily from your very first stream.
           </p>
-          <a href="mailto:apply@cammodelsdaily.com"
+          <a href="/register"
             className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold glow-btn"
             style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
             Apply as a Model
