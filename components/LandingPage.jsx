@@ -1,78 +1,40 @@
 import { useState } from 'react';
 import AdSlot from './AdSlot';
 
-const PLATFORMS = {
-  live: [
-    {
-      name: 'StripChat',
-      desc: 'Tips, private shows, and group performances on one of the largest live cam platforms.',
-      url: 'https://stripchat.com/affiliates',
-    },
-    {
-      name: 'Chaturbate',
-      desc: "The world's most popular cam site. Live shows, private sessions, and tip-based earnings.",
-      url: 'https://chaturbate.com/affiliates/',
-    },
-    {
-      name: 'Cam4',
-      desc: 'Live shows, private sessions, and detailed analytics to help you grow your audience.',
-      url: 'https://cam4.com',
-    },
-  ],
-  content: [
-    {
-      name: 'IWantClips',
-      desc: 'Sell custom videos, photo sets, and personalized experiences directly to fans.',
-      url: 'https://iwantclips.com',
-    },
-    {
-      name: 'ManyVids',
-      desc: 'Upload and sell exclusive content to a massive community of buyers worldwide.',
-      url: 'https://manyvids.com',
-    },
-    {
-      name: 'LoyalFans',
-      desc: 'Build subscriber relationships and monetize exclusive content and fan interactions.',
-      url: 'https://loyalfans.com',
-    },
-  ],
-  independent: [
-    {
-      name: 'SkyPrivate',
-      desc: 'Premium one-on-one video calls. Set your own per-minute rate and work on your terms.',
-      url: 'https://skyprivate.com',
-    },
-    {
-      name: 'CamModelDirectory',
-      desc: 'Higher percentage payouts than comparable sites with direct fan connections.',
-      url: 'https://cammodeldirectory.com',
-    },
-  ],
-};
+// ─── Replace these src paths with your AI-generated model images ──────────────
+// Add images to /public/models/ and update the src values below
+const MODELS = [
+  { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', gradient: 'from-pink-900 to-purple-900' },
+  { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', src: '/models/model2.jpg', gradient: 'from-rose-900 to-pink-900' },
+  { name: 'Nova', tag: 'Fan Favourite', earnings: '$3,600 this week', src: '/models/model3.jpg', gradient: 'from-purple-900 to-indigo-900' },
+  { name: 'Sage', tag: 'Rising Star', earnings: '$1,950 this week', src: '/models/model4.jpg', gradient: 'from-fuchsia-900 to-pink-900' },
+];
+
+const PLATFORMS = [
+  { name: 'StripChat', category: 'Live Stream', desc: 'Tips, privates & group shows' },
+  { name: 'Chaturbate', category: 'Live Stream', desc: "World's #1 cam platform" },
+  { name: 'Cam4', category: 'Live Stream', desc: 'Live shows + analytics' },
+  { name: 'IWantClips', category: 'Content', desc: 'Custom clips & photo sets' },
+  { name: 'ManyVids', category: 'Content', desc: 'Sell exclusive content' },
+  { name: 'LoyalFans', category: 'Content', desc: 'Subscriptions & fan sales' },
+  { name: 'SkyPrivate', category: 'Independent', desc: '1-on-1 video calls, your rate' },
+  { name: 'CamModelDirectory', category: 'Independent', desc: 'Higher % than competitors' },
+];
 
 const STEPS = [
-  { num: '01', title: 'Register', desc: 'Complete the quick online form with your personal details.' },
-  { num: '02', title: 'Fill Your Profile', desc: 'Add payment info and upload your verification documents.' },
-  { num: '03', title: 'Choose a Website', desc: 'Pick from 8 partner platforms based on your style and goals.' },
-  { num: '04', title: 'Get Daily Pay', desc: 'Automatic daily deposits straight to your account. Every day.' },
+  { n: '01', title: 'Register', desc: 'Fill out our quick online form — takes under 5 minutes.' },
+  { n: '02', title: 'Set Up Profile', desc: 'Add your payment info and ID verification.' },
+  { n: '03', title: 'Pick a Platform', desc: 'Choose from 8 partner sites that fit your style.' },
+  { n: '04', title: 'Earn Daily', desc: 'Go live and get paid every single day.' },
 ];
 
-const BLOG_POSTS = [
-  { title: "Can People Find Out You're a Cam Model?", excerpt: 'Privacy is a top concern. Here\'s exactly how to protect your identity while you earn.' },
-  { title: 'Why Your Cam Show Has No Viewers', excerpt: 'The real reasons models struggle to get traffic — and what you can fix today.' },
-  { title: 'How Fast Can You Start Making Money?', excerpt: 'From sign-up to first payout: a realistic timeline for new models.' },
-  { title: 'Couples Cam Modeling Success Guide', excerpt: 'Everything couples need to know to build a thriving cam income together.' },
-  { title: 'The Secret Psychology Behind High-Earning Cam Models', excerpt: 'Top earners think differently. Here\'s what sets them apart from the rest.' },
-  { title: 'How to Crush Your First Cam Show', excerpt: 'Step-by-step prep to make your debut confident, calm, and profitable.' },
-];
-
-const FAQ = [
-  { q: 'Do I need experience?', a: 'No experience needed. We support new models from day one with onboarding guidance and real human support.' },
-  { q: 'How do I get paid?', a: 'You get paid every single day via bank transfer, Paxum, or other supported methods. No minimums, no delays.' },
-  { q: 'Is my identity protected?', a: 'Yes. Your real name and personal details are never shared or displayed publicly. Privacy is a top priority.' },
-  { q: 'What equipment do I need?', a: 'A computer or smartphone (i7 processor and 3GB RAM recommended), any webcam (HD preferred), and a stable internet connection.' },
-  { q: 'Can couples join?', a: 'Absolutely. Couples are welcome across all 8 partner platforms.' },
-  { q: 'What countries are accepted?', a: 'We accept models from most countries. You must be 18+ (19+ in Canada). Government ID verification is required.' },
+const FAQ_ITEMS = [
+  { q: 'Do I need any experience?', a: 'None at all. We guide you through everything from setup to your first payout with real human support.' },
+  { q: 'How does daily pay work?', a: 'Your earnings are deposited automatically every day via bank transfer, Paxum, or your preferred method — no minimums.' },
+  { q: 'Will anyone find out?', a: 'Your real identity is never exposed. Your name and personal info stay completely private.' },
+  { q: 'What do I need to get started?', a: 'A phone or computer, any webcam (HD preferred), decent internet, and a valid government ID.' },
+  { q: 'Can couples join?', a: 'Yes — couples are welcome across all 8 platforms and often earn significantly more than solo performers.' },
+  { q: 'What percentage do I keep?', a: 'You keep 85% of everything you earn. We take just 15% to run the platform. No hidden fees, ever.' },
 ];
 
 export default function LandingPage() {
@@ -80,89 +42,146 @@ export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
 
-      {/* ── Sticky Nav ───────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center h-16">
-          <a href="/" className="text-xl font-bold text-pink-600">CamModelsDaily.com</a>
-
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
-            <a href="#platforms" className="hover:text-pink-600 transition-colors">Network Sites</a>
-            <a href="#payouts" className="hover:text-pink-600 transition-colors">Sites &amp; Payouts</a>
-            <a href="#about" className="hover:text-pink-600 transition-colors">About Us</a>
-            <a href="#blog" className="hover:text-pink-600 transition-colors">Blog</a>
-            <a href="#faq" className="hover:text-pink-600 transition-colors">FAQ</a>
+      {/* ── Nav ──────────────────────────────────────────────────── */}
+      <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
+          <a href="/" className="text-lg font-display font-bold gradient-text">
+            CamModelsDaily
+          </a>
+          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-gray-400">
+            {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
+              <a key={href} href={href} className="hover:text-white transition-colors">{label}</a>
+            ))}
             <a
-              href="mailto:apply@cammodelsdaily.com"
-              className="px-4 py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-700 transition-colors font-semibold"
+              href="#apply"
+              className="px-5 py-2 rounded-full text-white font-semibold glow-btn"
+              style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}
             >
-              Register
+              Start Earning
             </a>
           </nav>
-
-          <button
-            className="md:hidden text-gray-700"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
+          <button className="md:hidden text-gray-400 hover:text-white" onClick={() => setMenuOpen(!menuOpen)}>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                 d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'} />
             </svg>
           </button>
         </div>
-
         {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-4 text-sm font-medium text-gray-700">
-            <a href="#platforms" onClick={() => setMenuOpen(false)}>Network Sites</a>
-            <a href="#payouts" onClick={() => setMenuOpen(false)}>Sites &amp; Payouts</a>
-            <a href="#about" onClick={() => setMenuOpen(false)}>About Us</a>
-            <a href="#blog" onClick={() => setMenuOpen(false)}>Blog</a>
-            <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
-            <a
-              href="mailto:apply@cammodelsdaily.com"
-              className="text-center py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-700"
-              onClick={() => setMenuOpen(false)}
-            >
-              Register
+          <div className="md:hidden glass px-5 py-5 flex flex-col gap-4 text-sm font-medium text-gray-300 border-t border-white/5">
+            {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+            ))}
+            <a href="#apply" onClick={() => setMenuOpen(false)}
+              className="text-center py-3 rounded-full text-white font-semibold"
+              style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+              Start Earning
             </a>
           </div>
         )}
       </header>
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-pink-50 to-white py-20 sm:py-28 px-4 sm:px-6 text-center">
-        <p className="text-pink-600 font-semibold text-sm uppercase tracking-widest mb-4">
-          Operating since 2010
-        </p>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-          The Safest Way to Earn Daily<br className="hidden sm:block" /> as a Webcam Model
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-3">
-          Flexible daily pay job from home. All you need is a webcam and to be 18+&nbsp;(19+ in Canada).
-        </p>
-        <p className="text-gray-400 mb-10 text-sm">
-          Real human support &nbsp;·&nbsp; Daily pay &nbsp;·&nbsp; All body types welcome &nbsp;·&nbsp; Discreet
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="mailto:apply@cammodelsdaily.com"
-            className="px-8 py-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-lg font-bold shadow-lg transition-colors"
-          >
-            Register Now
-          </a>
-          <a
-            href="#platforms"
-            className="px-8 py-4 rounded-xl border-2 border-pink-600 text-pink-600 hover:bg-pink-50 text-lg font-bold transition-colors"
-          >
-            See Platforms
-          </a>
+      <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20"
+            style={{ background: 'radial-gradient(circle, #ff1493 0%, transparent 70%)' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-10"
+            style={{ background: 'radial-gradient(circle, #a855f7 0%, transparent 70%)' }} />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-pink-400 font-medium mb-8">
+            <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
+            Paying models daily since 2010
+          </div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
+            Earn More.{' '}
+            <span className="gradient-text">Stream Smarter.</span>
+            <br />Get Paid Daily.
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
+            Join 10,000+ models earning on 8 top platforms. Keep 85% of every dollar —
+            paid straight to you every single day.
+          </p>
+          <p className="text-sm text-gray-600 mb-10">
+            Webcam · 18+ · All body types · Fully discreet · Work from home
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#apply"
+              className="px-8 py-4 rounded-full text-white text-lg font-bold glow-btn"
+              style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+              Apply as a Model →
+            </a>
+            <a href="#how"
+              className="px-8 py-4 rounded-full text-white text-lg font-semibold glass card-hover">
+              How It Works
+            </a>
+          </div>
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[['85%', 'You Keep'], ['Daily', 'Payouts'], ['8', 'Platforms'], ['10K+', 'Models']].map(([val, label]) => (
+              <div key={label} className="glass rounded-2xl py-4 px-3 text-center card-hover">
+                <div className="text-2xl font-display font-bold gradient-text">{val}</div>
+                <div className="text-xs text-gray-500 mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Model Showcase ───────────────────────────────────────── */}
+      <section id="models" className="py-24 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Models</p>
+            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+              Real Women. <span className="gradient-text">Real Earnings.</span>
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto">
+              Every model on our network gets daily pay, full privacy, and dedicated support.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {MODELS.map(({ name, tag, earnings, src, gradient }) => (
+              <div key={name}
+                className="relative rounded-3xl overflow-hidden border border-white/5 card-hover group"
+                style={{ height: '380px' }}>
+                {/* AI-generated model image — add to /public/models/ */}
+                <img src={src} alt={name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                {/* Gradient placeholder shown until real image is added */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-80`} />
+                <div className="absolute inset-0 opacity-10"
+                  style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+                <div className="absolute top-4 left-4">
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full"
+                    style={{ background: 'rgba(255,20,147,0.3)', border: '1px solid rgba(255,20,147,0.5)', color: '#ff69b4' }}>
+                    {tag}
+                  </span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)' }}>
+                  <p className="font-display font-bold text-lg">{name}</p>
+                  <p className="text-pink-400 text-sm">{earnings}</p>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: 'rgba(255,20,147,0.12)' }}>
+                  <a href="#apply"
+                    className="px-5 py-2 rounded-full text-white text-sm font-bold"
+                    style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+                    Join Like {name}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── Top Ad Banner ────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-4 py-6">
+      <div className="max-w-5xl mx-auto px-4 py-4">
         <AdSlot
           tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_BANNER}
           exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_BANNER}
@@ -170,202 +189,111 @@ export default function LandingPage() {
         />
       </div>
 
-      {/* ── Feature Cards ────────────────────────────────────────── */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-          {[
-            { icon: '💰', title: 'Daily Pay Every Day', desc: 'Automatic deposits via multiple payment methods' },
-            { icon: '🛡️', title: 'Privacy Protected', desc: 'Your real identity stays private at all times' },
-            { icon: '🙋', title: 'Human Support', desc: 'Real people — available when you need help' },
-            { icon: '📈', title: 'Advances Program', desc: 'Qualified models can access early payment advances' },
-          ].map(({ icon, title, desc }) => (
-            <div key={title} className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="text-3xl mb-3">{icon}</div>
-              <h3 className="font-bold text-gray-900 mb-1">{title}</h3>
-              <p className="text-sm text-gray-500">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Partner Platforms ────────────────────────────────────── */}
-      <section id="platforms" className="py-16 px-4 sm:px-6">
+      {/* ── How It Works ─────────────────────────────────────────── */}
+      <section id="how" className="py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2">Network Sites</h2>
-          <p className="text-center text-gray-500 mb-12">
-            Choose from 8 partner platforms based on your style and goals
-          </p>
-
-          <h3 className="text-xs font-bold text-pink-600 uppercase tracking-widest mb-4">Live Stream Websites</h3>
-          <div className="grid sm:grid-cols-3 gap-6 mb-10">
-            {PLATFORMS.live.map(({ name, desc, url }) => (
-              <div key={name} className="border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
-                <h4 className="text-lg font-bold mb-2">{name}</h4>
-                <p className="text-sm text-gray-500 mb-4">{desc}</p>
-                <a href={url} target="_blank" rel="noopener noreferrer"
-                  className="text-pink-600 text-sm font-semibold hover:underline">
-                  Learn more →
-                </a>
-              </div>
-            ))}
+          <div className="text-center mb-14">
+            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Simple Process</p>
+            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+              Start Earning in <span className="gradient-text">4 Steps</span>
+            </h2>
+            <p className="text-gray-500">No experience needed. We handle the rest.</p>
           </div>
-
-          <h3 className="text-xs font-bold text-pink-600 uppercase tracking-widest mb-4">Content Selling Websites</h3>
-          <div className="grid sm:grid-cols-3 gap-6 mb-10">
-            {PLATFORMS.content.map(({ name, desc, url }) => (
-              <div key={name} className="border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
-                <h4 className="text-lg font-bold mb-2">{name}</h4>
-                <p className="text-sm text-gray-500 mb-4">{desc}</p>
-                <a href={url} target="_blank" rel="noopener noreferrer"
-                  className="text-pink-600 text-sm font-semibold hover:underline">
-                  Learn more →
-                </a>
-              </div>
-            ))}
-          </div>
-
-          <h3 className="text-xs font-bold text-pink-600 uppercase tracking-widest mb-4">Independent Shows</h3>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {PLATFORMS.independent.map(({ name, desc, url }) => (
-              <div key={name} className="border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
-                <h4 className="text-lg font-bold mb-2">{name}</h4>
-                <p className="text-sm text-gray-500 mb-4">{desc}</p>
-                <a href={url} target="_blank" rel="noopener noreferrer"
-                  className="text-pink-600 text-sm font-semibold hover:underline">
-                  Learn more →
-                </a>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {STEPS.map(({ n, title, desc }) => (
+              <div key={n} className="glass rounded-3xl p-7 card-hover">
+                <div className="text-5xl font-display font-extrabold mb-4 leading-none gradient-text">{n}</div>
+                <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Getting Started (4 steps) ────────────────────────────── */}
-      <section id="payouts" className="py-16 px-4 sm:px-6 bg-gray-50">
+      {/* ── Platforms ────────────────────────────────────────────── */}
+      <section id="platforms" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2">Getting Started</h2>
-          <p className="text-center text-gray-500 mb-12">Four simple steps to your first daily payout</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {STEPS.map(({ num, title, desc }) => (
-              <div key={num} className="bg-white rounded-2xl p-6 shadow-sm text-center">
-                <div className="text-5xl font-extrabold text-pink-100 mb-3 leading-none">{num}</div>
-                <h3 className="text-lg font-bold mb-2">{title}</h3>
-                <p className="text-sm text-gray-500">{desc}</p>
+          <div className="text-center mb-14">
+            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">8 Partner Sites</p>
+            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+              One Account. <span className="gradient-text">Every Platform.</span>
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto">
+              We manage your presence across all 8 sites. You just stream and collect.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {PLATFORMS.map(({ name, category, desc }) => (
+              <div key={name} className="glass rounded-2xl p-5 card-hover border border-white/5">
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block"
+                  style={{ background: 'rgba(255,20,147,0.15)', color: '#ff69b4' }}>
+                  {category}
+                </span>
+                <h3 className="font-display font-bold text-base mb-1">{name}</h3>
+                <p className="text-xs text-gray-500">{desc}</p>
               </div>
             ))}
-          </div>
-          <div className="text-center mt-10">
-            <a
-              href="mailto:apply@cammodelsdaily.com"
-              className="inline-block px-8 py-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-lg font-bold shadow-lg transition-colors"
-            >
-              Start Now
-            </a>
           </div>
         </div>
       </section>
 
       {/* ── Revenue Split ────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-            You don&apos;t pay us anything.<br />We pay you.
+          <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Transparent Pricing</p>
+          <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+            You keep <span className="gradient-text">85%</span>
           </h2>
-          <p className="text-gray-500 mb-10 max-w-xl mx-auto">
-            No setup fees, no monthly charges. We take 15% to run the platform —
-            you keep 85% of every dollar you earn, paid daily.
+          <p className="text-gray-500 mb-12 max-w-lg mx-auto">
+            No setup fees. No monthly charges. We take 15% to run the platform.
+            Every dollar you earn gets split automatically at payout.
           </p>
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex rounded-xl overflow-hidden h-14 mb-4 text-white font-bold text-sm">
-              <div className="bg-pink-500 flex items-center justify-center" style={{ width: '85%' }}>
+          <div className="glass rounded-3xl p-8">
+            <div className="flex rounded-2xl overflow-hidden h-16 mb-6 text-sm font-bold">
+              <div className="flex items-center justify-center text-white"
+                style={{ width: '85%', background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
                 85% — Yours
               </div>
-              <div className="bg-gray-300 flex items-center justify-center text-gray-700" style={{ width: '15%' }}>
+              <div className="flex items-center justify-center text-gray-400"
+                style={{ width: '15%', background: 'rgba(255,255,255,0.06)' }}>
                 15%
               </div>
             </div>
-            <p className="text-gray-500 text-sm">
-              For every $100 earned → you receive <strong className="text-gray-900">$85</strong> daily ·
-              we keep <strong className="text-gray-900">$15</strong>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Mid-page Ad ──────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-4 py-4 flex justify-center">
-        <AdSlot
-          tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_RECT}
-          exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_RECT}
-          height={250}
-        />
-      </div>
-
-      {/* ── About / Team ─────────────────────────────────────────── */}
-      <section id="about" className="py-16 px-4 sm:px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2">About Us</h2>
-          <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
-            We&apos;ve been supporting webcam models since 2010. Our team is led by former models
-            who know what fair treatment looks like — and built this platform to deliver it.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              { name: 'Katy', role: 'Owner / CFO', email: 'katy@cammodelsdaily.com' },
-              { name: 'Raelynn', role: 'Program Manager', email: 'raelynn@cammodelsdaily.com' },
-              { name: 'Support Team', role: 'Accounts &amp; Support', email: 'support@cammodelsdaily.com' },
-            ].map(({ name, role, email }) => (
-              <div key={name} className="bg-white rounded-2xl p-6 shadow-sm text-center">
-                <div className="w-16 h-16 rounded-full bg-pink-100 mx-auto mb-4 flex items-center justify-center text-2xl">
-                  👤
+            <div className="grid grid-cols-3 gap-4 text-center">
+              {[['$100 earned', 'Example'], ['$85 → You', 'Daily deposit'], ['$15 → Us', 'Platform fee']].map(([val, label]) => (
+                <div key={label}>
+                  <p className="font-display font-bold text-white">{val}</p>
+                  <p className="text-xs text-gray-600 mt-1">{label}</p>
                 </div>
-                <h3 className="font-bold text-lg">{name}</h3>
-                <p className="text-sm text-gray-500 mb-2" dangerouslySetInnerHTML={{ __html: role }} />
-                <a href={`mailto:${email}`} className="text-pink-600 text-xs hover:underline">{email}</a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Blog ─────────────────────────────────────────────────── */}
-      <section id="blog" className="py-16 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2">Blog</h2>
-          <p className="text-center text-gray-500 mb-12">Tips, guides, and insights for cam models</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BLOG_POSTS.map(({ title, excerpt }) => (
-              <div key={title} className="border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow">
-                <h3 className="font-bold text-gray-900 mb-2 leading-snug">{title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{excerpt}</p>
-                <a href="#blog" className="text-pink-600 text-sm font-semibold hover:underline">Read more →</a>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <a href="#blog" className="text-pink-600 font-semibold hover:underline">All Posts →</a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────── */}
-      <section id="faq" className="py-16 px-4 sm:px-6 bg-gray-50">
+      <section id="faq" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12">FAQ</h2>
+          <div className="text-center mb-14">
+            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Questions</p>
+            <h2 className="text-4xl sm:text-5xl font-display font-extrabold">
+              Got <span className="gradient-text">Questions?</span>
+            </h2>
+          </div>
           <div className="space-y-3">
-            {FAQ.map(({ q, a }, i) => (
-              <div key={q} className="bg-white rounded-2xl shadow-sm overflow-hidden">
-                <button
-                  className="w-full px-6 py-4 text-left font-semibold text-gray-900 flex justify-between items-center"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  {q}
-                  <span className={`text-pink-600 transition-transform duration-200 ${openFaq === i ? 'rotate-180' : ''}`}>
+            {FAQ_ITEMS.map(({ q, a }, i) => (
+              <div key={q} className="glass rounded-2xl overflow-hidden border border-white/5 card-hover">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full px-6 py-5 text-left font-semibold flex justify-between items-center">
+                  <span>{q}</span>
+                  <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-200"
+                    style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                     ▾
                   </span>
                 </button>
                 {openFaq === i && (
-                  <p className="px-6 pb-5 text-gray-500 text-sm">{a}</p>
+                  <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
                 )}
               </div>
             ))}
@@ -373,27 +301,54 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── Mid Ad Slot ──────────────────────────────────────────── */}
+      <div className="max-w-5xl mx-auto px-4 py-8 flex justify-center">
+        <AdSlot
+          tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_RECT}
+          exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_RECT}
+          height={250}
+        />
+      </div>
+
+      {/* ── Apply CTA ────────────────────────────────────────────── */}
+      <section id="apply" className="py-28 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-10"
+          style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
+        <div className="relative z-10 max-w-2xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+            Ready to Keep <span className="gradient-text">85%?</span>
+          </h2>
+          <p className="text-gray-400 mb-10 text-lg">
+            Free to join. No lock-in. Start earning daily from your very first stream.
+          </p>
+          <a href="mailto:apply@cammodelsdaily.com"
+            className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold glow-btn"
+            style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+            Apply as a Model
+          </a>
+          <p className="text-gray-600 text-sm mt-6">Must be 18+ · Government ID required · Response within 24 hours</p>
+        </div>
+      </section>
+
       {/* ── Footer ───────────────────────────────────────────────── */}
-      <footer className="bg-gray-900 text-gray-400 py-10 px-4 sm:px-6 text-sm">
+      <footer className="border-t border-white/5 py-10 px-4 sm:px-6 text-sm text-gray-600">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
-          <span className="text-white font-bold text-lg">CamModelsDaily.com</span>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="/18usc2257" className="hover:text-white transition-colors">18 USC 2257</a>
-            <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="/anti-trafficking" className="hover:text-white transition-colors">Anti-Trafficking Policy</a>
-            <a
-              href="https://twitter.com/cammodelsdaily"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              Twitter
-            </a>
+          <span className="font-display font-bold text-white text-base">CamModelsDaily.com</span>
+          <div className="flex flex-wrap justify-center gap-5">
+            {[['/18usc2257', '18 USC 2257'], ['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Service'],
+              ['/anti-trafficking', 'Anti-Trafficking'], ['https://twitter.com/cammodelsdaily', 'Twitter']
+            ].map(([href, label]) => (
+              <a key={label} href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="hover:text-white transition-colors">
+                {label}
+              </a>
+            ))}
           </div>
         </div>
-        <p className="text-center text-gray-600 text-xs mt-6">
-          © {new Date().getFullYear()} CamModelsDaily.com. All rights reserved. All models are 18+.
+        <p className="text-center text-gray-700 text-xs mt-6">
+          © {new Date().getFullYear()} CamModelsDaily.com · All rights reserved · All models are 18+
         </p>
       </footer>
     </div>
