@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Prevent webpack from trying to bundle Node.js-only modules
