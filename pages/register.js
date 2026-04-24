@@ -32,11 +32,19 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+    const endpoint = formspreeId
+      ? `https://formspree.io/f/${formspreeId}`
+      : 'https://formspree.io/f/placeholder';
     try {
-      const res = await fetch('/api/register', {
+      const res = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          platforms: form.platforms.join(', '),
+          equipment: form.equipment.join(', '),
+        }),
       });
       setStatus(res.ok ? 'success' : 'error');
     } catch {
