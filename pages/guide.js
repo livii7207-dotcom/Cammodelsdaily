@@ -68,7 +68,7 @@ export default function Guide() {
             1. Getting Started — What You Actually Need
           </h2>
           <p className="text-gray-400 leading-relaxed mb-4">
-            The barrier to entry is lower than most people expect. You don't need a professional studio,
+            The barrier to entry is lower than most people expect. You do not need a professional studio,
             expensive camera equipment, or any prior experience. Thousands of successful models started
             with nothing more than a phone.
           </p>
@@ -76,11 +76,11 @@ export default function Guide() {
           <h3 className="text-lg font-semibold text-white mt-8 mb-3">Equipment</h3>
           <div className="space-y-3">
             {[
-              ['Camera', 'A recent smartphone (iPhone 12+ or Android equivalent) or a basic USB webcam ($40–80). HD quality is fine — 4K is not needed.'],
-              ['Lighting', 'A simple ring light ($20–35 on Amazon) transforms your setup. Place it in front of you, at eye level. Natural window light also works great.'],
+              ['Camera', 'A recent smartphone (iPhone 12+ or Android equivalent) or a basic USB webcam ($40-80). HD quality is fine — 4K is not needed.'],
+              ['Lighting', 'A simple ring light ($20-35 on Amazon) transforms your setup. Place it in front of you, at eye level. Natural window light also works great.'],
               ['Internet', 'Minimum 5 Mbps upload speed. Run a speed test at fast.com. Wired ethernet is more stable than WiFi for live streaming.'],
-              ['Background', 'A clean wall, curtain, or hanging fabric. You can use a ring light to blur the background naturally. A green screen ($15) gives you full control.'],
-              ['Sound', "The built-in mic on most webcams or phones is fine to start. A USB lav mic ($25) is a worthwhile upgrade once you're earning."],
+              ['Background', 'A clean wall, curtain, or hanging fabric. A green screen ($15) gives you full control over your background.'],
+              ['Sound', 'The built-in mic on most webcams or phones works fine to start. A USB lav mic ($25) is a worthwhile upgrade after your first payouts.'],
             ].map(([item, desc]) => (
               <div key={item} className="glass rounded-xl p-4 border border-white/5">
                 <span className="font-semibold text-white text-sm">{item}: </span>
@@ -94,7 +94,7 @@ export default function Guide() {
             Every legitimate platform requires age verification before you can earn. This means:
           </p>
           <ul className="list-disc list-inside text-gray-400 text-sm space-y-2 ml-2">
-            <li>A valid government-issued photo ID (passport, driver's license, or national ID card)</li>
+            <li>A valid government-issued photo ID (passport, driver license, or national ID card)</li>
             <li>You must be 18+ (19+ in some Canadian provinces)</li>
             <li>Some platforms also ask for a selfie holding your ID</li>
           </ul>
@@ -104,10 +104,10 @@ export default function Guide() {
 
           <div className="mt-8 rounded-2xl p-5" style={{ background: 'rgba(255,20,147,0.08)', border: '1px solid rgba(255,20,147,0.2)' }}>
             <p className="text-sm text-pink-200 font-medium">
-              Ready to get started? Apply through XCamModels and we'll help you get set up on the right platforms for your style — completely free.
+              Ready to get started? Apply through XCamModels and we will help you get set up on the right platforms for your style — completely free.
             </p>
             <a href="/register" className="inline-block mt-3 px-5 py-2 rounded-full text-white text-sm font-bold shimmer-btn">
-              Apply Free →
+              Apply Free &rarr;
             </a>
           </div>
         </section>
@@ -119,7 +119,7 @@ export default function Guide() {
           </h2>
           <p className="text-gray-400 leading-relaxed mb-6">
             Not all platforms are equal — and the right one depends on what you want to do.
-            Here's an honest breakdown of the major options in 2026.
+            Here is an honest breakdown of the major options in 2026.
           </p>
 
           <div className="space-y-5">
@@ -129,7 +129,7 @@ export default function Guide() {
                 type: 'Live Streaming',
                 best: 'High-traffic live streams, tip-based income',
                 pay: 'Daily via check, wire, Paxum, or crypto',
-                pros: ['Largest cam site in the world by traffic', 'Massive free audience from day one', 'Tokens convert at ~$0.05–0.10 each'],
+                pros: ['Largest cam site in the world by traffic', 'Massive free audience from day one', 'Tokens convert at ~$0.05-0.10 each'],
                 cons: ['Competitive — takes time to build an audience', 'Free-to-view model means tips vary'],
               },
               {
@@ -184,7 +184,7 @@ export default function Guide() {
                   <div>
                     <p className="text-xs font-semibold text-red-400 mb-1.5">Cons</p>
                     <ul className="space-y-1">
-                      {cons.map(c => <li key={c} className="text-xs text-gray-400 flex gap-1.5"><span className="text-red-500 flex-shrink-0">−</span>{c}</li>)}
+                      {cons.map(c => <li key={c} className="text-xs text-gray-400 flex gap-1.5"><span className="text-red-500 flex-shrink-0">-</span>{c}</li>)}
                     </ul>
                   </div>
                 </div>
@@ -193,7 +193,7 @@ export default function Guide() {
           </div>
 
           <p className="text-gray-500 text-sm mt-6">
-            Most successful models run 2–3 platforms simultaneously. <a href="/register" className="text-pink-400 hover:underline">Apply through XCamModels</a> and we'll set you up on the combination that fits your goals.
+            Most successful models run 2-3 platforms simultaneously. <a href="/register" className="text-pink-400 hover:underline">Apply through XCamModels</a> and we will set you up on the combination that fits your goals.
           </p>
         </section>
 
@@ -203,15 +203,15 @@ export default function Guide() {
             3. Your First Week — Realistic Expectations
           </h2>
           <p className="text-gray-400 leading-relaxed mb-4">
-            The first week is about learning, not maximizing earnings. Here's what actually happens:
+            The first week is about learning, not maximizing earnings. Here is what actually happens:
           </p>
           <div className="space-y-4">
             {[
-              ['Day 1–2', 'Account setup, ID verification, profile photos, room description. Most platforms approve within 24–48 hours.'],
-              ['Day 3–4', 'Your first streams. Expect 0–5 viewers. This is normal. The algorithm takes time to index your room.'],
-              ['Day 5–7', 'First tips start coming in. Average first week for new Chaturbate models is $50–300 depending on hours streamed.'],
-              ['Week 2–4', 'The algorithm starts recommending your room. Consistent scheduling is the #1 factor. 4–5 hours/day, same time each day.'],
-              ['Month 2–3', 'Regular fans, returning tippers. Average for consistent models at this stage: $800–2,500/month.'],
+              ['Day 1-2', 'Account setup, ID verification, profile photos, room description. Most platforms approve within 24-48 hours.'],
+              ['Day 3-4', 'Your first streams. Expect 0-5 viewers. This is normal. The algorithm takes time to index your room.'],
+              ['Day 5-7', 'First tips start coming in. Average first week for new Chaturbate models is $50-300 depending on hours streamed.'],
+              ['Week 2-4', 'The algorithm starts recommending your room. Consistent scheduling is the #1 factor. 4-5 hours/day, same time each day.'],
+              ['Month 2-3', 'Regular fans, returning tippers. Average for consistent models at this stage: $800-2,500/month.'],
             ].map(([period, desc]) => (
               <div key={period} className="flex gap-4 glass rounded-xl p-4 border border-white/5">
                 <div className="flex-shrink-0 text-xs font-bold text-pink-400 pt-0.5 w-20">{period}</div>
@@ -221,7 +221,7 @@ export default function Guide() {
           </div>
           <div className="mt-6 p-4 rounded-xl" style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}>
             <p className="text-sm text-purple-200">
-              <strong>How much do cam models make?</strong> The range is wide: $200–$500/month for casual (5–10 hrs/week) up to $5,000–$20,000/month for full-time consistent performers. The biggest variable is consistency, not looks.
+              <strong>How much do cam models make?</strong> The range is wide: $200-$500/month for casual (5-10 hrs/week) up to $5,000-$20,000/month for full-time consistent performers. The biggest variable is consistency, not looks.
             </p>
           </div>
         </section>
@@ -232,7 +232,7 @@ export default function Guide() {
             4. Getting Paid — How Payouts Work
           </h2>
           <p className="text-gray-400 leading-relaxed mb-6">
-            Every platform pays differently. Here's the breakdown for 2026:
+            Every platform pays differently. Here is the breakdown for 2026:
           </p>
           <div className="space-y-3">
             {[
@@ -249,17 +249,17 @@ export default function Guide() {
             ))}
           </div>
           <p className="text-gray-500 text-sm mt-5">
-            <strong className="text-white">Paxum</strong> is the most popular payout method for cam models — it's an e-wallet designed for adult industry payments, widely accepted and easy to withdraw from. Sign up free at paxum.com.
+            <strong className="text-white">Paxum</strong> is the most popular payout method for cam models — an e-wallet designed for adult industry payments, widely accepted and easy to withdraw from. Sign up free at paxum.com.
           </p>
         </section>
 
         {/* Section 5 */}
-        <section id="privacy-&-safety" className="mb-16">
+        <section id="privacy-safety" className="mb-16">
           <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            5. Privacy & Safety — Staying 100% Anonymous
+            5. Privacy and Safety — Staying 100% Anonymous
           </h2>
           <p className="text-gray-400 leading-relaxed mb-4">
-            Privacy is the #1 concern for new models — and the good news is it's completely manageable with the right setup.
+            Privacy is the #1 concern for new models — and it is completely manageable with the right setup.
           </p>
           <div className="space-y-4">
             {[
@@ -267,8 +267,8 @@ export default function Guide() {
               ['Geoblocking', 'Every major platform lets you block specific countries or states from viewing your room. Block your home state/country if needed — it takes 2 minutes.'],
               ['No identifiable details', 'Cover or blur any tattoos, birthmarks, or background items (photos, mail, diplomas) that could identify you. A plain background eliminates this risk entirely.'],
               ['Watermark your content', 'Any content you sell should have your stage name watermarked. This deters piracy and identifies leaks. Apps like iWatermark ($3) work on mobile.'],
-              ['Separate accounts', 'Use a dedicated email address for platforms. Never link your personal social media. Use a VPN if you want an extra layer of IP protection.'],
-              ['Paxum for payments', 'Paxum doesn\'t appear as an adult transaction on bank statements. Wire transfers may — consider a separate bank account for cam income.'],
+              ['Separate accounts', 'Use a dedicated email address for platforms. Never link your personal social media. Use a VPN for an extra layer of IP protection.'],
+              ['Paxum for payments', 'Paxum does not appear as an adult transaction on bank statements. Wire transfers may — consider a separate bank account for cam income.'],
             ].map(([title, desc]) => (
               <div key={title} className="glass rounded-xl p-4 border border-white/5">
                 <p className="font-semibold text-white text-sm mb-1">{title}</p>
@@ -284,15 +284,15 @@ export default function Guide() {
             6. Growing Your Audience
           </h2>
           <p className="text-gray-400 leading-relaxed mb-4">
-            Consistency beats everything. But here's what accelerates growth:
+            Consistency beats everything. Here is what accelerates growth:
           </p>
           <div className="space-y-4">
             {[
-              ['Stream on a schedule', 'Pick 3–5 days a week, same time each day. Your regulars will know when to find you. The algorithm rewards consistent streamers.'],
+              ['Stream on a schedule', 'Pick 3-5 days a week, same time each day. Your regulars will know when to find you. The algorithm rewards consistent streamers.'],
               ['Cross-promote between platforms', 'Your Chaturbate fans can become your OnlyFans subscribers. Mention your other platforms at the end of streams.'],
               ['Twitter/X (adult-friendly)', 'Twitter/X still allows adult content promotion. A dedicated stage-name account where you post stream schedules and teasers drives real traffic.'],
-              ['Reddit', 'Subreddits like r/OnlyFansPromotions and niche content communities allow self-promotion. Read each community\'s rules first.'],
-              ['Engage your regulars', 'Remember names. Give shout-outs. Fan retention is more valuable than new viewers — regulars tip more and more consistently.'],
+              ['Reddit', 'Subreddits like r/OnlyFansPromotions and niche content communities allow self-promotion. Read each community rules before posting.'],
+              ['Engage your regulars', 'Remember names. Give shout-outs. Fan retention is more valuable than new viewers — regulars tip more consistently.'],
               ['Off-peak timing', 'Most models stream in the evening. Streaming in the morning or afternoon means less competition for algorithm placement — especially early in your career.'],
             ].map(([title, desc]) => (
               <div key={title} className="glass rounded-xl p-4 border border-white/5">
@@ -307,10 +307,10 @@ export default function Guide() {
         <div className="rounded-3xl p-8 text-center" style={{ background: 'linear-gradient(135deg, rgba(255,0,128,0.12), rgba(168,85,247,0.12))', border: '1px solid rgba(255,0,128,0.2)' }}>
           <h2 className="text-2xl font-display font-extrabold text-white mb-3">Ready to Start?</h2>
           <p className="text-gray-400 mb-6 text-sm max-w-md mx-auto">
-            Apply once through XCamModels and we'll get you set up on the right platforms — completely free. No fees, no middleman on your earnings.
+            Apply once through XCamModels and we will get you set up on the right platforms — completely free. No fees, no middleman on your earnings.
           </p>
           <a href="/register" className="inline-block px-8 py-4 rounded-full text-white font-bold shimmer-btn">
-            Apply Free →
+            Apply Free &rarr;
           </a>
           <p className="text-gray-600 text-xs mt-4">18+ · Government ID required · Response within 24 hours</p>
         </div>
