@@ -95,7 +95,7 @@ export default function Register() {
           <h1 className="text-4xl sm:text-5xl font-display font-extrabold mb-3">
             Start <span className="gradient-text">Earning Today</span>
           </h1>
-          <p className="text-gray-400">Free to join · Daily pay · 85% yours · Response within 24 hours</p>
+          <p className="text-gray-400">Free to join · No fees ever · Daily pay · Response within 24 hours</p>
         </div>
 
         <form onSubmit={handleSubmit}

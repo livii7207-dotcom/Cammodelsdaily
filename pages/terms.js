@@ -6,12 +6,13 @@ export default function Terms() {
       <div className="max-w-3xl mx-auto">
         <a href="/" className="inline-block mb-10"><Logo size="md" /></a>
         <h1 className="text-4xl font-display font-extrabold mb-2 text-white">Terms of Service</h1>
-        <p className="text-gray-500 text-sm mb-10">Last updated: January 1, 2025</p>
+        <p className="text-gray-500 text-sm mb-10">Last updated: January 1, 2026</p>
 
         {[
           ['1. Acceptance of Terms', 'By accessing or using XCamModels.com you agree to be bound by these Terms of Service. If you do not agree, do not use this site.'],
           ['2. Eligibility', 'You must be at least 18 years of age (19 in certain jurisdictions) to register as a model or use any paid services on this platform. By registering you confirm you meet the minimum age requirement in your jurisdiction.'],
-          ['3. Model Agreement', 'Models on XCamModels.com retain 85% of all earnings generated through our partner platforms. XCamModels.com retains a 15% platform fee to cover infrastructure, support, and account management. This split is calculated at payout and applied automatically.'],
+          ['3. Model Agreement & Earnings', 'XCamModels.com is a free model referral and setup service. We do not charge models any fees, commissions, or percentages of their earnings. All earnings from partner platforms are paid directly by those platforms to you. XCamModels.com earns a referral commission from the platforms when models register through our links — this is paid by the platforms, not deducted from your earnings.'],
+          ['3a. Affiliate Disclosure', 'XCamModels.com has affiliate and referral relationships with the cam platforms listed on this site. When you register on a partner platform through our links or referral, we may receive a commission from that platform. This never affects your payout rate — platforms pay us separately from what they pay you.'],
           ['4. Identity Verification', 'All models must provide valid government-issued photo identification before their account is activated. Documents are handled securely and never shared publicly.'],
           ['5. Prohibited Conduct', 'You agree not to use this site for any unlawful purpose, to impersonate any person, to upload content depicting minors, or to engage in harassment of other users or staff.'],
           ['6. Content Ownership', 'Models retain ownership of their content. By uploading content to partner platforms through our service, you grant those platforms a license as described in their respective terms.'],

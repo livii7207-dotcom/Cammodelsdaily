@@ -10,14 +10,15 @@ const MODELS = [
 ];
 
 const PLATFORMS = [
-  { name: 'Chaturbate', category: 'Live Stream', desc: "World's #1 cam platform" },
-  { name: 'StripChat', category: 'Live Stream', desc: 'Tips, privates & group shows' },
-  { name: 'Cam4', category: 'Live Stream', desc: 'Live shows + analytics' },
-  { name: 'OnlyFans', category: 'Content', desc: 'Subscriptions, PPV & tips' },
-  { name: 'IWantClips', category: 'Content', desc: 'Custom clips & photo sets' },
-  { name: 'ManyVids', category: 'Content', desc: 'Sell exclusive content' },
-  { name: 'LoyalFans', category: 'Content', desc: 'Subscriptions & fan sales' },
-  { name: 'SkyPrivate', category: 'Independent', desc: '1-on-1 video calls, your rate' },
+  // TODO: Replace each href with your affiliate/referral link from that platform's affiliate program
+  { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/affiliates/' },
+  { name: 'OnlyFans', abbr: 'OF', category: 'Content', desc: 'Subscriptions, pay-per-view & direct tips', color: '#00aff0', href: 'https://onlyfans.com/' },
+  { name: 'Stripchat', abbr: 'SC', category: 'Live Stream', desc: 'Tips, privates & group shows with global reach', color: '#00b4a0', href: 'https://stripchat.com/affiliates' },
+  { name: 'Cam4', abbr: 'C4', category: 'Live Stream', desc: 'Live broadcasts with built-in analytics', color: '#e8173a', href: 'https://cam4.com/' },
+  { name: 'ManyVids', abbr: 'MV', category: 'Content', desc: 'Sell clips, photo sets & custom content', color: '#e91e8c', href: 'https://manyvids.com/' },
+  { name: 'IWantClips', abbr: 'IW', category: 'Content', desc: 'Custom clips & wish lists — high buyer intent', color: '#8b5cf6', href: 'https://iwantclips.com/' },
+  { name: 'LoyalFans', abbr: 'LF', category: 'Content', desc: 'Subscriptions, fan messaging & exclusive drops', color: '#ff6b35', href: 'https://loyalfans.com/' },
+  { name: 'SkyPrivate', abbr: 'SP', category: 'Independent', desc: 'Private 1-on-1 video calls at your own rate', color: '#1a73e8', href: 'https://skyprivate.com/' },
 ];
 
 const STEPS = [
@@ -33,7 +34,7 @@ const FAQ_ITEMS = [
   { q: 'Will anyone find out?', a: 'Your real identity is never exposed. Your name and personal info stay completely private.' },
   { q: 'What do I need to get started?', a: 'A phone or computer, any webcam (HD preferred), decent internet, and a valid government ID.' },
   { q: 'Can couples join?', a: 'Yes — couples are welcome across all 8 platforms and often earn significantly more than solo performers.' },
-  { q: 'What percentage do I keep?', a: 'You keep 85% of everything you earn. We take just 15% to run the platform. No hidden fees, ever.' },
+  { q: 'Is XCamModels free?', a: 'Completely free. We never take a cut of your earnings. The platforms pay you directly — XCamModels helps you get set up and earns a referral fee from the platforms themselves, not from you.' },
 ];
 
 const TESTIMONIALS = [
@@ -134,7 +135,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
           <a href="/"><Logo size="md" /></a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-gray-400">
-            {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
+            {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['/guide', 'Guide'], ['#faq', 'FAQ']].map(([href, label]) => (
               <a key={href} href={href} className="hover:text-white transition-colors">{label}</a>
             ))}
             <a href="/register" className="px-5 py-2 rounded-full text-white font-semibold shimmer-btn">
@@ -150,7 +151,7 @@ export default function LandingPage() {
         </div>
         {menuOpen && (
           <div className="md:hidden glass px-5 py-5 flex flex-col gap-4 text-sm font-medium text-gray-300 border-t border-white/5">
-            {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
+            {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['/guide', 'Guide'], ['#faq', 'FAQ']].map(([href, label]) => (
               <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
             ))}
             <a href="/register" onClick={() => setMenuOpen(false)}
@@ -184,8 +185,8 @@ export default function LandingPage() {
             <br />Get Paid Daily.
           </h1>
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
-            Join 10,000+ models earning on 8 top platforms. Keep 85% of every dollar —
-            paid straight to you every single day.
+            Apply once. Get set up on 8 top platforms. The platforms pay you directly —
+            every single day. Free to join, no fees ever.
           </p>
           <p className="text-sm text-gray-600 mb-8">
             Webcam · 18+ · All body types · Fully discreet · Work from home
@@ -209,7 +210,7 @@ export default function LandingPage() {
           </div>
 
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[['85%', 'You Keep'], ['Daily', 'Payouts'], ['8', 'Platforms'], ['10K+', 'Models']].map(([val, label]) => (
+            {[['Free', 'To Join'], ['Daily', 'Payouts'], ['8', 'Platforms'], ['10K+', 'Models']].map(([val, label]) => (
               <div key={label} className="glass rounded-2xl py-4 px-3 text-center card-hover">
                 <div className="text-2xl font-display font-bold gradient-text">{val}</div>
                 <div className="text-xs text-gray-500 mt-1">{label}</div>
@@ -322,56 +323,70 @@ export default function LandingPage() {
                 One Account. <span className="gradient-text">Every Platform.</span>
               </h2>
               <p className="text-gray-500 max-w-xl mx-auto">
-                We manage your presence across all 8 sites. You just stream and collect.
+                We get you set up on the ones that fit you. You just stream — they pay you directly.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {PLATFORMS.map(({ name, category, desc }) => (
-                <div key={name} className="glass rounded-2xl p-5 card-hover border border-white/5">
+              {PLATFORMS.map(({ name, abbr, category, desc, color, href }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass rounded-2xl p-5 card-hover border border-white/5 group block transition-all duration-300"
+                  style={{ textDecoration: 'none' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = color + '55'; e.currentTarget.style.boxShadow = `0 0 24px ${color}22`; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.boxShadow = 'none'; }}
+                >
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm mb-4 transition-all"
+                    style={{ background: `${color}22`, border: `1.5px solid ${color}44`, color }}>
+                    {abbr}
+                  </div>
                   <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block"
-                    style={{ background: 'rgba(255,20,147,0.15)', color: '#ff69b4' }}>
+                    style={{ background: `${color}18`, color }}>
                     {category}
                   </span>
-                  <h3 className="font-display font-bold text-base mb-1">{name}</h3>
-                  <p className="text-xs text-gray-500">{desc}</p>
-                </div>
+                  <h3 className="font-display font-bold text-base mb-1 text-white">{name}</h3>
+                  <p className="text-xs text-gray-500 mb-3 leading-relaxed">{desc}</p>
+                  <span className="text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    style={{ color }}>
+                    Sign Up →
+                  </span>
+                </a>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Revenue Split ────────────────────────────────────────── */}
+      {/* ── Why XCamModels ───────────────────────────────────────── */}
       <section className="py-24 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto">
           <div ref={revenueRef} className="fade-up">
-            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Transparent Pricing</p>
-            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-              You keep <span className="gradient-text">85%</span>
-            </h2>
-            <p className="text-gray-500 mb-12 max-w-lg mx-auto">
-              No setup fees. No monthly charges. We take 15% to run the platform.
-              Every dollar you earn gets split automatically at payout.
-            </p>
-            <div className="glass rounded-3xl p-8">
-              <div className="flex rounded-2xl overflow-hidden h-16 mb-6 text-sm font-bold">
-                <div className="flex items-center justify-center text-white"
-                  style={{ width: '85%', background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
-                  85% — Yours
+            <div className="text-center mb-14">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Why Us</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+                Zero Fees. <span className="gradient-text">100% Yours.</span>
+              </h2>
+              <p className="text-gray-500 max-w-lg mx-auto">
+                The platforms pay you directly. We never touch your money — we earn a referral fee from the platforms, not from you.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                ['💸', 'No Fees Ever', 'XCamModels is 100% free. You keep every dollar the platforms pay you.'],
+                ['⚡', 'One Application', 'Fill out one form and we get you set up across all the platforms you choose.'],
+                ['📅', 'Daily Payouts', 'Every platform we work with pays out daily via Paxum, bank transfer, or crypto.'],
+                ['🔒', 'Full Privacy', 'Your real name is never public. We show you exactly how to stay anonymous.'],
+                ['🎧', 'Real Support', 'Actual humans answer your setup questions — not bots, not ticketing queues.'],
+                ['📖', 'Free Guide', 'New to this? Read our step-by-step guide built for complete beginners.'],
+              ].map(([icon, title, desc]) => (
+                <div key={title} className="glass rounded-2xl p-6 card-hover border border-white/5">
+                  <div className="text-2xl mb-3">{icon}</div>
+                  <h3 className="font-display font-bold text-base mb-2 text-white">{title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
                 </div>
-                <div className="flex items-center justify-center text-gray-400"
-                  style={{ width: '15%', background: 'rgba(255,255,255,0.06)' }}>
-                  15%
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-4 text-center">
-                {[['$100 earned', 'Example'], ['$85 → You', 'Daily deposit'], ['$15 → Us', 'Platform fee']].map(([val, label]) => (
-                  <div key={label}>
-                    <p className="font-display font-bold text-white">{val}</p>
-                    <p className="text-xs text-gray-600 mt-1">{label}</p>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -455,10 +470,10 @@ export default function LandingPage() {
           style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-            Ready to Keep <span className="gradient-text">85%?</span>
+            Ready to <span className="gradient-text">Start Earning?</span>
           </h2>
           <p className="text-gray-400 mb-10 text-lg">
-            Free to join. No lock-in. Start earning daily from your very first stream.
+            Free to join. No fees ever. The platforms pay you directly — every single day.
           </p>
           <a href="/register"
             className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold shimmer-btn">
