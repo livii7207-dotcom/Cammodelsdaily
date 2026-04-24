@@ -10,14 +10,14 @@ const MODELS = [
 ];
 
 const PLATFORMS = [
-  { name: 'StripChat', category: 'Live Stream', desc: 'Tips, privates & group shows' },
   { name: 'Chaturbate', category: 'Live Stream', desc: "World's #1 cam platform" },
+  { name: 'StripChat', category: 'Live Stream', desc: 'Tips, privates & group shows' },
   { name: 'Cam4', category: 'Live Stream', desc: 'Live shows + analytics' },
+  { name: 'OnlyFans', category: 'Content', desc: 'Subscriptions, PPV & tips' },
   { name: 'IWantClips', category: 'Content', desc: 'Custom clips & photo sets' },
   { name: 'ManyVids', category: 'Content', desc: 'Sell exclusive content' },
   { name: 'LoyalFans', category: 'Content', desc: 'Subscriptions & fan sales' },
   { name: 'SkyPrivate', category: 'Independent', desc: '1-on-1 video calls, your rate' },
-  { name: 'CamModelDirectory', category: 'Independent', desc: 'Higher % than competitors' },
 ];
 
 const STEPS = [

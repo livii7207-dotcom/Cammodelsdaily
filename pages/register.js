@@ -2,9 +2,9 @@ import { useState } from 'react';
 import Logo from '../components/Logo';
 
 const PLATFORMS = [
-  'StripChat', 'Chaturbate', 'Cam4',
-  'IWantClips', 'ManyVids', 'LoyalFans',
-  'SkyPrivate', 'CamModelDirectory',
+  'Chaturbate', 'StripChat', 'Cam4',
+  'OnlyFans', 'IWantClips', 'ManyVids',
+  'LoyalFans', 'SkyPrivate',
 ];
 
 const EQUIPMENT = ['Webcam', 'Smartphone', 'DSLR / Camera', 'Ring Light', 'Green Screen'];
