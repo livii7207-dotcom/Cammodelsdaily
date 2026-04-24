@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AdSlot from './AdSlot';
+import Logo from './Logo';
 
 // ─── Model images ─────────────────────────────────────────────────────────────
 // Add AI-generated images to /public/models/ matching each src below.
@@ -51,9 +52,7 @@ export default function LandingPage() {
       {/* ── Nav ──────────────────────────────────────────────────── */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
-          <a href="/" className="text-lg font-display font-bold gradient-text">
-            CamModelsDaily
-          </a>
+          <a href="/"><Logo size="md" /></a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-gray-400">
             {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
               <a key={href} href={href} className="hover:text-white transition-colors">{label}</a>
@@ -345,10 +344,10 @@ export default function LandingPage() {
       {/* ── Footer ───────────────────────────────────────────────── */}
       <footer className="border-t border-white/5 py-10 px-4 sm:px-6 text-sm text-gray-600">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
-          <span className="font-display font-bold text-white text-base">CamModelsDaily.com</span>
+          <span className="font-display font-bold text-white text-base">XCamModels.com</span>
           <div className="flex flex-wrap justify-center gap-5">
             {[['/18usc2257', '18 USC 2257'], ['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Service'],
-              ['/anti-trafficking', 'Anti-Trafficking'], ['https://twitter.com/cammodelsdaily', 'Twitter']
+              ['/anti-trafficking', 'Anti-Trafficking'], ['https://twitter.com/xcammodels', 'Twitter']
             ].map(([href, label]) => (
               <a key={label} href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
@@ -360,7 +359,7 @@ export default function LandingPage() {
           </div>
         </div>
         <p className="text-center text-gray-700 text-xs mt-6">
-          © {new Date().getFullYear()} CamModelsDaily.com · All rights reserved · All models are 18+
+          © {new Date().getFullYear()} XCamModels.com · All rights reserved · All models are 18+
         </p>
       </footer>
     </div>

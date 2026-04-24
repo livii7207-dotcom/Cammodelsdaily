@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Logo from '../components/Logo';
 
 const PLATFORMS = [
   'StripChat', 'Chaturbate', 'Cam4',
@@ -90,9 +91,7 @@ export default function Register() {
       <div className="relative z-10 max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <a href="/" className="text-lg font-display font-bold gradient-text mb-8 inline-block">
-            CamModelsDaily
-          </a>
+          <a href="/" className="inline-block mb-8"><Logo size="md" /></a>
           <h1 className="text-4xl sm:text-5xl font-display font-extrabold mb-3">
             Start <span className="gradient-text">Earning Today</span>
           </h1>

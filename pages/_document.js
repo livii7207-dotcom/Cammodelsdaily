@@ -7,20 +7,14 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* TrafficJunky — global ad loader (required once per page) */}
+        <title>XCamModels — Earn Daily as a Cam Model</title>
+        <meta name="description" content="Join XCamModels and keep 85% of everything you earn. Daily payouts, 8 top platforms, full privacy. Free to join." />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         {tjPublisherId && (
-          <script
-            async
-            src={`https://ads.trafficjunky.net/ads/agent/${tjPublisherId}/show_ads_mq.js`}
-          />
+          <script async src={`https://ads.trafficjunky.net/ads/agent/${tjPublisherId}/show_ads_mq.js`} />
         )}
-        {/* ExoClick — ad provider (required once per page) */}
         {useExoClick && (
-          <script
-            async
-            data-cfasync="false"
-            src="https://a.magsrv.com/ad-provider.js"
-          />
+          <script async data-cfasync="false" src="https://a.magsrv.com/ad-provider.js" />
         )}
       </Head>
       <body>
