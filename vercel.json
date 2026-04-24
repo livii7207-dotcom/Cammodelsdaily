@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build && cp -r out public",
-  "outputDirectory": "public",
+  "buildCommand": "npm run build && cp -r out vercel-static",
+  "outputDirectory": "vercel-static",
   "framework": null
 }
