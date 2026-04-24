@@ -347,7 +347,7 @@ export default function LandingPage() {
           <span className="font-display font-bold text-white text-base">XCamModels.com</span>
           <div className="flex flex-wrap justify-center gap-5">
             {[['/18usc2257', '18 USC 2257'], ['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Service'],
-              ['/anti-trafficking', 'Anti-Trafficking'], ['https://twitter.com/xcammodels', 'Twitter']
+              ['/disclaimer', 'Disclaimer'], ['/anti-trafficking', 'Anti-Trafficking'], ['https://twitter.com/xcammodels', 'Twitter']
             ].map(([href, label]) => (
               <a key={label} href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
