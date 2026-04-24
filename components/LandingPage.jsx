@@ -235,7 +235,7 @@ export default function LandingPage() {
             <div className="text-center mb-14">
               <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Models</p>
               <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-                Real Women. <span className="gradient-text">Real Earnings.</span>
+                Real Models. <span className="gradient-text">Real Earnings.</span>
               </h2>
               <p className="text-gray-500 max-w-xl mx-auto">
                 Every model on our network gets daily pay, full privacy, and dedicated support.
@@ -386,7 +386,7 @@ export default function LandingPage() {
               <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
                 Heard From <span className="gradient-text">Our Models</span>
               </h2>
-              <p className="text-gray-500">Real experiences from real women on the platform.</p>
+              <p className="text-gray-500">Real experiences from real people on the platform.</p>
             </div>
             <div className="grid sm:grid-cols-3 gap-5">
               {TESTIMONIALS.map(({ name, platform, quote, earnings, stars }) => (
