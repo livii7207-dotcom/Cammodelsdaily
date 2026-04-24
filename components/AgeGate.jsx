@@ -31,13 +31,12 @@ export default function AgeGate() {
 
       <div className="relative z-10 max-w-md w-full mx-4">
         <div
-          className="p-8 rounded-2xl bg-gradient-to-b from-gray-900 to-black border border-pink-500/40"
+          className="p-8 rounded-2xl bg-gradient-to-b from-gray-900 to-black border border-pink-500/40 rope-light"
           style={{ boxShadow: '0 0 40px rgba(255,20,147,0.3)' }}
         >
           <div className="text-center mb-8">
             <h1
-              className="text-4xl font-bold mb-4 text-pink-500"
-              style={{ textShadow: '0 0 20px rgba(255,20,147,0.6)' }}
+              className="text-4xl font-bold mb-4 text-pink-500 neon-text"
             >
               AGE VERIFICATION
             </h1>

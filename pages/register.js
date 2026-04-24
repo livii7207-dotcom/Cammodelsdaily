@@ -91,16 +91,16 @@ export default function Register() {
       <div className="relative z-10 max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <a href="/" className="inline-block mb-8"><Logo size="md" /></a>
+          <a href="/" className="inline-block mb-8 neon-text"><Logo size="md" /></a>
           <h1 className="text-4xl sm:text-5xl font-display font-extrabold mb-3">
-            Start <span className="gradient-text">Earning Today</span>
+            Start <span className="neon-text">Earning Today</span>
           </h1>
           <p className="text-gray-400">Free to join · No fees ever · Daily pay · Response within 24 hours</p>
         </div>
 
         <form onSubmit={handleSubmit}
-          className="rounded-3xl p-8 sm:p-10 space-y-6"
-          style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
+          className="rounded-3xl p-8 sm:p-10 space-y-6 rope-light"
+          style={{ background: 'rgba(255,255,255,0.03)' }}>
 
           {/* Stage name + Real name */}
           <div className="grid sm:grid-cols-2 gap-5">

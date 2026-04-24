@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import Logo from '../components/Logo';
+import LogoPinup from '../components/LogoPinup';
 
-const SECTIONS = ['Getting Started', 'Choosing a Platform', 'Your First Week', 'Getting Paid', 'Privacy & Safety', 'Growing Your Audience'];
+const SECTIONS = [
+  { id: 'getting-started', title: 'Getting Started', icon: '🚀' },
+  { id: 'choosing-a-platform', title: 'Choosing a Platform', icon: '💎' },
+  { id: 'your-first-week', title: 'Your First Week', icon: '📈' },
+  { id: 'getting-paid', title: 'Getting Paid', icon: '💰' },
+  { id: 'privacy-safety', title: 'Privacy & Safety', icon: '🔒' },
+  { id: 'growing-your-audience', title: 'Growing Your Audience', icon: '🔥' }
+];
 
-// TODO: Replace each href with your affiliate link for that platform
 const PLATFORM_LINKS = {
   Chaturbate: 'https://chaturbate.com/affiliates/',
   OnlyFans: 'https://onlyfans.com/',
@@ -24,12 +32,14 @@ function PlatformLink({ name }) {
 }
 
 export default function Guide() {
+  const [activeTab, setActiveTab] = useState('getting-started');
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#07080f', color: '#e5e7eb' }}>
       {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-5 flex justify-between items-center h-16">
-          <a href="/"><Logo size="md" /></a>
+        <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
+          <a href="/" className="neon-text"><Logo size="md" /></a>
           <a href="/register"
             className="px-5 py-2 rounded-full text-white text-sm font-semibold shimmer-btn">
             Apply Now
@@ -37,293 +47,225 @@ export default function Guide() {
         </div>
       </header>
 
-      <div className="max-w-3xl mx-auto px-4 pt-28 pb-20">
-        {/* Hero */}
-        <div className="mb-12">
-          <span className="text-xs font-semibold uppercase tracking-widest text-pink-500">Complete Beginner's Guide · 2026</span>
-          <h1 className="text-4xl sm:text-5xl font-display font-extrabold mt-3 mb-4 text-white leading-tight">
-            How to Become a Cam Model in 2026
-          </h1>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            Everything you need to know to start earning as a cam model — from what equipment you need,
-            which platform to start on, how much you can realistically make, and how to stay completely private.
-            No experience required.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {SECTIONS.map(s => (
-              <a key={s} href={`#${s.toLowerCase().replace(/ /g, '-')}`}
-                className="text-xs px-3 py-1.5 rounded-full font-medium text-gray-400 hover:text-white transition-colors"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                {s}
+      <div className="max-w-6xl mx-auto px-4 pt-28 pb-20">
+        <div className="flex flex-col lg:flex-row gap-12">
+          
+          {/* Sidebar Navigation - Sticky */}
+          <aside className="lg:w-1/4">
+            <div className="sticky top-24 space-y-2">
+              <div className="mb-8 hidden lg:block">
+                <LogoPinup size="sm" showText={true} />
+              </div>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 px-3">Table of Contents</p>
+              {SECTIONS.map(s => (
+                <button
+                  key={s.id}
+                  onClick={() => {
+                    setActiveTab(s.id);
+                    document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-3 ${
+                    activeTab === s.id 
+                    ? 'bg-pink-500/10 text-pink-400 border border-pink-500/30 neon-border' 
+                    : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent'
+                  }`}
+                >
+                  <span>{s.icon}</span>
+                  {s.title}
+                </button>
+              ))}
+              
+              <div className="mt-10 p-6 rounded-2xl rope-light glass">
+                <p className="text-sm font-bold text-white mb-2">Need help?</p>
+                <p className="text-xs text-gray-400 mb-4">Our team is available 24/7 to help you get started.</p>
+                <a href="/register" className="block text-center py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold transition-colors">
+                  Contact Support
+                </a>
+              </div>
+            </div>
+          </aside>
+
+          {/* Main Content */}
+          <main className="lg:w-3/4">
+            {/* Hero */}
+            <div className="mb-16">
+              <span className="inline-block px-3 py-1 rounded-full bg-pink-500/10 text-pink-500 text-[10px] font-bold uppercase tracking-widest mb-4 border border-pink-500/20">
+                Beginner's Handbook 2026
+              </span>
+              <h1 className="text-4xl sm:text-6xl font-display font-extrabold mb-6 text-white leading-tight">
+                How to Become a <span className="neon-text">Cam Model</span> in 2026
+              </h1>
+              <p className="text-gray-400 text-xl leading-relaxed max-w-2xl">
+                The ultimate blueprint to starting your career. We cover equipment, platforms, earnings, and 
+                how to maintain 100% privacy while earning top dollar.
+              </p>
+            </div>
+
+            {/* Section 1 */}
+            <section id="getting-started" className="mb-24 scroll-mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-pink-500/20 flex items-center justify-center text-2xl neon-border">🚀</div>
+                <h2 className="text-3xl font-display font-extrabold text-white">Getting Started</h2>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-10">
+                <div className="glass p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="white"><path d="M12 2L1 21h22L12 2zm0 3.45l8.27 14.3H3.73L12 5.45z"/></svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">The Essentials</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    You don't need a studio. Most top earners started with just a smartphone and good lighting.
+                  </p>
+                  <ul className="space-y-4">
+                    {[
+                      { item: 'Camera', desc: 'iPhone 12+ or 1080p Webcam' },
+                      { item: 'Lighting', desc: 'Ring light or natural window light' },
+                      { item: 'Internet', desc: '5Mbps+ upload (fast.com)' },
+                      { item: 'Space', desc: 'Clean, private background' }
+                    ].map(t => (
+                      <li key={t.item} className="flex items-center gap-3 text-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
+                        <span className="text-white font-semibold">{t.item}:</span>
+                        <span className="text-gray-400">{t.desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="glass p-8 rounded-3xl border border-white/5 neon-border">
+                  <h3 className="text-xl font-bold text-white mb-4">Identity & Age</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    Every platform requires legal verification. This is strictly for age compliance and is never shared.
+                  </p>
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/10 mb-4">
+                    <p className="text-xs font-bold text-white mb-1">REQUIRED DOCUMENTS:</p>
+                    <p className="text-xs text-gray-400">Valid Passport, Driver's License, or National ID.</p>
+                  </div>
+                  <p className="text-xs text-gray-500 italic">
+                    * You must be 18+ years old. No exceptions.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 2 */}
+            <section id="choosing-a-platform" className="mb-24 scroll-mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center text-2xl neon-border" style={{ borderColor: '#a855f7' }}>💎</div>
+                <h2 className="text-3xl font-display font-extrabold text-white">Choosing Your Platform</h2>
+              </div>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    name: 'Chaturbate',
+                    tag: 'Most Traffic',
+                    desc: 'The giant of the industry. Best for those who love live interaction and tip-based earning.',
+                    pros: ['Instant audience', 'Daily payouts', 'High earning potential'],
+                    color: '#f47321'
+                  },
+                  {
+                    name: 'OnlyFans',
+                    tag: 'Subscription Based',
+                    desc: 'Perfect for building a loyal fan base with recurring monthly revenue and PPV content.',
+                    pros: ['Stable income', 'Full content control', 'Private community'],
+                    color: '#00aff0'
+                  },
+                  {
+                    name: 'Stripchat',
+                    tag: 'Global Reach',
+                    desc: 'Excellent tech and a massive international audience. Great for diverse performers.',
+                    pros: ['Mobile friendly', 'VR support', 'Great bonus system'],
+                    color: '#00b4a0'
+                  }
+                ].map(p => (
+                  <div key={p.name} className="glass p-8 rounded-3xl border border-white/5 hover:border-white/10 transition-all group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-1 h-full" style={{ backgroundColor: p.color }}></div>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-2xl font-bold text-white"><PlatformLink name={p.name} /></h3>
+                          <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-md bg-white/10 text-gray-300">{p.tag}</span>
+                        </div>
+                        <p className="text-gray-400 text-sm mb-4">{p.desc}</p>
+                        <div className="flex flex-wrap gap-4">
+                          {p.pros.map(pro => (
+                            <span key={pro} className="text-[11px] text-green-400 flex items-center gap-1.5">
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
+                              {pro}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <a href="/register" className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-bold transition-all text-center">
+                        Apply for {p.name}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Section 3 - Payouts */}
+            <section id="getting-paid" className="mb-24 scroll-mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center text-2xl neon-border" style={{ borderColor: '#22c55e' }}>💰</div>
+                <h2 className="text-3xl font-display font-extrabold text-white">Getting Paid</h2>
+              </div>
+              
+              <div className="rope-light rounded-3xl p-1">
+                <div className="glass p-8 rounded-[calc(1.5rem-1px)]">
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div className="text-center p-4">
+                      <p className="text-3xl font-bold text-white mb-1">Daily</p>
+                      <p className="text-xs text-gray-500 uppercase tracking-widest">Frequency</p>
+                      <p className="mt-4 text-sm text-gray-400">Most of our partners offer daily payouts so you never wait for your money.</p>
+                    </div>
+                    <div className="text-center p-4 border-y md:border-y-0 md:border-x border-white/10">
+                      <p className="text-3xl font-bold text-white mb-1">100%</p>
+                      <p className="text-xs text-gray-500 uppercase tracking-widest">Your Share</p>
+                      <p className="mt-4 text-sm text-gray-400">XCamModels is free. You keep every cent the platform pays you.</p>
+                    </div>
+                    <div className="text-center p-4">
+                      <p className="text-3xl font-bold text-white mb-1">Global</p>
+                      <p className="text-xs text-gray-500 uppercase tracking-widest">Methods</p>
+                      <p className="mt-4 text-sm text-gray-400">Paxum, Crypto, Wire, or Check. Choose what works for you.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* CTA */}
+            <div className="mt-20 p-12 rounded-[3rem] bg-gradient-to-br from-pink-600/20 to-purple-600/20 border border-white/10 text-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '30px 30px' }}></div>
+              <LogoPinup size="lg" />
+              <h2 className="text-4xl font-display font-extrabold text-white mt-8 mb-4">Ready to start earning?</h2>
+              <p className="text-gray-400 mb-8 max-w-lg mx-auto">
+                Join 5,000+ models who have launched their careers with XCamModels. 
+                Free setup, daily pay, and 24/7 support.
+              </p>
+              <a href="/register" className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold shimmer-btn hover:scale-105 transition-transform">
+                Apply Now — It's Free
               </a>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        <hr style={{ borderColor: 'rgba(255,255,255,0.07)', marginBottom: '3rem' }} />
-
-        {/* Section 1 */}
-        <section id="getting-started" className="mb-16">
-          <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            1. Getting Started — What You Actually Need
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-4">
-            The barrier to entry is lower than most people expect. You do not need a professional studio,
-            expensive camera equipment, or any prior experience. Thousands of successful models started
-            with nothing more than a phone.
-          </p>
-
-          <h3 className="text-lg font-semibold text-white mt-8 mb-3">Equipment</h3>
-          <div className="space-y-3">
-            {[
-              ['Camera', 'A recent smartphone (iPhone 12+ or Android equivalent) or a basic USB webcam ($40-80). HD quality is fine — 4K is not needed.'],
-              ['Lighting', 'A simple ring light ($20-35 on Amazon) transforms your setup. Place it in front of you, at eye level. Natural window light also works great.'],
-              ['Internet', 'Minimum 5 Mbps upload speed. Run a speed test at fast.com. Wired ethernet is more stable than WiFi for live streaming.'],
-              ['Background', 'A clean wall, curtain, or hanging fabric. A green screen ($15) gives you full control over your background.'],
-              ['Sound', 'The built-in mic on most webcams or phones works fine to start. A USB lav mic ($25) is a worthwhile upgrade after your first payouts.'],
-            ].map(([item, desc]) => (
-              <div key={item} className="glass rounded-xl p-4 border border-white/5">
-                <span className="font-semibold text-white text-sm">{item}: </span>
-                <span className="text-gray-400 text-sm">{desc}</span>
-              </div>
-            ))}
-          </div>
-
-          <h3 className="text-lg font-semibold text-white mt-8 mb-3">Documents Required</h3>
-          <p className="text-gray-400 leading-relaxed mb-3">
-            Every legitimate platform requires age verification before you can earn. This means:
-          </p>
-          <ul className="list-disc list-inside text-gray-400 text-sm space-y-2 ml-2">
-            <li>A valid government-issued photo ID (passport, driver license, or national ID card)</li>
-            <li>You must be 18+ (19+ in some Canadian provinces)</li>
-            <li>Some platforms also ask for a selfie holding your ID</li>
-          </ul>
-          <p className="text-gray-500 text-sm mt-3">
-            Your ID is only used for age verification and is never shown publicly.
-          </p>
-
-          <div className="mt-8 rounded-2xl p-5" style={{ background: 'rgba(255,20,147,0.08)', border: '1px solid rgba(255,20,147,0.2)' }}>
-            <p className="text-sm text-pink-200 font-medium">
-              Ready to get started? Apply through XCamModels and we will help you get set up on the right platforms for your style — completely free.
-            </p>
-            <a href="/register" className="inline-block mt-3 px-5 py-2 rounded-full text-white text-sm font-bold shimmer-btn">
-              Apply Free &rarr;
-            </a>
-          </div>
-        </section>
-
-        {/* Section 2 */}
-        <section id="choosing-a-platform" className="mb-16">
-          <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            2. Choosing Your Platform
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-6">
-            Not all platforms are equal — and the right one depends on what you want to do.
-            Here is an honest breakdown of the major options in 2026.
-          </p>
-
-          <div className="space-y-5">
-            {[
-              {
-                name: 'Chaturbate',
-                type: 'Live Streaming',
-                best: 'High-traffic live streams, tip-based income',
-                pay: 'Daily via check, wire, Paxum, or crypto',
-                pros: ['Largest cam site in the world by traffic', 'Massive free audience from day one', 'Tokens convert at ~$0.05-0.10 each'],
-                cons: ['Competitive — takes time to build an audience', 'Free-to-view model means tips vary'],
-              },
-              {
-                name: 'OnlyFans',
-                type: 'Subscription Content',
-                best: 'Recurring monthly income from subscribers',
-                pay: 'Weekly via bank transfer',
-                pros: ['Monthly subscription model = predictable income', 'PPV (pay-per-view) messages earn well', 'Lower competition than live cam sites'],
-                cons: ['You need to bring your own audience initially', 'More content creation work (photos, videos)'],
-              },
-              {
-                name: 'Stripchat',
-                type: 'Live Streaming',
-                best: 'European audience, strong tip culture',
-                pay: 'Daily via Paxum, crypto, wire',
-                pros: ['Large global audience, active community', 'VR streaming capability', 'Consistent tip income in privates'],
-                cons: ['Interface learning curve for new models'],
-              },
-              {
-                name: 'ManyVids',
-                type: 'Clip Sales',
-                best: 'Selling pre-recorded videos and custom content',
-                pay: 'Weekly or bi-weekly',
-                pros: ['Passive income — upload once, earn forever', 'High buyer intent (people come to buy)', 'Custom video orders at premium rates'],
-                cons: ['No live streaming income', 'Takes time to build a clip library'],
-              },
-              {
-                name: 'IWantClips',
-                type: 'Custom Content',
-                best: 'Custom clip requests and wish lists',
-                pay: 'Bi-weekly via PayPal or check',
-                pros: ['Very high average order values', 'Dedicated fan buyer community', 'Tribute and wish list features'],
-                cons: ['Smaller audience than major platforms', 'Best with an existing following'],
-              },
-            ].map(({ name, type, best, pay, pros, cons }) => (
-              <div key={name} className="glass rounded-2xl p-6 border border-white/5">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="font-display font-bold text-lg text-white"><PlatformLink name={name} /></h3>
-                    <span className="text-xs text-gray-500">{type}</span>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-400 mb-1"><span className="text-white font-medium">Best for:</span> {best}</p>
-                <p className="text-sm text-gray-400 mb-4"><span className="text-white font-medium">Paid:</span> {pay}</p>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div>
-                    <p className="text-xs font-semibold text-green-400 mb-1.5">Pros</p>
-                    <ul className="space-y-1">
-                      {pros.map(p => <li key={p} className="text-xs text-gray-400 flex gap-1.5"><span className="text-green-500 flex-shrink-0">+</span>{p}</li>)}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-red-400 mb-1.5">Cons</p>
-                    <ul className="space-y-1">
-                      {cons.map(c => <li key={c} className="text-xs text-gray-400 flex gap-1.5"><span className="text-red-500 flex-shrink-0">-</span>{c}</li>)}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-gray-500 text-sm mt-6">
-            Most successful models run 2-3 platforms simultaneously. <a href="/register" className="text-pink-400 hover:underline">Apply through XCamModels</a> and we will set you up on the combination that fits your goals.
-          </p>
-        </section>
-
-        {/* Section 3 */}
-        <section id="your-first-week" className="mb-16">
-          <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            3. Your First Week — Realistic Expectations
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-4">
-            The first week is about learning, not maximizing earnings. Here is what actually happens:
-          </p>
-          <div className="space-y-4">
-            {[
-              ['Day 1-2', 'Account setup, ID verification, profile photos, room description. Most platforms approve within 24-48 hours.'],
-              ['Day 3-4', 'Your first streams. Expect 0-5 viewers. This is normal. The algorithm takes time to index your room.'],
-              ['Day 5-7', 'First tips start coming in. Average first week for new Chaturbate models is $50-300 depending on hours streamed.'],
-              ['Week 2-4', 'The algorithm starts recommending your room. Consistent scheduling is the #1 factor. 4-5 hours/day, same time each day.'],
-              ['Month 2-3', 'Regular fans, returning tippers. Average for consistent models at this stage: $800-2,500/month.'],
-            ].map(([period, desc]) => (
-              <div key={period} className="flex gap-4 glass rounded-xl p-4 border border-white/5">
-                <div className="flex-shrink-0 text-xs font-bold text-pink-400 pt-0.5 w-20">{period}</div>
-                <p className="text-sm text-gray-400">{desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 p-4 rounded-xl" style={{ background: 'rgba(168,85,247,0.08)', border: '1px solid rgba(168,85,247,0.2)' }}>
-            <p className="text-sm text-purple-200">
-              <strong>How much do cam models make?</strong> The range is wide: $200-$500/month for casual (5-10 hrs/week) up to $5,000-$20,000/month for full-time consistent performers. The biggest variable is consistency, not looks.
-            </p>
-          </div>
-        </section>
-
-        {/* Section 4 */}
-        <section id="getting-paid" className="mb-16">
-          <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            4. Getting Paid — How Payouts Work
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-6">
-            Every platform pays differently. Here is the breakdown for 2026:
-          </p>
-          <div className="space-y-3">
-            {[
-              ['Chaturbate', 'Minimum $50. Daily payouts via Paxum, check, wire, Bitcoin, or ePayService.'],
-              ['OnlyFans', 'Minimum $20. Weekly via bank transfer (ACH, SEPA) or manual request.'],
-              ['Stripchat', 'Daily via Paxum, crypto, or wire. No minimum for Paxum.'],
-              ['ManyVids', 'Bi-weekly. Via check, bank transfer, or PayPal. Minimum $100.'],
-              ['IWantClips', 'Bi-weekly. PayPal or check. Minimum $50.'],
-            ].map(([platform, detail]) => (
-              <div key={platform} className="glass rounded-xl p-4 border border-white/5 flex gap-4">
-                <span className="font-semibold text-white text-sm w-28 flex-shrink-0">{platform}</span>
-                <span className="text-gray-400 text-sm">{detail}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-gray-500 text-sm mt-5">
-            <strong className="text-white">Paxum</strong> is the most popular payout method for cam models — an e-wallet designed for adult industry payments, widely accepted and easy to withdraw from. Sign up free at paxum.com.
-          </p>
-        </section>
-
-        {/* Section 5 */}
-        <section id="privacy-safety" className="mb-16">
-          <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            5. Privacy and Safety — Staying 100% Anonymous
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-4">
-            Privacy is the #1 concern for new models — and it is completely manageable with the right setup.
-          </p>
-          <div className="space-y-4">
-            {[
-              ['Use a stage name', 'Never use your real name on any platform. Your stage name is your brand. Keep it consistent across platforms.'],
-              ['Geoblocking', 'Every major platform lets you block specific countries or states from viewing your room. Block your home state/country if needed — it takes 2 minutes.'],
-              ['No identifiable details', 'Cover or blur any tattoos, birthmarks, or background items (photos, mail, diplomas) that could identify you. A plain background eliminates this risk entirely.'],
-              ['Watermark your content', 'Any content you sell should have your stage name watermarked. This deters piracy and identifies leaks. Apps like iWatermark ($3) work on mobile.'],
-              ['Separate accounts', 'Use a dedicated email address for platforms. Never link your personal social media. Use a VPN for an extra layer of IP protection.'],
-              ['Paxum for payments', 'Paxum does not appear as an adult transaction on bank statements. Wire transfers may — consider a separate bank account for cam income.'],
-            ].map(([title, desc]) => (
-              <div key={title} className="glass rounded-xl p-4 border border-white/5">
-                <p className="font-semibold text-white text-sm mb-1">{title}</p>
-                <p className="text-gray-400 text-sm">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Section 6 */}
-        <section id="growing-your-audience" className="mb-16">
-          <h2 className="text-2xl font-display font-extrabold text-white mb-6">
-            6. Growing Your Audience
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-4">
-            Consistency beats everything. Here is what accelerates growth:
-          </p>
-          <div className="space-y-4">
-            {[
-              ['Stream on a schedule', 'Pick 3-5 days a week, same time each day. Your regulars will know when to find you. The algorithm rewards consistent streamers.'],
-              ['Cross-promote between platforms', 'Your Chaturbate fans can become your OnlyFans subscribers. Mention your other platforms at the end of streams.'],
-              ['Twitter/X (adult-friendly)', 'Twitter/X still allows adult content promotion. A dedicated stage-name account where you post stream schedules and teasers drives real traffic.'],
-              ['Reddit', 'Subreddits like r/OnlyFansPromotions and niche content communities allow self-promotion. Read each community rules before posting.'],
-              ['Engage your regulars', 'Remember names. Give shout-outs. Fan retention is more valuable than new viewers — regulars tip more consistently.'],
-              ['Off-peak timing', 'Most models stream in the evening. Streaming in the morning or afternoon means less competition for algorithm placement — especially early in your career.'],
-            ].map(([title, desc]) => (
-              <div key={title} className="glass rounded-xl p-4 border border-white/5">
-                <p className="font-semibold text-white text-sm mb-1">{title}</p>
-                <p className="text-gray-400 text-sm">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <div className="rounded-3xl p-8 text-center" style={{ background: 'linear-gradient(135deg, rgba(255,0,128,0.12), rgba(168,85,247,0.12))', border: '1px solid rgba(255,0,128,0.2)' }}>
-          <h2 className="text-2xl font-display font-extrabold text-white mb-3">Ready to Start?</h2>
-          <p className="text-gray-400 mb-6 text-sm max-w-md mx-auto">
-            Apply once through XCamModels and we will get you set up on the right platforms — completely free. No fees, no middleman on your earnings.
-          </p>
-          <a href="/register" className="inline-block px-8 py-4 rounded-full text-white font-bold shimmer-btn">
-            Apply Free &rarr;
-          </a>
-          <p className="text-gray-600 text-xs mt-4">18+ · Government ID required · Response within 24 hours</p>
+          </main>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8 px-4 text-sm text-gray-600 text-center">
-        <div className="flex flex-wrap justify-center gap-5 mb-4">
-          {[['/terms', 'Terms'], ['/privacy', 'Privacy'], ['/disclaimer', 'Disclaimer'], ['/18usc2257', '18 USC 2257']].map(([href, label]) => (
-            <a key={label} href={href} className="hover:text-white transition-colors">{label}</a>
-          ))}
+      <footer className="border-t border-white/5 py-12 px-5">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <Logo size="sm" />
+          <div className="flex gap-8 text-sm text-gray-500">
+            <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+            <a href="/terms" className="hover:text-white transition-colors">Terms</a>
+            <a href="/18usc2257" className="hover:text-white transition-colors">18 U.S.C. 2257</a>
+          </div>
+          <p className="text-xs text-gray-600">© 2026 XCamModels. All rights reserved.</p>
         </div>
-        <p className="text-gray-700 text-xs">© {new Date().getFullYear()} XCamModels.com · All rights reserved · All models are 18+</p>
       </footer>
     </div>
   );

@@ -256,8 +256,8 @@ export default function LandingPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {MODELS.map(({ name, tag, earnings, src, color }, i) => (
                 <div key={name} className={`float-card-${i + 1}`}>
-                  <div className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer"
-                    style={{ height: '420px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer rope-light"
+                    style={{ height: '420px' }}>
                     <div className="absolute inset-0"
                       style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}55 0%, #0a0a14 70%)` }} />
                     <div className="absolute inset-0 opacity-5"
@@ -307,13 +307,13 @@ export default function LandingPage() {
             <div className="text-center mb-14">
               <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Simple Process</p>
               <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-                Start Earning in <span className="gradient-text">4 Steps</span>
+                Start Earning in <span className="neon-text">4 Steps</span>
               </h2>
               <p className="text-gray-500">No experience needed. We handle the rest.</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {STEPS.map(({ n, title, desc }) => (
-                <div key={n} className="glass rounded-3xl p-7 card-hover">
+                <div key={n} className="glass rounded-3xl p-7 card-hover neon-border">
                   <div className="text-5xl font-display font-extrabold mb-4 leading-none gradient-text">{n}</div>
                   <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
@@ -331,7 +331,7 @@ export default function LandingPage() {
             <div className="text-center mb-14">
               <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">8 Partner Sites</p>
               <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-                One Account. <span className="gradient-text">Every Platform.</span>
+                One Account. <span className="neon-text">Every Platform.</span>
               </h2>
               <p className="text-gray-500 max-w-xl mx-auto">
                 We get you set up on the ones that fit you. You just stream — they pay you directly.

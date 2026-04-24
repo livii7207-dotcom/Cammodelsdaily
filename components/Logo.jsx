@@ -38,6 +38,21 @@ export default function Logo({ size = 'md' }) {
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        <filter id="text-neon-glow">
+          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <style>{`
+          @keyframes logo-neon-pulse {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            50% { opacity: 0.8; filter: brightness(1.2); }
+          }
+          .logo-neon { animation: logo-neon-pulse 2s ease-in-out infinite; }
+        `}</style>
       </defs>
 
       {/* Outer glow bloom */}
@@ -64,19 +79,21 @@ export default function Logo({ size = 'md' }) {
       <path transform="translate(40,33)" d="M0,-1.6 L.4,-.4 L1.6,0 L.4,.4 L0,1.6 L-.4,.4 L-1.6,0 L-.4,-.4Z"     fill="#f9a8d4" opacity="0.65" />
 
       {/* Wordmark */}
-      <text x="56" y="27"
-        fontFamily="Sora, sans-serif"
-        fontWeight="800"
-        fontSize="22"
-        letterSpacing="0.5"
-        fill="white">Cam</text>
+      <g className="logo-neon" filter="url(#text-neon-glow)">
+        <text x="56" y="27"
+          fontFamily="Sora, sans-serif"
+          fontWeight="800"
+          fontSize="22"
+          letterSpacing="0.5"
+          fill="white">Cam</text>
 
-      <text x="106" y="27"
-        fontFamily="Sora, sans-serif"
-        fontWeight="500"
-        fontSize="22"
-        letterSpacing="1.5"
-        fill="url(#text-grad)">Models</text>
+        <text x="106" y="27"
+          fontFamily="Sora, sans-serif"
+          fontWeight="500"
+          fontSize="22"
+          letterSpacing="1.5"
+          fill="url(#text-grad)">Models</text>
+      </g>
 
       {/* Underline glow */}
       <rect x="56" y="31" width="150" height="1.5" rx="1" fill="url(#line-grad)" />
