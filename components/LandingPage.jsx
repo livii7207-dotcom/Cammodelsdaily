@@ -1,13 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AdSlot from './AdSlot';
 import Logo from './Logo';
 
-// ─── Model images ─────────────────────────────────────────────────────────────
-// Add AI-generated images to /public/models/ matching each src below.
-// Suggested prompt (Leonardo.ai / Midjourney / DALL-E):
-// "attractive young woman, long wavy hair, sitting in gaming chair,
-//  pink and purple LED room lighting, cute casual outfit, smiling,
-//  photorealistic, high quality, dark bedroom background"
 const MODELS = [
   { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', color: '#ff1493' },
   { name: 'Luna', tag: 'New & Hot', earnings: '$2,800 this week', src: '/models/model2.jpg', color: '#e11d91' },
@@ -42,9 +36,95 @@ const FAQ_ITEMS = [
   { q: 'What percentage do I keep?', a: 'You keep 85% of everything you earn. We take just 15% to run the platform. No hidden fees, ever.' },
 ];
 
+const TESTIMONIALS = [
+  {
+    name: 'Mia K.',
+    platform: 'Chaturbate · 14 months',
+    quote: "I was skeptical at first but the daily payouts are real. I made back my setup costs in the first week alone.",
+    earnings: '$3,200/mo avg',
+    stars: 5,
+  },
+  {
+    name: 'Destiny R.',
+    platform: 'StripChat · 8 months',
+    quote: "Zero experience when I joined. The support team walked me through everything. This is now my full-time income.",
+    earnings: '$2,800/mo avg',
+    stars: 5,
+  },
+  {
+    name: 'Jade L.',
+    platform: 'ManyVids + LoyalFans · 6 months',
+    quote: "Running two platforms sounded complicated but XCamModels handles all the setup. I just focus on content.",
+    earnings: '$4,100/mo avg',
+    stars: 5,
+  },
+];
+
+const ACTIVITY = [
+  'Jasmine from Texas applied 2 min ago',
+  'Sofia from Florida just got approved',
+  'Lena from California made her first payout today',
+  'Mia from New York applied 5 min ago',
+  'Aria earned $320 today',
+  'Destiny from Georgia was just approved',
+  'Emma from Canada applied 8 min ago',
+  'Luna earned $1,240 this week',
+];
+
+const TRUST = [
+  ['⚡', 'Daily Payouts'],
+  ['🔒', 'ID Verified'],
+  ['🚫', 'No Lock-In'],
+  ['👁️', 'Fully Discreet'],
+  ['🎧', '24hr Support'],
+  ['🌍', 'Work From Home'],
+];
+
+function useFadeIn() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('visible');
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.classList.add('visible'); observer.disconnect(); } },
+      { threshold: 0.08 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
+
 export default function LandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [onlineCount, setOnlineCount] = useState(187);
+  const [activityIdx, setActivityIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setOnlineCount(c => Math.max(140, Math.min(240, c + Math.floor(Math.random() * 7) - 3)));
+    }, 30000);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => setActivityIdx(i => (i + 1) % ACTIVITY.length), 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  const heroRef = useFadeIn();
+  const modelsRef = useFadeIn();
+  const howRef = useFadeIn();
+  const platformsRef = useFadeIn();
+  const revenueRef = useFadeIn();
+  const testimonialsRef = useFadeIn();
+  const faqRef = useFadeIn();
+  const ctaRef = useFadeIn();
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
@@ -57,11 +137,7 @@ export default function LandingPage() {
             {[['#models', 'Models'], ['#platforms', 'Platforms'], ['#how', 'How It Works'], ['#faq', 'FAQ']].map(([href, label]) => (
               <a key={href} href={href} className="hover:text-white transition-colors">{label}</a>
             ))}
-            <a
-              href="/register"
-              className="px-5 py-2 rounded-full text-white font-semibold glow-btn"
-              style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}
-            >
+            <a href="/register" className="px-5 py-2 rounded-full text-white font-semibold shimmer-btn">
               Start Earning
             </a>
           </nav>
@@ -78,8 +154,7 @@ export default function LandingPage() {
               <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
             ))}
             <a href="/register" onClick={() => setMenuOpen(false)}
-              className="text-center py-3 rounded-full text-white font-semibold"
-              style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+              className="text-center py-3 rounded-full text-white font-semibold shimmer-btn">
               Start Earning
             </a>
           </div>
@@ -89,16 +164,20 @@ export default function LandingPage() {
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full opacity-20"
-            style={{ background: 'radial-gradient(circle, #ff1493 0%, transparent 70%)' }} />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-10"
-            style={{ background: 'radial-gradient(circle, #a855f7 0%, transparent 70%)' }} />
+          <div className="aurora-blob w-[900px] h-[900px]"
+            style={{ top: '-10%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, #ff1493 0%, transparent 65%)' }} />
+          <div className="aurora-blob w-[500px] h-[500px]"
+            style={{ bottom: '10%', right: '-10%', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
+          <div className="aurora-blob w-[400px] h-[400px]"
+            style={{ top: '40%', left: '-8%', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-pink-400 font-medium mb-8">
-            <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
-            Paying models daily since 2010
+
+        <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-green-400 font-medium mb-4">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            {onlineCount} models online right now
           </div>
+
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
             Earn More.{' '}
             <span className="gradient-text">Stream Smarter.</span>
@@ -108,13 +187,13 @@ export default function LandingPage() {
             Join 10,000+ models earning on 8 top platforms. Keep 85% of every dollar —
             paid straight to you every single day.
           </p>
-          <p className="text-sm text-gray-600 mb-10">
+          <p className="text-sm text-gray-600 mb-8">
             Webcam · 18+ · All body types · Fully discreet · Work from home
           </p>
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a href="/register"
-              className="px-8 py-4 rounded-full text-white text-lg font-bold glow-btn"
-              style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+              className="px-8 py-4 rounded-full text-white text-lg font-bold shimmer-btn">
               Apply as a Model →
             </a>
             <a href="#how"
@@ -122,12 +201,28 @@ export default function LandingPage() {
               How It Works
             </a>
           </div>
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+
+          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs text-gray-400"
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-pink-500 flex-shrink-0 animate-pulse" />
+            <span key={activityIdx} className="activity-fade">{ACTIVITY[activityIdx]}</span>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[['85%', 'You Keep'], ['Daily', 'Payouts'], ['8', 'Platforms'], ['10K+', 'Models']].map(([val, label]) => (
               <div key={label} className="glass rounded-2xl py-4 px-3 text-center card-hover">
                 <div className="text-2xl font-display font-bold gradient-text">{val}</div>
                 <div className="text-xs text-gray-500 mt-1">{label}</div>
               </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {TRUST.map(([icon, label]) => (
+              <span key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-gray-400"
+                style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                {icon} {label}
+              </span>
             ))}
           </div>
         </div>
@@ -136,57 +231,50 @@ export default function LandingPage() {
       {/* ── Model Showcase ───────────────────────────────────────── */}
       <section id="models" className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Models</p>
-            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-              Real Women. <span className="gradient-text">Real Earnings.</span>
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
-              Every model on our network gets daily pay, full privacy, and dedicated support.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {MODELS.map(({ name, tag, earnings, src, color }) => (
-              <div key={name}
-                className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer"
-                style={{ height: '420px', border: '1px solid rgba(255,255,255,0.06)' }}>
-
-                {/* Placeholder background (hidden once image loads) */}
-                <div className="absolute inset-0"
-                  style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}55 0%, #0a0a14 70%)` }} />
-                <div className="absolute inset-0 opacity-5"
-                  style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-
-                {/* Model photo */}
-                <img src={src} alt={`Model ${name}`}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                  style={{ transition: 'transform 0.4s ease' }}
-                  onError={(e) => { e.currentTarget.style.opacity = '0'; }} />
-
-                {/* Permanent bottom gradient for text legibility */}
-                <div className="absolute inset-0"
-                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
-
-                {/* Top badge */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="text-xs font-bold px-3 py-1.5 rounded-full"
-                    style={{ background: `${color}33`, border: `1px solid ${color}88`, color: '#ffb6d9' }}>
-                    {tag}
-                  </span>
+          <div ref={modelsRef} className="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Our Models</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+                Real Women. <span className="gradient-text">Real Earnings.</span>
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                Every model on our network gets daily pay, full privacy, and dedicated support.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {MODELS.map(({ name, tag, earnings, src, color }, i) => (
+                <div key={name} className={`float-card-${i + 1}`}>
+                  <div className="relative rounded-3xl overflow-hidden card-hover group cursor-pointer"
+                    style={{ height: '420px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <div className="absolute inset-0"
+                      style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}55 0%, #0a0a14 70%)` }} />
+                    <div className="absolute inset-0 opacity-5"
+                      style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+                    <img src={src} alt={`Model ${name}`}
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                      style={{ transition: 'transform 0.4s ease' }}
+                      onError={(e) => { e.currentTarget.style.opacity = '0'; }} />
+                    <div className="absolute inset-0"
+                      style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="text-xs font-bold px-3 py-1.5 rounded-full"
+                        style={{ background: `${color}33`, border: `1px solid ${color}88`, color: '#ffb6d9' }}>
+                        {tag}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                      <p className="font-display font-bold text-xl mb-0.5">{name}</p>
+                      <p className="text-sm font-medium mb-4" style={{ color }}>{earnings}</p>
+                      <a href="/register"
+                        className="inline-block w-full text-center py-2.5 rounded-xl text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-300"
+                        style={{ background: `linear-gradient(135deg, ${color}, #a855f7)` }}>
+                        Earn Like {name} →
+                      </a>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Bottom info */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                  <p className="font-display font-bold text-xl mb-0.5">{name}</p>
-                  <p className="text-sm font-medium mb-4" style={{ color }}>{earnings}</p>
-                  <a href="/register"
-                    className="inline-block w-full text-center py-2.5 rounded-xl text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    style={{ background: `linear-gradient(135deg, ${color}, #a855f7)` }}>
-                    Earn Like {name} →
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -203,21 +291,23 @@ export default function LandingPage() {
       {/* ── How It Works ─────────────────────────────────────────── */}
       <section id="how" className="py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Simple Process</p>
-            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-              Start Earning in <span className="gradient-text">4 Steps</span>
-            </h2>
-            <p className="text-gray-500">No experience needed. We handle the rest.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {STEPS.map(({ n, title, desc }) => (
-              <div key={n} className="glass rounded-3xl p-7 card-hover">
-                <div className="text-5xl font-display font-extrabold mb-4 leading-none gradient-text">{n}</div>
-                <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-              </div>
-            ))}
+          <div ref={howRef} className="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Simple Process</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+                Start Earning in <span className="gradient-text">4 Steps</span>
+              </h2>
+              <p className="text-gray-500">No experience needed. We handle the rest.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {STEPS.map(({ n, title, desc }) => (
+                <div key={n} className="glass rounded-3xl p-7 card-hover">
+                  <div className="text-5xl font-display font-extrabold mb-4 leading-none gradient-text">{n}</div>
+                  <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -225,26 +315,28 @@ export default function LandingPage() {
       {/* ── Platforms ────────────────────────────────────────────── */}
       <section id="platforms" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">8 Partner Sites</p>
-            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-              One Account. <span className="gradient-text">Every Platform.</span>
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
-              We manage your presence across all 8 sites. You just stream and collect.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {PLATFORMS.map(({ name, category, desc }) => (
-              <div key={name} className="glass rounded-2xl p-5 card-hover border border-white/5">
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block"
-                  style={{ background: 'rgba(255,20,147,0.15)', color: '#ff69b4' }}>
-                  {category}
-                </span>
-                <h3 className="font-display font-bold text-base mb-1">{name}</h3>
-                <p className="text-xs text-gray-500">{desc}</p>
-              </div>
-            ))}
+          <div ref={platformsRef} className="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">8 Partner Sites</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+                One Account. <span className="gradient-text">Every Platform.</span>
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                We manage your presence across all 8 sites. You just stream and collect.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {PLATFORMS.map(({ name, category, desc }) => (
+                <div key={name} className="glass rounded-2xl p-5 card-hover border border-white/5">
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block"
+                    style={{ background: 'rgba(255,20,147,0.15)', color: '#ff69b4' }}>
+                    {category}
+                  </span>
+                  <h3 className="font-display font-bold text-base mb-1">{name}</h3>
+                  <p className="text-xs text-gray-500">{desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -252,30 +344,64 @@ export default function LandingPage() {
       {/* ── Revenue Split ────────────────────────────────────────── */}
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Transparent Pricing</p>
-          <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-            You keep <span className="gradient-text">85%</span>
-          </h2>
-          <p className="text-gray-500 mb-12 max-w-lg mx-auto">
-            No setup fees. No monthly charges. We take 15% to run the platform.
-            Every dollar you earn gets split automatically at payout.
-          </p>
-          <div className="glass rounded-3xl p-8">
-            <div className="flex rounded-2xl overflow-hidden h-16 mb-6 text-sm font-bold">
-              <div className="flex items-center justify-center text-white"
-                style={{ width: '85%', background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
-                85% — Yours
+          <div ref={revenueRef} className="fade-up">
+            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Transparent Pricing</p>
+            <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+              You keep <span className="gradient-text">85%</span>
+            </h2>
+            <p className="text-gray-500 mb-12 max-w-lg mx-auto">
+              No setup fees. No monthly charges. We take 15% to run the platform.
+              Every dollar you earn gets split automatically at payout.
+            </p>
+            <div className="glass rounded-3xl p-8">
+              <div className="flex rounded-2xl overflow-hidden h-16 mb-6 text-sm font-bold">
+                <div className="flex items-center justify-center text-white"
+                  style={{ width: '85%', background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+                  85% — Yours
+                </div>
+                <div className="flex items-center justify-center text-gray-400"
+                  style={{ width: '15%', background: 'rgba(255,255,255,0.06)' }}>
+                  15%
+                </div>
               </div>
-              <div className="flex items-center justify-center text-gray-400"
-                style={{ width: '15%', background: 'rgba(255,255,255,0.06)' }}>
-                15%
+              <div className="grid grid-cols-3 gap-4 text-center">
+                {[['$100 earned', 'Example'], ['$85 → You', 'Daily deposit'], ['$15 → Us', 'Platform fee']].map(([val, label]) => (
+                  <div key={label}>
+                    <p className="font-display font-bold text-white">{val}</p>
+                    <p className="text-xs text-gray-600 mt-1">{label}</p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-4 text-center">
-              {[['$100 earned', 'Example'], ['$85 → You', 'Daily deposit'], ['$15 → Us', 'Platform fee']].map(([val, label]) => (
-                <div key={label}>
-                  <p className="font-display font-bold text-white">{val}</p>
-                  <p className="text-xs text-gray-600 mt-1">{label}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ─────────────────────────────────────────── */}
+      <section className="py-24 px-4 sm:px-6" style={{ background: 'rgba(168,85,247,0.025)' }}>
+        <div className="max-w-5xl mx-auto">
+          <div ref={testimonialsRef} className="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Real Stories</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+                Heard From <span className="gradient-text">Our Models</span>
+              </h2>
+              <p className="text-gray-500">Real experiences from real women on the platform.</p>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-5">
+              {TESTIMONIALS.map(({ name, platform, quote, earnings, stars }) => (
+                <div key={name} className="glass rounded-3xl p-7 card-hover border border-white/5 flex flex-col gap-4">
+                  <div className="flex gap-0.5">
+                    {Array(stars).fill(0).map((_, i) => (
+                      <span key={i} className="text-yellow-400 text-sm">★</span>
+                    ))}
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
+                  <div className="border-t border-white/5 pt-4">
+                    <p className="font-semibold text-white text-sm">{name}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{platform}</p>
+                    <p className="text-xs font-semibold mt-1.5" style={{ color: '#ff69b4' }}>{earnings}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -286,28 +412,30 @@ export default function LandingPage() {
       {/* ── FAQ ──────────────────────────────────────────────────── */}
       <section id="faq" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Questions</p>
-            <h2 className="text-4xl sm:text-5xl font-display font-extrabold">
-              Got <span className="gradient-text">Questions?</span>
-            </h2>
-          </div>
-          <div className="space-y-3">
-            {FAQ_ITEMS.map(({ q, a }, i) => (
-              <div key={q} className="glass rounded-2xl overflow-hidden border border-white/5 card-hover">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full px-6 py-5 text-left font-semibold flex justify-between items-center">
-                  <span>{q}</span>
-                  <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-200"
-                    style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                    ▾
-                  </span>
-                </button>
-                {openFaq === i && (
-                  <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
-                )}
-              </div>
-            ))}
+          <div ref={faqRef} className="fade-up">
+            <div className="text-center mb-14">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Questions</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold">
+                Got <span className="gradient-text">Questions?</span>
+              </h2>
+            </div>
+            <div className="space-y-3">
+              {FAQ_ITEMS.map(({ q, a }, i) => (
+                <div key={q} className="glass rounded-2xl overflow-hidden border border-white/5 card-hover">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full px-6 py-5 text-left font-semibold flex justify-between items-center">
+                    <span>{q}</span>
+                    <span className="text-pink-500 ml-4 flex-shrink-0 transition-transform duration-200"
+                      style={{ display: 'inline-block', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                      ▾
+                    </span>
+                  </button>
+                  {openFaq === i && (
+                    <p className="px-6 pb-5 text-gray-400 text-sm leading-relaxed">{a}</p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -325,7 +453,7 @@ export default function LandingPage() {
       <section id="apply" className="py-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-10"
           style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
-        <div className="relative z-10 max-w-2xl mx-auto text-center">
+        <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
             Ready to Keep <span className="gradient-text">85%?</span>
           </h2>
@@ -333,8 +461,7 @@ export default function LandingPage() {
             Free to join. No lock-in. Start earning daily from your very first stream.
           </p>
           <a href="/register"
-            className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold glow-btn"
-            style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
+            className="inline-block px-10 py-5 rounded-full text-white text-xl font-bold shimmer-btn">
             Apply as a Model
           </a>
           <p className="text-gray-600 text-sm mt-6">Must be 18+ · Government ID required · Response within 24 hours</p>
