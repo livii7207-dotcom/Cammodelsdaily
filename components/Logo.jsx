@@ -1,28 +1,38 @@
 export default function Logo({ size = 'md' }) {
   const scale = size === 'lg' ? 1.4 : size === 'sm' ? 0.75 : 1;
-  const h = Math.round(36 * scale);
-  const w = Math.round(200 * scale);
+  const h = Math.round(38 * scale);
+  const w = Math.round(210 * scale);
 
   return (
-    <svg width={w} height={h} viewBox="0 0 200 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={w} height={h} viewBox="0 0 210 38" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="xgrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ff0080" />
+        <linearGradient id="badge-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stopColor="#ff006e" />
+          <stop offset="50%"  stopColor="#d63384" />
+          <stop offset="100%" stopColor="#7c3aed" />
+        </linearGradient>
+        <linearGradient id="text-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#ff006e" />
           <stop offset="100%" stopColor="#a855f7" />
         </linearGradient>
-        <linearGradient id="glowgrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#ff0080" stopOpacity="0.7" />
+        <linearGradient id="line-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#ff006e" stopOpacity="0.7" />
           <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
         </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="2.5" result="blur" />
+        <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stopColor="white" stopOpacity="0.22" />
+          <stop offset="55%"  stopColor="white" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <filter id="badge-glow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <filter id="badgeglow">
-          <feGaussianBlur stdDeviation="3" result="blur" />
+        <filter id="x-glow">
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
@@ -30,47 +40,46 @@ export default function Logo({ size = 'md' }) {
         </filter>
       </defs>
 
-      {/* Badge glow */}
-      <rect x="-1" y="-1" width="38" height="38" rx="9" fill="url(#xgrad)" opacity="0.35" filter="url(#badgeglow)" />
+      {/* Outer glow bloom */}
+      <rect x="1" y="1" width="36" height="36" rx="11"
+        fill="url(#badge-grad)" opacity="0.45" filter="url(#badge-glow)" />
 
-      {/* X badge */}
-      <rect x="0" y="0" width="36" height="36" rx="8" fill="url(#xgrad)" />
+      {/* Badge */}
+      <rect x="0" y="0" width="38" height="38" rx="10" fill="url(#badge-grad)" />
 
-      {/* Curved X arms */}
-      <path d="M 9 9 Q 21 13 27 27" stroke="white" strokeWidth="4.5" strokeLinecap="round" fill="none" />
-      <path d="M 27 9 Q 15 13 9 27" stroke="white" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+      {/* Gloss */}
+      <rect x="0" y="0" width="38" height="20" rx="10" fill="url(#gloss)" />
 
-      {/* Heart tips at each arm end */}
-      <g fill="white" opacity="0.95">
-        {/* top-left (9,9) */}
-        <path transform="translate(9,9) rotate(-45) scale(0.85)" d="M0,0.5 C-0.8,-1.2 -3,-1.2 -3,0.8 C-3,2.2 0,4 0,4 C0,4 3,2.2 3,0.8 C3,-1.2 0.8,-1.2 0,0.5Z" />
-        {/* bottom-right (27,27) */}
-        <path transform="translate(27,27) rotate(135) scale(0.85)" d="M0,0.5 C-0.8,-1.2 -3,-1.2 -3,0.8 C-3,2.2 0,4 0,4 C0,4 3,2.2 3,0.8 C3,-1.2 0.8,-1.2 0,0.5Z" />
-        {/* top-right (27,9) */}
-        <path transform="translate(27,9) rotate(45) scale(0.85)" d="M0,0.5 C-0.8,-1.2 -3,-1.2 -3,0.8 C-3,2.2 0,4 0,4 C0,4 3,2.2 3,0.8 C3,-1.2 0.8,-1.2 0,0.5Z" />
-        {/* bottom-left (9,27) */}
-        <path transform="translate(9,27) rotate(-135) scale(0.85)" d="M0,0.5 C-0.8,-1.2 -3,-1.2 -3,0.8 C-3,2.2 0,4 0,4 C0,4 3,2.2 3,0.8 C3,-1.2 0.8,-1.2 0,0.5Z" />
+      {/* Elegant curved X */}
+      <g filter="url(#x-glow)">
+        <path d="M 10 10 Q 22 15 28 28" stroke="white" strokeWidth="3.2" strokeLinecap="round" fill="none" />
+        <path d="M 28 10 Q 16 15 10 28" stroke="white" strokeWidth="3.2" strokeLinecap="round" fill="none" />
       </g>
 
-      {/* Sparkle stars outside badge */}
-      <g fill="#ff69b4" opacity="0.8">
-        <path transform="translate(40,3)" d="M0,-2.2 L0.5,-0.5 L2.2,0 L0.5,0.5 L0,2.2 L-0.5,0.5 L-2.2,0 L-0.5,-0.5Z" />
-        <path transform="translate(41,18)" d="M0,-1.4 L0.35,-0.35 L1.4,0 L0.35,0.35 L0,1.4 L-0.35,0.35 L-1.4,0 L-0.35,-0.35Z" />
-        <path transform="translate(40,32)" d="M0,-2 L0.45,-0.45 L2,0 L0.45,0.45 L0,2 L-0.45,0.45 L-2,0 L-0.45,-0.45Z" />
-      </g>
+      {/* Center diamond */}
+      <path d="M 19 16.5 L 22 19 L 19 21.5 L 16 19 Z" fill="white" opacity="0.75" />
 
-      {/* "Cam" text */}
-      <text x="52" y="26" fontFamily="Sora, sans-serif" fontWeight="800" fontSize="22" fill="white" filter="url(#glow)">
-        Cam
-      </text>
+      {/* Two tasteful sparkles */}
+      <path transform="translate(41,5)"  d="M0,-2.2 L.55,-.55 L2.2,0 L.55,.55 L0,2.2 L-.55,.55 L-2.2,0 L-.55,-.55Z" fill="#f9a8d4" opacity="0.8" />
+      <path transform="translate(40,33)" d="M0,-1.6 L.4,-.4 L1.6,0 L.4,.4 L0,1.6 L-.4,.4 L-1.6,0 L-.4,-.4Z"     fill="#f9a8d4" opacity="0.65" />
 
-      {/* "Models" text */}
-      <text x="103" y="26" fontFamily="Sora, sans-serif" fontWeight="700" fontSize="22" fill="url(#xgrad)">
-        Models
-      </text>
+      {/* Wordmark */}
+      <text x="56" y="27"
+        fontFamily="Sora, sans-serif"
+        fontWeight="800"
+        fontSize="22"
+        letterSpacing="0.5"
+        fill="white">Cam</text>
 
-      {/* Underline glow bar */}
-      <rect x="52" y="30" width="144" height="2" rx="1" fill="url(#glowgrad)" />
+      <text x="106" y="27"
+        fontFamily="Sora, sans-serif"
+        fontWeight="500"
+        fontSize="22"
+        letterSpacing="1.5"
+        fill="url(#text-grad)">Models</text>
+
+      {/* Underline glow */}
+      <rect x="56" y="31" width="150" height="1.5" rx="1" fill="url(#line-grad)" />
     </svg>
   );
 }
