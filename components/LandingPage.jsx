@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import AdSlot from './AdSlot';
 import Logo from './Logo';
+import LogoMartini from './LogoMartini';
 
 const MODELS = [
   { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', color: '#ff1493' },
@@ -130,7 +131,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
 
-      {/* ── Nav ──────────────────────────────────────────────────── */}
+      {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
           <a href="/"><Logo size="md" /></a>
@@ -162,7 +163,7 @@ export default function LandingPage() {
         )}
       </header>
 
-      {/* ── Hero ─────────────────────────────────────────────────── */}
+      {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="aurora-blob w-[900px] h-[900px]"
@@ -171,6 +172,16 @@ export default function LandingPage() {
             style={{ bottom: '10%', right: '-10%', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
           <div className="aurora-blob w-[400px] h-[400px]"
             style={{ top: '40%', left: '-8%', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
+        </div>
+
+        {/* Martini girl — desktop decoration */}
+        <div className="hidden lg:block absolute right-6 xl:right-20 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          style={{ opacity: 0.55 }}>
+          <LogoMartini size="lg" />
+        </div>
+        <div className="hidden lg:block absolute left-6 xl:left-20 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+          style={{ opacity: 0.35, transform: 'translateY(-50%) scaleX(-1)' }}>
+          <LogoMartini size="md" />
         </div>
 
         <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
@@ -229,7 +240,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Model Showcase ───────────────────────────────────────── */}
+      {/* Model Showcase */}
       <section id="models" className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div ref={modelsRef} className="fade-up">
@@ -280,7 +291,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Top Ad Banner ────────────────────────────────────────── */}
+      {/* Ad Banner */}
       <div className="max-w-5xl mx-auto px-4 py-4">
         <AdSlot
           tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_BANNER}
@@ -289,7 +300,7 @@ export default function LandingPage() {
         />
       </div>
 
-      {/* ── How It Works ─────────────────────────────────────────── */}
+      {/* How It Works */}
       <section id="how" className="py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div ref={howRef} className="fade-up">
@@ -313,7 +324,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Platforms ────────────────────────────────────────────── */}
+      {/* Platforms */}
       <section id="platforms" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-5xl mx-auto">
           <div ref={platformsRef} className="fade-up">
@@ -338,7 +349,7 @@ export default function LandingPage() {
                   onMouseEnter={e => { e.currentTarget.style.borderColor = color + '55'; e.currentTarget.style.boxShadow = `0 0 24px ${color}22`; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.boxShadow = 'none'; }}
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm mb-4 transition-all"
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm mb-4"
                     style={{ background: `${color}22`, border: `1.5px solid ${color}44`, color }}>
                     {abbr}
                   </div>
@@ -359,7 +370,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Why XCamModels ───────────────────────────────────────── */}
+      {/* Why XCamModels */}
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div ref={revenueRef} className="fade-up">
@@ -392,7 +403,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Testimonials ─────────────────────────────────────────── */}
+      {/* Testimonials */}
       <section className="py-24 px-4 sm:px-6" style={{ background: 'rgba(168,85,247,0.025)' }}>
         <div className="max-w-5xl mx-auto">
           <div ref={testimonialsRef} className="fade-up">
@@ -424,7 +435,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── FAQ ──────────────────────────────────────────────────── */}
+      {/* FAQ */}
       <section id="faq" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(255,20,147,0.025)' }}>
         <div className="max-w-3xl mx-auto">
           <div ref={faqRef} className="fade-up">
@@ -455,7 +466,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Mid Ad Slot ──────────────────────────────────────────── */}
+      {/* Mid Ad */}
       <div className="max-w-5xl mx-auto px-4 py-8 flex justify-center">
         <AdSlot
           tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_RECT}
@@ -464,11 +475,14 @@ export default function LandingPage() {
         />
       </div>
 
-      {/* ── Apply CTA ────────────────────────────────────────────── */}
+      {/* CTA */}
       <section id="apply" className="py-28 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-10"
           style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
+          <div className="flex justify-center mb-8">
+            <LogoMartini size="md" showText />
+          </div>
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
             Ready to <span className="gradient-text">Start Earning?</span>
           </h2>
@@ -483,7 +497,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Footer ───────────────────────────────────────────────── */}
+      {/* Footer */}
       <footer className="border-t border-white/5 py-10 px-4 sm:px-6 text-sm text-gray-600">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
           <span className="font-display font-bold text-white text-base">XCamModels.com</span>
