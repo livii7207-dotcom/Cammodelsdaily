@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AdSlot from './AdSlot';
 
 export default function LandingPage() {
   const affiliates = [
@@ -65,12 +66,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Ad slot — top banner */}
+      {/* Ad slot — top leaderboard (728x90) */}
       <div className="max-w-4xl mx-auto px-4 mb-10">
-        <div className="bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center h-24 text-gray-500 text-xs">
-          {/* Replace with your Google AdSense <ins> tag or TrafficJunky/JuicyAds embed */}
-          Advertisement
-        </div>
+        <AdSlot
+          tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_BANNER}
+          exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_BANNER}
+          height={90}
+        />
       </div>
 
       {/* Stats */}
@@ -162,12 +164,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Ad slot — mid page */}
-      <div className="max-w-4xl mx-auto px-4 my-10">
-        <div className="bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center h-24 text-gray-500 text-xs">
-          {/* Replace with your ad code */}
-          Advertisement
-        </div>
+      {/* Ad slot — mid page rectangle (300x250) */}
+      <div className="max-w-4xl mx-auto px-4 my-10 flex justify-center">
+        <AdSlot
+          tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_RECT}
+          exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_RECT}
+          height={250}
+        />
       </div>
 
       {/* Apply CTA */}

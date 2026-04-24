@@ -1,15 +1,25 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
+  const tjPublisherId = process.env.NEXT_PUBLIC_TJ_PUBLISHER_ID;
+  const useExoClick = process.env.NEXT_PUBLIC_USE_EXOCLICK === 'true';
+
   return (
     <Html lang="en">
       <Head>
-        {/* Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID */}
-        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
+        {/* TrafficJunky — global ad loader (required once per page) */}
+        {tjPublisherId && (
           <script
             async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
-            crossOrigin="anonymous"
+            src={`https://ads.trafficjunky.net/ads/agent/${tjPublisherId}/show_ads_mq.js`}
+          />
+        )}
+        {/* ExoClick — ad provider (required once per page) */}
+        {useExoClick && (
+          <script
+            async
+            data-cfasync="false"
+            src="https://a.magsrv.com/ad-provider.js"
           />
         )}
       </Head>
