@@ -1,23 +1,6 @@
 import React, { useState } from 'react';
 
 export default function LandingPage() {
-  const [checkoutLoading, setCheckoutLoading] = useState(null);
-
-  const handleCheckout = async (planKey) => {
-    setCheckoutLoading(planKey);
-    try {
-      const res = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planKey }),
-      });
-      const { url } = await res.json();
-      window.location.href = url;
-    } catch {
-      setCheckoutLoading(null);
-    }
-  };
-
   const affiliates = [
     {
       name: 'Chaturbate',
@@ -45,59 +28,38 @@ export default function LandingPage() {
     },
   ];
 
-  const plans = [
-    {
-      key: null,
-      name: 'Starter',
-      price: 'Free',
-      features: ['Basic profile', 'Standard payouts', 'Community access'],
-      cta: 'Get Started',
-      href: '#models',
-    },
-    {
-      key: 'pro',
-      name: 'Pro',
-      price: '$9.99/mo',
-      features: ['Featured profile', 'Daily payouts', 'Priority support', 'Analytics dashboard'],
-      cta: 'Go Pro',
-      highlight: true,
-    },
-    {
-      key: 'elite',
-      name: 'Elite',
-      price: '$29.99/mo',
-      features: ['Top placement', 'Instant payouts', 'Dedicated manager', '75% revenue share', 'Custom branding'],
-      cta: 'Go Elite',
-    },
-  ];
-
   return (
     <div className="min-h-screen text-white bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Header */}
       <header className="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-center border-b border-gray-800">
         <h1 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-0">CamModelsDaily.com</h1>
         <nav className="flex space-x-4 text-sm sm:text-base">
-          <a href="#models" className="hover:text-pink-400">For Models</a>
+          <a href="#how-it-works" className="hover:text-pink-400">How It Works</a>
           <a href="#affiliates" className="hover:text-pink-400">Affiliates</a>
-          <a href="#pricing" className="hover:text-pink-400">Pricing</a>
+          <a href="#apply" className="hover:text-pink-400">Apply</a>
         </nav>
       </header>
 
       {/* Hero */}
       <section className="text-center py-16 sm:py-24 px-4 sm:px-6">
         <h2 className="text-3xl sm:text-5xl font-extrabold mb-4 sm:mb-6">
-          Get Paid Daily. Stream Smarter.{' '}
-          <span className="text-pink-400">CamModelsDaily.com</span>
+          Keep <span className="text-pink-400">85%</span> of Everything You Earn.
         </h2>
         <p className="text-base sm:text-lg max-w-xl mx-auto mb-8 text-gray-300">
-          Join the #1 daily-pay cam network built for independent creators.
-          Keep more of your earnings, withdraw when you want, and stay in control.
+          No flat fees. No hidden charges. We take just 15% — you keep the rest,
+          paid out daily, directly to you.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#models" className="px-6 py-3 rounded-2xl bg-pink-500 hover:bg-pink-600 shadow-lg font-medium">
+          <a
+            href="#apply"
+            className="px-6 py-3 rounded-2xl bg-pink-500 hover:bg-pink-600 shadow-lg font-medium"
+          >
             Apply as a Model
           </a>
-          <a href="#affiliates" className="px-6 py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 shadow-lg font-medium">
+          <a
+            href="#affiliates"
+            className="px-6 py-3 rounded-2xl bg-gray-800 hover:bg-gray-700 shadow-lg font-medium"
+          >
             Become an Affiliate
           </a>
         </div>
@@ -106,7 +68,7 @@ export default function LandingPage() {
       {/* Ad slot — top banner */}
       <div className="max-w-4xl mx-auto px-4 mb-10">
         <div className="bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center h-24 text-gray-500 text-xs">
-          {/* Replace with your Google AdSense <ins> tag or TrafficJunky/JuicyAds embed code */}
+          {/* Replace with your Google AdSense <ins> tag or TrafficJunky/JuicyAds embed */}
           Advertisement
         </div>
       </div>
@@ -115,10 +77,10 @@ export default function LandingPage() {
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           {[
-            { label: 'Active Models', value: '10,000+' },
+            { label: 'Models Keep', value: '85%' },
+            { label: 'Platform Fee', value: '15%' },
             { label: 'Daily Payouts', value: '$500K+' },
             { label: 'Avg Earnings/Mo', value: '$3,200' },
-            { label: 'Affiliate Commission', value: '30%' },
           ].map(({ label, value }) => (
             <div key={label} className="bg-gray-800 rounded-2xl p-6">
               <div className="text-2xl font-bold text-pink-400">{value}</div>
@@ -128,15 +90,39 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Benefits */}
-      <section id="models" className="py-16 px-4 sm:px-6">
+      {/* How It Works / Revenue Split */}
+      <section id="how-it-works" className="py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-10">Why Models Choose Us</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-2">How You Earn</h3>
+          <p className="text-center text-gray-400 mb-10">Simple, transparent, daily.</p>
+
+          {/* Visual split */}
+          <div className="bg-gray-800 rounded-2xl p-8 mb-10">
+            <div className="flex rounded-xl overflow-hidden h-12 mb-4">
+              <div
+                className="bg-pink-500 flex items-center justify-center text-sm font-bold"
+                style={{ width: '85%' }}
+              >
+                85% — Yours
+              </div>
+              <div
+                className="bg-gray-600 flex items-center justify-center text-sm font-bold"
+                style={{ width: '15%' }}
+              >
+                15%
+              </div>
+            </div>
+            <p className="text-gray-400 text-sm text-center">
+              For every $100 earned, you receive <span className="text-white font-semibold">$85</span> — paid daily.
+              We keep <span className="text-white font-semibold">$15</span> to run the platform.
+            </p>
+          </div>
+
           <div className="grid sm:grid-cols-3 gap-6">
             {[
-              { title: 'Daily Payouts', desc: 'Withdraw every day, no minimums, no waiting.' },
-              { title: 'Keep 70%+', desc: 'Industry-leading revenue share on every stream.' },
-              { title: 'Top Platforms', desc: 'We partner with Chaturbate, Streamate & more.' },
+              { title: 'No Setup Fees', desc: 'Free to join. No upfront costs, ever.' },
+              { title: 'Daily Payouts', desc: 'Withdraw your 85% every single day, no minimums.' },
+              { title: 'You Set Your Rates', desc: 'Charge what you want — we just take our 15%.' },
             ].map(({ title, desc }) => (
               <div key={title} className="bg-gray-800 rounded-2xl p-6">
                 <h4 className="text-lg font-semibold text-pink-400 mb-2">{title}</h4>
@@ -147,52 +133,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing / Stripe */}
-      <section id="pricing" className="py-16 px-4 sm:px-6 bg-gray-900">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-2">Model Membership Plans</h3>
-          <p className="text-center text-gray-400 mb-10">Unlock premium features and maximize your income</p>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {plans.map(({ key, name, price, features, cta, href, highlight }) => (
-              <div
-                key={name}
-                className={`rounded-2xl p-6 flex flex-col ${
-                  highlight ? 'bg-pink-600 ring-2 ring-pink-400' : 'bg-gray-800'
-                }`}
-              >
-                <h4 className="text-xl font-bold mb-1">{name}</h4>
-                <div className="text-2xl font-extrabold mb-4">{price}</div>
-                <ul className="text-sm text-gray-200 space-y-2 flex-grow mb-6">
-                  {features.map((f) => (
-                    <li key={f} className="flex items-center gap-2">
-                      <span className="text-green-400">✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                {key ? (
-                  <button
-                    onClick={() => handleCheckout(key)}
-                    disabled={checkoutLoading === key}
-                    className="w-full py-2 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 disabled:opacity-50"
-                  >
-                    {checkoutLoading === key ? 'Loading…' : cta}
-                  </button>
-                ) : (
-                  <a
-                    href={href}
-                    className="w-full py-2 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 text-center block"
-                  >
-                    {cta}
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Affiliate Partners */}
-      <section id="affiliates" className="py-16 px-4 sm:px-6">
+      <section id="affiliates" className="py-16 px-4 sm:px-6 bg-gray-900">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-2xl sm:text-3xl font-bold text-center mb-2">Affiliate Partners</h3>
           <p className="text-center text-gray-400 mb-10">
@@ -220,13 +162,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Ad slot — bottom banner */}
+      {/* Ad slot — mid page */}
       <div className="max-w-4xl mx-auto px-4 my-10">
         <div className="bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center h-24 text-gray-500 text-xs">
           {/* Replace with your ad code */}
           Advertisement
         </div>
       </div>
+
+      {/* Apply CTA */}
+      <section id="apply" className="py-16 px-4 sm:px-6">
+        <div className="max-w-xl mx-auto text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Keep 85%?</h3>
+          <p className="text-gray-400 mb-8">
+            Apply now — no fees, no lock-in. Start earning daily from day one.
+          </p>
+          <a
+            href="mailto:apply@cammodelsdaily.com"
+            className="inline-block px-8 py-4 rounded-2xl bg-pink-500 hover:bg-pink-600 font-semibold text-lg shadow-lg"
+          >
+            Apply as a Model
+          </a>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="p-4 sm:p-6 text-center text-gray-400 border-t border-gray-800 text-sm">
