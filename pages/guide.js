@@ -80,7 +80,7 @@ export default function Guide() {
               ['Lighting', 'A simple ring light ($20–35 on Amazon) transforms your setup. Place it in front of you, at eye level. Natural window light also works great.'],
               ['Internet', 'Minimum 5 Mbps upload speed. Run a speed test at fast.com. Wired ethernet is more stable than WiFi for live streaming.'],
               ['Background', 'A clean wall, curtain, or hanging fabric. You can use a ring light to blur the background naturally. A green screen ($15) gives you full control.'],
-              ['Sound', "The built-in mic on most webcams or phones is fine to start. A USB lav mic ($25) is a worthwhile upgrade once you're earning."],
+              ['Sound', 'The built-in mic on most webcams or phones is fine to start. A USB lav mic ($25) is a worthwhile upgrade after your first payouts.'],
             ].map(([item, desc]) => (
               <div key={item} className="glass rounded-xl p-4 border border-white/5">
                 <span className="font-semibold text-white text-sm">{item}: </span>
