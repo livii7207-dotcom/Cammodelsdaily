@@ -39,7 +39,7 @@ export default function Guide() {
       {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
-          <a href="/" className="neon-text"><Logo size="md" /></a>
+          <a href="/"><Logo size="md" /></a>
           <a href="/register"
             className="px-5 py-2 rounded-full text-white text-sm font-semibold shimmer-btn">
             Apply Now
@@ -104,7 +104,7 @@ export default function Guide() {
             {/* Section 1 */}
             <section id="getting-started" className="mb-24 scroll-mt-24">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-2xl bg-pink-500/20 flex items-center justify-center text-2xl neon-border">🚀</div>
+                <div className="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center text-2xl border border-pink-500/20">🚀</div>
                 <h2 className="text-3xl font-display font-extrabold text-white">Getting Started</h2>
               </div>
               
@@ -152,7 +152,7 @@ export default function Guide() {
             {/* Section 2 */}
             <section id="choosing-a-platform" className="mb-24 scroll-mt-24">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center text-2xl neon-border" style={{ borderColor: '#a855f7' }}>💎</div>
+                <div className="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-2xl border border-purple-500/20">💎</div>
                 <h2 className="text-3xl font-display font-extrabold text-white">Choosing Your Platform</h2>
               </div>
               
@@ -210,7 +210,7 @@ export default function Guide() {
             {/* Section 3 - Payouts */}
             <section id="getting-paid" className="mb-24 scroll-mt-24">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center text-2xl neon-border" style={{ borderColor: '#22c55e' }}>💰</div>
+                <div className="w-12 h-12 rounded-2xl bg-green-500/10 flex items-center justify-center text-2xl border border-green-500/20">💰</div>
                 <h2 className="text-3xl font-display font-extrabold text-white">Getting Paid</h2>
               </div>
               

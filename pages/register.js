@@ -91,7 +91,7 @@ export default function Register() {
       <div className="relative z-10 max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <a href="/" className="inline-block mb-8 neon-text"><Logo size="md" /></a>
+          <a href="/" className="inline-block mb-8"><Logo size="md" /></a>
           <h1 className="text-4xl sm:text-5xl font-display font-extrabold mb-3">
             Start <span className="neon-text">Earning Today</span>
           </h1>

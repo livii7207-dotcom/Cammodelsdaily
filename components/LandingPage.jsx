@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import AdSlot from './AdSlot';
 import Logo from './Logo';
-import LogoMartini from './LogoMartini';
+import LogoPinup from './LogoPinup';
 
 const MODELS = [
   { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', color: '#ff1493' },
@@ -176,12 +176,12 @@ export default function LandingPage() {
 
         {/* Martini girl — desktop decoration */}
         <div className="hidden lg:block absolute right-6 xl:right-20 top-1/2 -translate-y-1/2 pointer-events-none select-none"
-          style={{ opacity: 0.55 }}>
-          <LogoMartini size="lg" />
+          style={{ opacity: 0.25 }}>
+          <LogoPinup size="lg" />
         </div>
         <div className="hidden lg:block absolute left-6 xl:left-20 top-1/2 -translate-y-1/2 pointer-events-none select-none"
-          style={{ opacity: 0.35, transform: 'translateY(-50%) scaleX(-1)' }}>
-          <LogoMartini size="md" />
+          style={{ opacity: 0.15, transform: 'translateY(-50%) scaleX(-1)' }}>
+          <LogoPinup size="md" />
         </div>
 
         <div ref={heroRef} className="fade-up relative z-10 max-w-4xl mx-auto">
@@ -192,7 +192,7 @@ export default function LandingPage() {
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
             Earn More.{' '}
-            <span className="gradient-text">Stream Smarter.</span>
+            <span className="neon-text">Stream Smarter.</span>
             <br />Get Paid Daily.
           </h1>
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
@@ -313,7 +313,7 @@ export default function LandingPage() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {STEPS.map(({ n, title, desc }) => (
-                <div key={n} className="glass rounded-3xl p-7 card-hover neon-border">
+               <div key={n} className="glass rounded-3xl p-7 card-hover neon-border">
                   <div className="text-5xl font-display font-extrabold mb-4 leading-none gradient-text">{n}</div>
                   <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
@@ -481,10 +481,10 @@ export default function LandingPage() {
           style={{ background: 'radial-gradient(ellipse at center, #ff1493 0%, transparent 70%)' }} />
         <div ref={ctaRef} className="fade-up relative z-10 max-w-2xl mx-auto text-center">
           <div className="flex justify-center mb-8">
-            <LogoMartini size="md" showText />
+            <LogoPinup size="md" showText />
           </div>
           <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
-            Ready to <span className="gradient-text">Start Earning?</span>
+            Ready to <span className="neon-text">Start Earning?</span>
           </h2>
           <p className="text-gray-400 mb-10 text-lg">
             Free to join. No fees ever. The platforms pay you directly — every single day.

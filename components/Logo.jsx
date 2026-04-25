@@ -39,9 +39,8 @@ export default function Logo({ size = 'md' }) {
           </feMerge>
         </filter>
         <filter id="text-neon-glow">
-          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feGaussianBlur stdDeviation="1.2" result="blur" />
           <feMerge>
-            <feMergeNode in="blur" />
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
@@ -83,16 +82,9 @@ export default function Logo({ size = 'md' }) {
         <text x="56" y="27"
           fontFamily="Sora, sans-serif"
           fontWeight="800"
-          fontSize="22"
-          letterSpacing="0.5"
-          fill="white">Cam</text>
-
-        <text x="106" y="27"
-          fontFamily="Sora, sans-serif"
-          fontWeight="500"
-          fontSize="22"
-          letterSpacing="1.5"
-          fill="url(#text-grad)">Models</text>
+          fontSize="20"
+          letterSpacing="0.2"
+          fill="white">xcammodels.com</text>
       </g>
 
       {/* Underline glow */}
