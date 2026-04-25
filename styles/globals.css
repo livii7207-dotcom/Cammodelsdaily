@@ -6,11 +6,17 @@
 
 html { scroll-behavior: smooth; }
 
+@keyframes ambient-breathing {
+  0%, 100% { background-color: #07080f; }
+  50% { background-color: #0d0e1d; }
+}
+
 body {
   background-color: #07080f;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
+  animation: ambient-breathing 12s ease-in-out infinite;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
@@ -30,7 +36,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
 .shimmer-btn {
   background-image: linear-gradient(135deg, #ff1493 0%, #d4198a 20%, #a855f7 45%, #d4198a 70%, #ff1493 100%);
   background-size: 200% auto;
-  animation: shimmer 4s linear infinite;
+  animation: shimmer 3s linear infinite;
   box-shadow: 0 0 22px rgba(255,20,147,0.45), 0 0 45px rgba(255,20,147,0.18);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
@@ -58,23 +64,35 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
 
 /* ── Neon & Rope Light Effects ──────────────────────────────────── */
 @keyframes neon-pulse-text {
-  0%, 100% { text-shadow: 0 0 4px rgba(255, 0, 128, 0.6); }
-  50% { text-shadow: 0 0 8px rgba(255, 0, 128, 0.8); }
+  0%, 100% { 
+    text-shadow: 0 0 4px rgba(255, 0, 128, 0.7), 0 0 12px rgba(255, 0, 128, 0.3);
+    color: #fff;
+  }
+  50% { 
+    text-shadow: 0 0 12px rgba(255, 0, 128, 0.9), 0 0 25px rgba(168, 85, 247, 0.5);
+    color: #ffdaec;
+  }
 }
 
 .neon-text {
   color: #fff;
-  animation: neon-pulse-text 2s ease-in-out infinite;
+  animation: neon-pulse-text 2.5s ease-in-out infinite;
 }
 
 @keyframes rope-light {
-  0%, 100% { border-color: rgba(255, 0, 128, 0.3); box-shadow: 0 0 5px rgba(255, 0, 128, 0.1); }
-  50% { border-color: rgba(255, 20, 147, 0.5); box-shadow: 0 0 10px rgba(255, 20, 147, 0.2); }
+  0%, 100% { 
+    border-color: rgba(255, 0, 128, 0.4); 
+    box-shadow: 0 0 8px rgba(255, 0, 128, 0.15); 
+  }
+  50% { 
+    border-color: rgba(255, 20, 147, 0.7); 
+    box-shadow: 0 0 18px rgba(255, 20, 147, 0.3); 
+  }
 }
 
 .rope-light {
   border: 1px solid rgba(255, 0, 128, 0.2);
-  animation: rope-light 6s ease-in-out infinite;
+  animation: rope-light 5s ease-in-out infinite;
   position: relative;
 }
 
@@ -84,24 +102,24 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.6), transparent);
   background-size: 200% 100%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: rope-shimmer 8s linear infinite;
+  animation: rope-shimmer 4s linear infinite;
   pointer-events: none;
 }
 
 @keyframes rope-shimmer {
   0% { background-position: 0% 0%; }
-  100% { background-position: 300% 0%; }
+  100% { background-position: 200% 0%; }
 }
 
 .neon-border {
-  border: 1px solid rgba(255, 0, 128, 0.2);
-  box-shadow: 0 0 8px rgba(255, 0, 128, 0.1);
+  border: 1px solid rgba(255, 0, 128, 0.25);
+  box-shadow: 0 0 10px rgba(255, 0, 128, 0.15);
 }
 
 .card-hover {
@@ -123,7 +141,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.14;
+  opacity: 0.2;
   animation: aurora 14s ease-in-out infinite;
 }
 
