@@ -6,22 +6,16 @@ export default function LogoPinup({ size = 'md', showText = false }) {
   return (
     <div className="relative inline-flex flex-col items-center">
       {/* Apply Now Button Above Logo */}
-      <a
-        href="/register"
+      <a 
+        href="/register" 
         className="mb-6 px-6 py-2 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] text-white shimmer-btn border border-white/20 hover:scale-105 transition-transform"
       >
         Apply Now
       </a>
 
-      <svg
-        width={w}
-        height={h}
-        viewBox={`0 0 260 ${showText ? 400 : 340}`}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width={w} height={h} viewBox={`0 0 260 ${showText ? 400 : 340}`} fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <filter id="neon-glow-pinup" x="-50%" y="-50%" width="200%" height="200%">
+          <filter id="neon-glow-pro" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="3" result="blur1" />
             <feGaussianBlur stdDeviation="8" result="blur2" />
             <feMerge>
@@ -31,139 +25,61 @@ export default function LogoPinup({ size = 'md', showText = false }) {
             </feMerge>
           </filter>
 
-          <filter id="neon-glow-soft" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-
           <style>{`
-            @keyframes pinup-neon-pulse {
-              0%, 100% {
-                filter: drop-shadow(0 0 3px #ff0080) drop-shadow(0 0 10px #ff0080) drop-shadow(0 0 20px rgba(255,0,128,0.3));
-                opacity: 1;
-              }
-              50% {
-                filter: drop-shadow(0 0 6px #ff0080) drop-shadow(0 0 20px #ff0080) drop-shadow(0 0 40px rgba(255,0,128,0.5));
-                opacity: 0.88;
-              }
+            @keyframes pinup-pro-pulse {
+              0%, 100% { filter: drop-shadow(0 0 3px #ff0080) drop-shadow(0 0 12px #ff0080); stroke-width: 2.2; opacity: 1; }
+              50% { filter: drop-shadow(0 0 6px #ff0080) drop-shadow(0 0 22px #ff0080); stroke-width: 2.5; opacity: 0.85; }
             }
-            .pinup-neon {
-              animation: pinup-neon-pulse 2.5s ease-in-out infinite;
+            .pinup-pro-line {
+              animation: pinup-pro-pulse 2.5s ease-in-out infinite;
+              stroke: #ff0080;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
             }
           `}</style>
         </defs>
 
-        <g className="pinup-neon" filter="url(#neon-glow-pinup)">
-          {/* ===== MARTINI GLASS ===== */}
-          {/* Left rim to bottom of bowl */}
-          <path d="M 35 120 L 130 240" stroke="#ff0080" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Right rim to bottom of bowl */}
-          <path d="M 225 120 L 130 240" stroke="#ff0080" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Rim line */}
-          <path d="M 35 120 L 225 120" stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
-          {/* Stem */}
-          <path d="M 130 240 L 130 300" stroke="#ff0080" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Base */}
-          <path d="M 85 300 Q 130 308 175 300" stroke="#ff0080" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          {/* Base bottom */}
-          <path d="M 88 300 L 172 300" stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <g className="pinup-pro-line" filter="url(#neon-glow-pro)">
+          {/* Large Martini Glass - V-Bowl, Straight Stem, Flat Base */}
+          <path d="M 40 100 L 130 220 L 220 100" strokeWidth="2.5" /> {/* Bowl */}
+          <path d="M 40 100 C 40 90, 220 90, 220 100" strokeWidth="1.5" opacity="0.4" /> {/* Rim Back */}
+          <path d="M 130 220 L 130 300" strokeWidth="2.5" /> {/* Stem */}
+          <path d="M 80 300 L 180 300" strokeWidth="2.5" /> {/* Base */}
 
-          {/* Liquid level in glass */}
-          <path d="M 62 155 Q 130 148 198 155" stroke="#ff0080" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.35" />
-
-          {/* ===== WOMAN SILHOUETTE ===== */}
+          {/* Elegant Pin-up Woman Silhouette (Ref: 1000000166.jpg) */}
           
-          {/* Head - oval tilted slightly back */}
-          <ellipse cx="140" cy="62" rx="14" ry="17" stroke="#ff0080" strokeWidth="2" fill="none"
-            transform="rotate(-10 140 62)" />
+          {/* Head & Flowing Hair */}
+          <path d="M 125 45 C 135 35, 160 35, 165 60 C 170 85, 155 95, 145 90" strokeWidth="2" /> {/* Hair outer */}
+          <path d="M 130 50 C 120 60, 125 75, 140 75" strokeWidth="1.8" /> {/* Face profile */}
+          <path d="M 165 60 C 180 65, 175 100, 155 115" strokeWidth="1.5" opacity="0.8" /> {/* Hair back flow */}
 
-          {/* Hair flowing down and back */}
-          <path d="M 130 50 Q 120 40 115 50 Q 110 65 105 80 Q 100 95 108 100"
-            stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
-          <path d="M 128 48 Q 118 35 125 28 Q 135 25 140 35"
-            stroke="#ff0080" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-          {/* Hair strand right */}
-          <path d="M 150 52 Q 158 48 160 55 Q 162 65 155 72"
-            stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          {/* Back & Torso - Lounging back inside the glass */}
+          <path d="M 140 75 C 120 100, 125 145, 145 165" strokeWidth="2.2" /> {/* Back curve */}
+          <path d="M 145 90 C 155 110, 165 135, 155 160" strokeWidth="2" /> {/* Front torso */}
 
-          {/* Neck */}
-          <path d="M 137 78 Q 135 85 132 90"
-            stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
+          {/* Left Arm - Extended up and out, holding tiny martini */}
+          <path d="M 130 60 C 100 45, 80 45, 60 55" strokeWidth="2" /> {/* Arm */}
+          {/* Tiny Martini in hand */}
+          <path d="M 45 40 L 65 40 L 55 55 Z" strokeWidth="1.5" />
+          <path d="M 55 55 L 55 62" strokeWidth="1.5" />
 
-          {/* Torso - woman leaning back in glass, curvy silhouette */}
-          {/* Back curve */}
-          <path d="M 132 90 Q 118 105 112 125 Q 108 140 115 155"
-            stroke="#ff0080" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          {/* Front/chest curve */}
-          <path d="M 132 90 Q 145 100 148 115 Q 150 130 142 150"
-            stroke="#ff0080" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          {/* Waist */}
-          <path d="M 115 155 Q 125 162 142 150"
-            stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
+          {/* Right Arm - Resting gracefully on the rim */}
+          <path d="M 150 95 C 180 105, 210 110, 220 100" strokeWidth="2" />
 
-          {/* Bust detail - subtle curve */}
-          <path d="M 138 100 Q 150 108 148 115"
-            stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          {/* Legs - Crossed and kicked up over the right rim */}
+          {/* Top Leg (Kicked high) */}
+          <path d="M 145 165 C 180 175, 210 160, 240 130 C 255 115, 245 100, 230 110" strokeWidth="2.2" />
+          {/* Bottom Leg (Crossed behind) */}
+          <path d="M 155 160 C 190 190, 230 190, 255 165 C 265 150, 255 135, 245 145" strokeWidth="2" />
 
-          {/* Hips */}
-          <path d="M 115 155 Q 110 168 118 178"
-            stroke="#ff0080" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          <path d="M 142 150 Q 150 165 145 175"
-            stroke="#ff0080" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-
-          {/* LEFT ARM - extended up and out, holding small martini */}
-          <path d="M 120 98 Q 95 80 70 65 Q 55 58 42 50"
-            stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
-          {/* Hand */}
-          <path d="M 42 50 Q 38 48 35 52"
-            stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-
-          {/* Small martini glass in hand */}
-          <path d="M 25 30 L 45 30" stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          <path d="M 25 30 L 35 45" stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          <path d="M 45 30 L 35 45" stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          <path d="M 35 45 L 35 52" stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-
-          {/* RIGHT ARM - resting on rim of glass */}
-          <path d="M 148 105 Q 170 108 190 115 Q 205 118 215 120"
-            stroke="#ff0080" strokeWidth="2" strokeLinecap="round" fill="none" />
-
-          {/* LEFT LEG - kicked up high over the right rim */}
-          <path d="M 118 178 Q 140 185 165 170 Q 195 148 218 130 Q 232 120 240 108"
-            stroke="#ff0080" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          {/* Left foot/heel */}
-          <path d="M 240 108 Q 245 104 250 106"
-            stroke="#ff0080" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-          {/* High heel */}
-          <path d="M 245 104 L 248 98"
-            stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-
-          {/* RIGHT LEG - crossed, also extended */}
-          <path d="M 145 175 Q 165 190 190 180 Q 215 168 230 148 Q 240 135 245 125"
-            stroke="#ff0080" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-          {/* Right foot/heel */}
-          <path d="M 245 125 Q 250 122 253 124"
-            stroke="#ff0080" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-          {/* High heel */}
-          <path d="M 250 122 L 252 116"
-            stroke="#ff0080" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          {/* Subtle Detail: Liquid level */}
+          <path d="M 65 135 Q 130 125, 195 135" strokeWidth="1" opacity="0.3" />
         </g>
 
         {showText && (
-          <g filter="url(#neon-glow-soft)">
-            <text
-              x="130"
-              y="355"
-              textAnchor="middle"
-              fontFamily="Sora, sans-serif"
-              fontWeight="800"
-              fontSize="24"
-              fill="white"
-              className="neon-text"
-            >
+          <g filter="url(#neon-glow-pro)">
+            <text x="130" y="355" textAnchor="middle" fontFamily="Sora, sans-serif" fontWeight="800" fontSize="24" fill="white" className="neon-text">
               xcammodels.com
             </text>
           </g>
