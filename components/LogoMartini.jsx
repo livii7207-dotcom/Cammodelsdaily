@@ -37,7 +37,7 @@ export default function LogoMartini({ size = 'md', showText = true }) {
         </filter>
         <style>{`
           @keyframes mg-pulse {
-            0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #ff006e); }
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 7px #ff006e); }
             50%       { opacity: 0.5; filter: drop-shadow(0 0 2px #a855f7); }
           }
           @keyframes mg-rope {
@@ -49,7 +49,7 @@ export default function LogoMartini({ size = 'md', showText = true }) {
         `}</style>
       </defs>
 
-      {/* ── Rope light pink — pulsing dashed ring around the glass ── */}
+      {/* ── Rope light pink — pulsing dashed outline around glass ── */}
       <g className="mg-rope" filter="url(#mg-rope-glow)">
         <line x1="7"   y1="54" x2="193" y2="54" stroke="#ff69b4" strokeWidth="1.8" strokeDasharray="6 4" strokeLinecap="round" />
         <line x1="7"   y1="54" x2="100" y2="163" stroke="#ff69b4" strokeWidth="1.8" strokeDasharray="6 4" strokeLinecap="round" />
@@ -58,7 +58,7 @@ export default function LogoMartini({ size = 'md', showText = true }) {
         <ellipse cx="100" cy="213" rx="47" ry="9" stroke="#ff69b4" strokeWidth="1.8" strokeDasharray="6 4" />
       </g>
 
-      {/* ── Neon glass outline — pulsing ── */}
+      {/* ── Neon glass outline ── */}
       <g className="mg-neon" fill="none" stroke="url(#mg-glow-grad)" strokeWidth="2.2" strokeLinecap="round" filter="url(#mg-glow)">
         <line x1="10"  y1="57" x2="190" y2="57" />
         <line x1="10"  y1="57" x2="100" y2="160" />
@@ -67,91 +67,83 @@ export default function LogoMartini({ size = 'md', showText = true }) {
         <ellipse cx="100" cy="210" rx="43" ry="8" />
       </g>
 
-      {/* ── Silhouette — all one gradient fill ── */}
+      {/* ── All fills — same gradient so shapes merge visually ── */}
       <g fill="url(#mg-fill)">
 
         {/* Glass bowl */}
         <polygon points="10,57 190,57 100,160" />
-
         {/* Stem */}
-        <rect x="95" y="160" width="10" height="50" rx="3" />
-
+        <rect x="96" y="160" width="8" height="50" rx="3" />
         {/* Base */}
         <ellipse cx="100" cy="211" rx="43" ry="8" />
 
-        {/* ── Woman reclining inside the bowl ── */}
+        {/* ── Head (small — critical for proportions) ── */}
+        <circle cx="42" cy="88" r="13" />
 
-        {/* Head */}
-        <circle cx="40" cy="88" r="18" />
+        {/* ── Hair ── */}
+        <path d="M 30 78 Q 14 58 22 40 Q 30 24 42 30 Q 50 36 50 52 L 44 70 Z" />
+        <path d="M 28 84 Q 12 74 14 60 Q 20 78 32 86 Z" />
+        <path d="M 36 72 Q 26 54 34 40 Q 42 28 50 36 Q 44 50 42 62 Z" />
 
-        {/* Hair — flowing up and left */}
-        <path d="M 26 73 Q 12 53 20 36 Q 28 22 42 30 Q 52 38 53 54 L 47 69 Z" />
-        <path d="M 23 79 Q 7 69 9 56 Q 15 76 27 85 Z" />
-        <path d="M 31 69 Q 21 51 29 38 Q 37 27 45 35 Q 39 48 37 61 Z" />
-
-        {/* Torso */}
-        <ellipse cx="77" cy="118" rx="25" ry="19" transform="rotate(-25 77 118)" />
-
-        {/* Hips */}
-        <ellipse cx="94" cy="147" rx="21" ry="14" transform="rotate(-8 94 147)" />
-
-        {/* Bust */}
-        <ellipse cx="67" cy="108" rx="14" ry="11" transform="rotate(-30 67 108)" />
-
-        {/* ── Legs arching over the right rim ── */}
-
-        {/* Leg 1 — main */}
+        {/* ── Body — one continuous path: shoulder → bust → waist → hip → legs over rim → back ── */}
         <path d="
-          M 100 143
-          Q 126 118 150 88
-          Q 163 69 168 54
-          L 176 36
-          Q 180 26 174 22
-          Q 168 18 164 26
-          L 158 46
-          Q 150 64 138 83
-          Q 116 108 98 132
+          M 52 100
+          Q 62 106 70 116
+          Q 80 128 88 144
+          Q 96 152 104 148
+          Q 124 134 148 106
+          Q 164 84 172 64
+          Q 178 50 181 40
+          L 185 28
+          Q 187 20 181 17
+          Q 175 14 171 22
+          L 168 36
+          Q 162 52 154 70
+          Q 138 94 118 116
+          Q 104 132 98 142
+          Q 88 148 80 148
+          Q 70 146 62 136
+          Q 54 124 50 112
+          Q 48 106 50 100
           Z
         " />
 
-        {/* Leg 2 — behind */}
+        {/* ── Second leg (behind first, offset slightly right) ── */}
         <path d="
-          M 108 148
-          Q 133 122 155 94
-          Q 167 75 172 60
-          L 180 42
-          Q 184 32 178 28
-          Q 172 24 168 32
-          L 162 52
-          Q 155 69 142 88
-          Q 122 113 110 140
+          M 100 146
+          Q 118 136 140 110
+          Q 158 88 168 68
+          Q 176 50 180 40
+          L 184 28
+          Q 186 20 180 17
+          Q 174 14 170 22
+          L 168 34
+          Q 162 52 154 72
+          Q 138 96 120 118
+          Q 104 136 98 146
           Z
         " />
 
-        {/* Pointed heel — leg 1 */}
-        <path d="M 164 26 Q 170 16 178 20 Q 184 27 176 36 L 164 26 Z" />
+        {/* Pointed heels */}
+        <path d="M 169 22 Q 175 12 183 17 Q 189 24 181 36 L 169 22 Z" />
+        <path d="M 168 34 Q 175 22 183 27 Q 189 35 181 46 L 168 34 Z" />
 
-        {/* Pointed heel — leg 2 */}
-        <path d="M 168 32 Q 176 20 184 26 Q 188 34 180 42 L 168 32 Z" />
-
-        {/* ── Raised arm holding cocktail glass ── */}
+        {/* ── Raised left arm ── */}
         <path d="
-          M 46 99
-          Q 38 81 36 65
-          Q 34 53 38 47
-          Q 42 41 46 45
-          Q 48 51 48 61
-          Q 50 75 54 91
+          M 48 102
+          Q 40 84 38 68
+          Q 36 56 40 50
+          Q 44 44 48 48
+          Q 50 54 50 64
+          Q 52 78 54 96
           Z
         " />
 
-        {/* Tiny martini glass in hand */}
-        <polygon points="33,43 46,43 39.5,51" />
-        <rect x="38.5" y="51" width="2" height="5" />
-        <rect x="35.5" y="56" width="8" height="2" rx="1" />
-
-        {/* Cherry/olive */}
-        <circle cx="39.5" cy="43" r="2.8" opacity="0.9" />
+        {/* Tiny martini glass held in raised hand */}
+        <polygon points="33,46 47,46 40,53" />
+        <rect x="39" y="53" width="2" height="5" />
+        <rect x="36" y="58" width="8" height="2" rx="1" />
+        <circle cx="40" cy="46" r="2.5" opacity="0.9" />
 
       </g>
 
