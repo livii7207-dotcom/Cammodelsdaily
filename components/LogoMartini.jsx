@@ -1,4 +1,4 @@
-export default function LogoMartini({ size = 'md', showText = false }) {
+export default function LogoMartini({ size = 'md', showText = true }) {
   const scale = size === 'lg' ? 1.5 : size === 'sm' ? 0.6 : 1;
   const w = Math.round(160 * scale);
   const h = Math.round(showText ? 300 * scale : 260 * scale);
@@ -22,14 +22,36 @@ export default function LogoMartini({ size = 'md', showText = false }) {
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+        <filter id="mg-rope-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
         <style>{`
           @keyframes mg-pulse {
             0%, 100% { opacity: 1; }
             50%       { opacity: 0.45; }
           }
+          @keyframes mg-rope {
+            0%, 100% { opacity: 0.9; }
+            50%       { opacity: 0.3; }
+          }
           .mg-neon { animation: mg-pulse 2.2s ease-in-out infinite; }
+          .mg-rope { animation: mg-rope 1.6s ease-in-out infinite; }
         `}</style>
       </defs>
+
+      {/* Rope light pink — pulsing dashed outline around the full silhouette */}
+      <g className="mg-rope" filter="url(#mg-rope-glow)">
+        <circle cx="80" cy="32" r="30" stroke="#ff69b4" strokeWidth="1.5" strokeDasharray="5 3" fill="none" />
+        <path
+          d="M 15 70 Q 80 60 145 70 L 105 160 L 105 220 L 133 228 L 133 240 L 27 240 L 27 228 L 55 220 L 55 160 Z"
+          stroke="#ff69b4" strokeWidth="1.5" strokeDasharray="6 4" fill="none" strokeLinejoin="round"
+        />
+      </g>
 
       <g className="mg-neon" filter="url(#mg-glow)">
         <circle cx="80" cy="32" r="28" stroke="#ff0080" strokeWidth="2" fill="none" />

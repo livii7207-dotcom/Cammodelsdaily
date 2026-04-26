@@ -12,7 +12,7 @@ const SECTIONS = [
 ];
 
 const PLATFORM_LINKS = {
-  Chaturbate: 'https://chaturbate.com/affiliates/',
+  Chaturbate: 'https://chaturbate.com/in/?tour=LQps&campaign=DddwF&track=default&room=jaorigin',
   OnlyFans: 'https://onlyfans.com/',
   Stripchat: 'https://stripchat.com/affiliates',
   Cam4: 'https://cam4.com/',
