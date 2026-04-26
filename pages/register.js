@@ -10,16 +10,41 @@ const PLATFORMS = [
 
 const EQUIPMENT = ['Webcam', 'Smartphone', 'DSLR / Camera', 'Ring Light', 'Green Screen'];
 
+const COUNTRIES = [
+  'United States', 'United Kingdom', 'Canada', 'Australia', 'Germany', 'France',
+  'Netherlands', 'Spain', 'Italy', 'Brazil', 'Mexico', 'Argentina', 'Colombia',
+  'Romania', 'Czech Republic', 'Hungary', 'Poland', 'Ukraine', 'Russia',
+  'South Africa', 'New Zealand', 'Sweden', 'Norway', 'Denmark', 'Finland',
+  'Belgium', 'Switzerland', 'Austria', 'Portugal', 'Greece', 'Turkey',
+  'Japan', 'South Korea', 'Philippines', 'Thailand', 'India', 'Pakistan',
+  'Indonesia', 'Malaysia', 'Singapore', 'Israel', 'UAE', 'Saudi Arabia',
+  'Egypt', 'Nigeria', 'Kenya', 'Ghana', 'Jamaica', 'Trinidad and Tobago',
+  'Puerto Rico', 'Dominican Republic', 'Venezuela', 'Chile', 'Peru',
+  'Ecuador', 'Bolivia', 'Paraguay', 'Uruguay', 'Costa Rica', 'Panama',
+  'Ireland', 'Scotland', 'Wales', 'Croatia', 'Serbia', 'Slovakia',
+  'Slovenia', 'Bulgaria', 'Latvia', 'Lithuania', 'Estonia', 'Iceland',
+  'Luxembourg', 'Malta', 'Cyprus', 'Albania', 'Other',
+];
+
+// Max date = 18 years ago from today
+function getMaxDob() {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - 18);
+  return d.toISOString().split('T')[0];
+}
+
+const MAX_DOB = getMaxDob();
+
 const INITIAL = {
   stageName: '', realName: '', email: '', phone: '',
-  dob: '', country: '', experience: '', hearAbout: '',
+  dob: MAX_DOB, country: '', experience: '', hearAbout: '',
   platforms: [], equipment: [], message: '',
   age18: false, terms: false,
 };
 
 export default function Register() {
   const [form, setForm] = useState(INITIAL);
-  const [status, setStatus] = useState(null); // null | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState(null);
 
   const set = (field, value) => setForm(prev => ({ ...prev, [field]: value }));
 
@@ -46,18 +71,33 @@ export default function Register() {
         body: JSON.stringify(payload),
       });
       if (res.ok) { setStatus('success'); return; }
-    } catch { /* fall through */ }
-    // Fallback for static export builds
-    try {
+      // API returned an error status — try Formspree if configured
       const id = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-      const res = await fetch(id ? `https://formspree.io/f/${id}` : 'https://formspree.io/f/placeholder', {
-        method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      setStatus(res.ok ? 'success' : 'error');
+      if (id) {
+        const fb = await fetch(`https://formspree.io/f/${id}`, {
+          method: 'POST',
+          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        setStatus(fb.ok ? 'success' : 'error');
+      } else {
+        setStatus('error');
+      }
     } catch {
-      setStatus('error');
+      // Network error — try Formspree if configured
+      const id = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+      if (id) {
+        try {
+          const fb = await fetch(`https://formspree.io/f/${id}`, {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          setStatus(fb.ok ? 'success' : 'error');
+        } catch { setStatus('error'); }
+      } else {
+        setStatus('error');
+      }
     }
   };
 
@@ -99,14 +139,13 @@ export default function Register() {
         <meta property="og:description" content="One application. Eight top platforms. Free setup, daily payouts, full privacy. Apply now and hear back within 24 hours." />
         <meta property="og:url" content="https://xcammodels.com/register" />
       </Head>
-      {/* Background glow */}
+
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] opacity-10 rounded-full"
           style={{ background: 'radial-gradient(circle, #ff1493 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 max-w-2xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-10">
           <a href="/" className="inline-block mb-8"><Logo size="md" /></a>
           <h1 className="text-4xl sm:text-5xl font-display font-extrabold mb-3">
@@ -155,15 +194,31 @@ export default function Register() {
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
               <label className={labelCls}>Date of Birth <span className="text-pink-500">*</span></label>
-              <input type="date" required
-                value={form.dob} onChange={e => set('dob', e.target.value)}
-                className={inputCls} style={inputStyle} />
+              <input
+                type="date"
+                required
+                max={MAX_DOB}
+                value={form.dob}
+                onChange={e => set('dob', e.target.value)}
+                className={inputCls}
+                style={{ ...inputStyle, colorScheme: 'dark' }}
+              />
+              <p className="text-gray-600 text-xs mt-1">Must be 18 or older</p>
             </div>
             <div>
               <label className={labelCls}>Country <span className="text-pink-500">*</span></label>
-              <input type="text" required placeholder="United States"
-                value={form.country} onChange={e => set('country', e.target.value)}
-                className={inputCls} style={inputStyle} />
+              <select
+                required
+                value={form.country}
+                onChange={e => set('country', e.target.value)}
+                className={inputCls}
+                style={{ ...inputStyle, color: form.country ? '#fff' : '#6b7280' }}
+              >
+                <option value="" disabled>Select your country</option>
+                {COUNTRIES.map(c => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -267,14 +322,13 @@ export default function Register() {
             ))}
           </div>
 
-          {/* Submit */}
           {status === 'error' && (
-            <p className="text-red-400 text-sm text-center">Something went wrong. Please try again.</p>
+            <p className="text-red-400 text-sm text-center">Something went wrong. Please try again or contact support.</p>
           )}
+
           <button type="submit" disabled={status === 'loading'}
-            className="w-full py-4 rounded-2xl text-white text-lg font-bold glow-btn transition-opacity disabled:opacity-50"
-            style={{ background: 'linear-gradient(135deg, #ff1493, #a855f7)' }}>
-            {status === 'loading' ? 'Submitting…' : 'Submit Application'}
+            className="w-full py-4 rounded-2xl text-white text-lg font-bold shimmer-btn transition-opacity disabled:opacity-50">
+            {status === 'loading' ? 'Submitting…' : 'Submit Application →'}
           </button>
 
           <p className="text-center text-gray-600 text-xs">
