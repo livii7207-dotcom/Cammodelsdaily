@@ -11,7 +11,7 @@ const MODELS = [
 ];
 
 const PLATFORMS = [
-  { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/in/?tour=LQps&campaign=DddwF&track=default&room=jaorigin' },
+  { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/in/?tour=OT2s&campaign=DddwF&track=default' },
   { name: 'OnlyFans', abbr: 'OF', category: 'Content', desc: 'Subscriptions, pay-per-view & direct tips', color: '#00aff0', href: 'https://onlyfans.com/' },
   { name: 'Stripchat', abbr: 'SC', category: 'Live Stream', desc: 'Tips, privates & group shows with global reach', color: '#00b4a0', href: 'https://stripchat.com/affiliates' },
   { name: 'Cam4', abbr: 'C4', category: 'Live Stream', desc: 'Live broadcasts with built-in analytics', color: '#e8173a', href: 'https://cam4.com/' },
