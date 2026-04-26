@@ -159,12 +159,7 @@ export default function LogoMartini({ size = 'md', showText = true }) {
         <>
           <text x="100" y="238" textAnchor="middle"
             fontFamily="Sora, sans-serif" fontWeight="800" fontSize="17" fill="white" letterSpacing="1">
-            XCam
-          </text>
-          <text x="100" y="259" textAnchor="middle"
-            fontFamily="Sora, sans-serif" fontWeight="500" fontSize="15"
-            fill="url(#mg-text)" letterSpacing="3">
-            MODELS
+            CamModels
           </text>
         </>
       )}

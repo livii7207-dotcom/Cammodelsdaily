@@ -30,7 +30,6 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   animation: ambient-breathing 12s ease-in-out infinite;
-  overscroll-behavior: none;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
@@ -178,9 +177,9 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
     to   { opacity: 1; transform: translateY(0); }
   }
   .fade-up {
-    animation: fade-up-scroll linear both;
+    animation: fade-up-scroll ease-out both;
     animation-timeline: view();
-    animation-range: entry 0% entry 35%;
+    animation-range: entry 0% cover 25%;
     transition: none;
   }
   .fade-up.visible { opacity: 1; transform: none; }
