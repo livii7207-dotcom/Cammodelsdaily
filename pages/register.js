@@ -34,15 +34,26 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
+    const payload = {
+      ...form,
+      platforms: form.platforms.join(', '),
+      equipment: form.equipment.join(', '),
+    };
     try {
       const res = await fetch('/api/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          platforms: form.platforms.join(', '),
-          equipment: form.equipment.join(', '),
-        }),
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) { setStatus('success'); return; }
+    } catch { /* fall through */ }
+    // Fallback for static export builds
+    try {
+      const id = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+      const res = await fetch(id ? `https://formspree.io/f/${id}` : 'https://formspree.io/f/placeholder', {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
       });
       setStatus(res.ok ? 'success' : 'error');
     } catch {

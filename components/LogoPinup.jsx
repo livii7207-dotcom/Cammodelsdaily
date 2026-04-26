@@ -22,9 +22,11 @@ export default function LogoPinup({ size = 'md', showText = false }) {
       >
         <defs>
           <filter id="pinup-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="b1" />
-            <feGaussianBlur stdDeviation="8" result="b2" />
+            <feGaussianBlur stdDeviation="4" result="b1" />
+            <feGaussianBlur stdDeviation="12" result="b2" />
+            <feGaussianBlur stdDeviation="20" result="b3" />
             <feMerge>
+              <feMergeNode in="b3" />
               <feMergeNode in="b2" />
               <feMergeNode in="b1" />
               <feMergeNode in="SourceGraphic" />
@@ -40,12 +42,12 @@ export default function LogoPinup({ size = 'md', showText = false }) {
           <style>{`
             @keyframes pinup-pulse {
               0%, 100% {
-                filter: drop-shadow(0 0 4px #ff0080) drop-shadow(0 0 12px #ff0080) drop-shadow(0 0 24px rgba(255,0,128,0.25));
+                filter: drop-shadow(0 0 6px #ff0080) drop-shadow(0 0 16px #ff0080) drop-shadow(0 0 32px rgba(255,0,128,0.4));
                 opacity: 1;
               }
               50% {
-                filter: drop-shadow(0 0 8px #ff0080) drop-shadow(0 0 24px #ff0080) drop-shadow(0 0 48px rgba(255,0,128,0.4));
-                opacity: 0.85;
+                filter: drop-shadow(0 0 10px #ff1493) drop-shadow(0 0 30px #ff1493) drop-shadow(0 0 60px rgba(255,20,147,0.55));
+                opacity: 0.9;
               }
             }
             .pinup-glow-group {
@@ -189,7 +191,7 @@ export default function LogoPinup({ size = 'md', showText = false }) {
               fill="white"
               className="neon-text"
             >
-              xcammodels.com
+              CamModels.com
             </text>
           </g>
         )}
