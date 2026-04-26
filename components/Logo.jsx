@@ -1,10 +1,10 @@
 export default function Logo({ size = 'md' }) {
   const scale = size === 'lg' ? 1.4 : size === 'sm' ? 0.75 : 1;
   const h = Math.round(38 * scale);
-  const w = Math.round(280 * scale);
+  const w = Math.round(240 * scale);
 
   return (
-    <svg width={w} height={h} viewBox="0 0 280 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width={w} height={h} viewBox="0 0 240 38" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="badge-grad" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%"   stopColor="#ff0080" />
@@ -112,11 +112,11 @@ export default function Logo({ size = 'md' }) {
           fontWeight="800"
           fontSize="20"
           letterSpacing="0.2"
-          fill="white">xcammodels.com</text>
+          fill="white">xcammodels</text>
       </g>
 
-      {/* Underline glow - extended for full text */}
-      <rect x="56" y="31" width="210" height="1.5" rx="1" fill="url(#line-grad)" />
+      {/* Underline glow */}
+      <rect x="56" y="31" width="172" height="1.5" rx="1" fill="url(#line-grad)" />
     </svg>
   );
 }
