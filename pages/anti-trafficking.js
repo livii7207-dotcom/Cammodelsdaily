@@ -6,7 +6,8 @@ export default function AntiTrafficking() {
       <div className="max-w-3xl mx-auto">
         <a href="/" className="inline-block mb-10"><Logo size="md" /></a>
         <h1 className="text-4xl font-display font-extrabold mb-2 text-white">Anti-Trafficking Policy</h1>
-        <p className="text-gray-500 text-sm mb-10">Zero tolerance for human trafficking and exploitation</p>
+        <p className="text-gray-500 text-sm">Zero tolerance for human trafficking and exploitation</p>
+        <p className="text-gray-600 text-xs mb-10">Last Updated: January 1, 2025</p>
 
         <div className="space-y-8 text-gray-400 text-sm leading-relaxed">
           <div>

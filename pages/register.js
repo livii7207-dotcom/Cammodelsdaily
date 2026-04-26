@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Head from 'next/head';
 import Logo from '../components/Logo';
 
 const PLATFORMS = [
@@ -33,14 +34,10 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-    const endpoint = formspreeId
-      ? `https://formspree.io/f/${formspreeId}`
-      : 'https://formspree.io/f/placeholder';
     try {
-      const res = await fetch(endpoint, {
+      const res = await fetch('/api/apply', {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
           platforms: form.platforms.join(', '),
@@ -82,6 +79,15 @@ export default function Register() {
 
   return (
     <div className="min-h-screen px-4 py-16" style={{ backgroundColor: '#07080f' }}>
+      <Head>
+        <title>Apply to Become a Cam Model — Free Setup | XCamModels</title>
+        <meta name="description" content="Apply to join XCamModels and get set up on Chaturbate, OnlyFans, Stripchat and 5 more top platforms. Free to join, daily payouts, 24hr approval. No experience needed." />
+        <meta name="keywords" content="cam model application, sign up as a cam model, Chaturbate model signup, OnlyFans model apply, cam modeling jobs, webcam model apply" />
+        <link rel="canonical" href="https://xcammodels.com/register" />
+        <meta property="og:title" content="Apply to Become a Cam Model — Free Setup | XCamModels" />
+        <meta property="og:description" content="One application. Eight top platforms. Free setup, daily payouts, full privacy. Apply now and hear back within 24 hours." />
+        <meta property="og:url" content="https://xcammodels.com/register" />
+      </Head>
       {/* Background glow */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] opacity-10 rounded-full"

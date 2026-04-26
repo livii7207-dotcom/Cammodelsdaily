@@ -43,6 +43,7 @@ const TESTIMONIALS = [
     platform: 'Chaturbate · 14 months',
     quote: "I was skeptical at first but the daily payouts are real. I made back my setup costs in the first week alone.",
     earnings: '$3,200/mo avg',
+    breakdown: 'Live tips $2,100 · Private shows $1,100',
     stars: 5,
   },
   {
@@ -50,6 +51,7 @@ const TESTIMONIALS = [
     platform: 'StripChat · 8 months',
     quote: "Zero experience when I joined. The support team walked me through everything. This is now my full-time income.",
     earnings: '$2,800/mo avg',
+    breakdown: 'Live shows $1,900 · Private rooms $900',
     stars: 5,
   },
   {
@@ -57,6 +59,7 @@ const TESTIMONIALS = [
     platform: 'ManyVids + LoyalFans · 6 months',
     quote: "Running two platforms sounded complicated but XCamModels handles all the setup. I just focus on content.",
     earnings: '$4,100/mo avg',
+    breakdown: 'ManyVids clips $2,400 · LoyalFans subs $1,700',
     stars: 5,
   },
 ];
@@ -261,10 +264,12 @@ export default function LandingPage() {
                       style={{ background: `radial-gradient(ellipse at 50% 30%, ${color}55 0%, #0a0a14 70%)` }} />
                     <div className="absolute inset-0 opacity-5"
                       style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
-                    <img src={src} alt={`Model ${name}`}
-                      className="absolute inset-0 w-full h-full object-cover object-top"
-                      style={{ transition: 'transform 0.4s ease' }}
-                      onError={(e) => { e.currentTarget.style.opacity = '0'; }} />
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                      <circle cx="100" cy="130" r="48" fill={`${color}44`} />
+                      <ellipse cx="100" cy="290" rx="72" ry="90" fill={`${color}33`} />
+                      <circle cx="100" cy="130" r="44" fill="rgba(255,255,255,0.06)" />
+                      <ellipse cx="100" cy="290" rx="68" ry="86" fill="rgba(255,255,255,0.04)" />
+                    </svg>
                     <div className="absolute inset-0"
                       style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
                     <div className="absolute top-4 left-4 z-10">
@@ -414,7 +419,7 @@ export default function LandingPage() {
               <p className="text-gray-500">Real experiences from real people on the platform.</p>
             </div>
             <div className="grid sm:grid-cols-3 gap-5">
-              {TESTIMONIALS.map(({ name, platform, quote, earnings, stars }) => (
+              {TESTIMONIALS.map(({ name, platform, quote, earnings, breakdown, stars }) => (
                 <div key={name} className="glass rounded-3xl p-7 card-hover border border-white/5 flex flex-col gap-4">
                   <div className="flex gap-0.5">
                     {Array(stars).fill(0).map((_, i) => (
@@ -426,6 +431,7 @@ export default function LandingPage() {
                     <p className="font-semibold text-white text-sm">{name}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{platform}</p>
                     <p className="text-xs font-semibold mt-1.5" style={{ color: '#ff69b4' }}>{earnings}</p>
+                    <p className="text-xs text-gray-600 mt-0.5">{breakdown}</p>
                   </div>
                 </div>
               ))}

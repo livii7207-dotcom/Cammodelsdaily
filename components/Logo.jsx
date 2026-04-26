@@ -112,7 +112,7 @@ export default function Logo({ size = 'md' }) {
           fontWeight="800"
           fontSize="20"
           letterSpacing="0.2"
-          fill="white">xcammodels</text>
+          fill="white">CamModels</text>
       </g>
 
       {/* Underline glow */}

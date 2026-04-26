@@ -6,7 +6,8 @@ export default function USC2257() {
       <div className="max-w-3xl mx-auto">
         <a href="/" className="inline-block mb-10"><Logo size="md" /></a>
         <h1 className="text-4xl font-display font-extrabold mb-2 text-white">18 U.S.C. § 2257 Statement</h1>
-        <p className="text-gray-500 text-sm mb-10">Records Keeping Requirements Compliance Statement</p>
+        <p className="text-gray-500 text-sm">Records Keeping Requirements Compliance Statement</p>
+        <p className="text-gray-600 text-xs mb-10">Last Updated: January 1, 2025</p>
 
         <div className="space-y-6 text-gray-400 text-sm leading-relaxed">
           <p>

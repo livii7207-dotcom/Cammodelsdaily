@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Head from 'next/head';
 import Logo from '../components/Logo';
 import LogoPinup from '../components/LogoPinup';
 
@@ -36,6 +37,29 @@ export default function Guide() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#07080f', color: '#e5e7eb' }}>
+      <Head>
+        <title>How to Become a Cam Model in 2026 — Beginner&apos;s Guide | XCamModels</title>
+        <meta name="description" content="The complete 2026 guide to starting cam modeling. Learn how to set up on Chaturbate, OnlyFans & Stripchat, get daily payouts, protect your privacy, and grow your audience. Free." />
+        <meta name="keywords" content="how to become a cam model, cam modeling guide 2026, how to start on Chaturbate, OnlyFans beginner guide, webcam model tips, cam model privacy, how much do cam models make, cam model daily pay" />
+        <link rel="canonical" href="https://xcammodels.com/guide" />
+        <meta property="og:title" content="How to Become a Cam Model in 2026 — Beginner's Guide | XCamModels" />
+        <meta property="og:description" content="The complete 2026 guide to starting cam modeling. Chaturbate, OnlyFans, Stripchat — daily payouts, full privacy, no experience needed." />
+        <meta property="og:url" content="https://xcammodels.com/guide" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          name: 'How to Become a Cam Model in 2026',
+          description: 'Step-by-step guide to starting a cam modeling career on top platforms including Chaturbate, OnlyFans, and Stripchat.',
+          step: [
+            { '@type': 'HowToStep', name: 'Getting Started', text: 'Set up your equipment — a 1080p webcam or smartphone, ring light, and 5Mbps+ internet connection.' },
+            { '@type': 'HowToStep', name: 'Choose a Platform', text: 'Select from Chaturbate, OnlyFans, Stripchat, and 5 other top platforms based on your content style and earning goals.' },
+            { '@type': 'HowToStep', name: 'Your First Week', text: 'Create your profile, set your rates, and stream consistently for 60–90 minutes at the same time each day.' },
+            { '@type': 'HowToStep', name: 'Get Paid', text: 'Receive daily payouts via bank transfer, Paxum, or crypto — directly from the platform, with no fees from XCamModels.' },
+            { '@type': 'HowToStep', name: 'Stay Safe', text: 'Use a stage name, enable geo-blocking, and watermark your content to protect your privacy.' },
+            { '@type': 'HowToStep', name: 'Grow Your Audience', text: 'Stream on a consistent schedule, cross-promote on social platforms, and engage regulars to build loyal recurring viewers.' },
+          ],
+        }) }} />
+      </Head>
       {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
         <div className="max-w-6xl mx-auto px-5 flex justify-between items-center h-16">
@@ -207,7 +231,76 @@ export default function Guide() {
               </div>
             </section>
 
-            {/* Section 3 - Payouts */}
+            {/* Section 3 - Your First Week */}
+            <section id="your-first-week" className="mb-24 scroll-mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-2xl border border-blue-500/20">📈</div>
+                <h2 className="text-3xl font-display font-extrabold text-white">Your First Week</h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="glass p-8 rounded-3xl border border-white/5">
+                  <h3 className="text-xl font-bold text-white mb-4">Day 1 Checklist</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    Before you go live, spend an hour getting your profile right. First impressions determine whether viewers come back.
+                  </p>
+                  <ul className="space-y-4">
+                    {[
+                      { item: 'Stage name', desc: 'Choose something memorable — not your real name, ever' },
+                      { item: 'Profile photo', desc: 'Bright, clear, face visible — no dark or blurry shots' },
+                      { item: 'Bio', desc: 'One line: who you are, what you do, when you stream' },
+                      { item: 'Rate card', desc: 'Set tip menu prices before going live (start low, raise as you grow)' },
+                      { item: 'Test stream', desc: 'Do a 5-minute private test to check audio, lighting, frame' },
+                    ].map(t => (
+                      <li key={t.item} className="flex items-start gap-3 text-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                        <span><span className="text-white font-semibold">{t.item}:</span> <span className="text-gray-400">{t.desc}</span></span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="glass p-8 rounded-3xl border border-white/5 neon-border">
+                    <h3 className="text-xl font-bold text-white mb-4">First Stream Tips</h3>
+                    <ul className="space-y-3">
+                      {[
+                        'Keep your first stream to 60–90 minutes — stamina builds over time',
+                        'Greet every new viewer by name in chat',
+                        'Don\'t beg for tips — talk, engage, be entertaining',
+                        'End on time and announce your next scheduled stream',
+                      ].map((tip, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
+                          <span className="text-pink-500 font-bold shrink-0">{i + 1}.</span>
+                          {tip}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="glass p-8 rounded-3xl border border-white/5">
+                    <h3 className="text-xl font-bold text-white mb-4">Realistic Expectations</h3>
+                    <div className="space-y-4">
+                      {[
+                        { label: 'Week 1', range: '$50 – $300', note: 'Building audience, low token count is normal' },
+                        { label: 'Month 1', range: '$300 – $1,200', note: 'Regulars start forming, tips increase' },
+                        { label: 'Month 3+', range: '$1,500+', note: 'Consistent schedule pays off here' },
+                      ].map(r => (
+                        <div key={r.label} className="flex items-start justify-between gap-4 text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                          <span className="text-gray-500">{r.label}</span>
+                          <div className="text-right">
+                            <p className="text-white font-semibold">{r.range}</p>
+                            <p className="text-gray-600 text-xs">{r.note}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 4 - Payouts */}
             <section id="getting-paid" className="mb-24 scroll-mt-24">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-2xl bg-green-500/10 flex items-center justify-center text-2xl border border-green-500/20">💰</div>
@@ -231,6 +324,124 @@ export default function Guide() {
                       <p className="text-3xl font-bold text-white mb-1">Global</p>
                       <p className="text-xs text-gray-500 uppercase tracking-widest">Methods</p>
                       <p className="mt-4 text-sm text-gray-400">Paxum, Crypto, Wire, or Check. Choose what works for you.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 5 - Privacy & Safety */}
+            <section id="privacy-safety" className="mb-24 scroll-mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center text-2xl border border-pink-500/20">🔒</div>
+                <h2 className="text-3xl font-display font-extrabold text-white">Privacy &amp; Safety</h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="glass p-8 rounded-3xl border border-white/5 neon-border">
+                  <h3 className="text-xl font-bold text-white mb-6">Protecting Your Identity</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {[
+                      { icon: '👤', title: 'Stage Name Rules', body: 'Never use your real name, city, school, or employer in your username, bio, or on-camera. Pick a name with no personal meaning.' },
+                      { icon: '🌍', title: 'Geo-Blocking', body: 'Every major platform lets you block specific countries or US states. Block your home region on day one — before your first stream.' },
+                      { icon: '💻', title: 'Device Hygiene', body: 'Use a dedicated browser profile or device for streaming. Disable your camera\'s GPS metadata. Never log into personal accounts on your streaming device.' },
+                      { icon: '🖼️', title: 'Watermark Your Content', body: 'Add your stage name as a watermark to any photos or clips you sell. Free tools like Canva do this in 30 seconds. It helps with DMCA if content leaks.' },
+                    ].map(c => (
+                      <div key={c.title} className="flex gap-4">
+                        <span className="text-2xl shrink-0">{c.icon}</span>
+                        <div>
+                          <p className="text-white font-semibold text-sm mb-1">{c.title}</p>
+                          <p className="text-gray-400 text-sm leading-relaxed">{c.body}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="glass p-8 rounded-3xl border border-white/5">
+                  <h3 className="text-xl font-bold text-white mb-4">If Your Content Leaks</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    It happens occasionally. Here's the process that actually works:
+                  </p>
+                  <ol className="space-y-4">
+                    {[
+                      'Screenshot the URL and document the infringing page immediately',
+                      'File a DMCA takedown with the hosting site — most have a dedicated form',
+                      'If the site is unresponsive, contact their hosting provider (use dmca.com or a copyright attorney)',
+                      'Register your content on copyright.gov for stronger legal standing ($35 per batch)',
+                    ].map((step, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm">
+                        <span className="w-6 h-6 rounded-full bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 font-bold text-xs shrink-0">{i + 1}</span>
+                        <span className="text-gray-400">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 6 - Growing Your Audience */}
+            <section id="growing-your-audience" className="mb-24 scroll-mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center text-2xl border border-orange-500/20">🔥</div>
+                <h2 className="text-3xl font-display font-extrabold text-white">Growing Your Audience</h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-5">
+                  {[
+                    { icon: '📅', title: 'Consistency Wins', body: 'Stream the same days and times every week. Viewers build habits around your schedule — not their own impulses.' },
+                    { icon: '🔁', title: 'Cross-Platform Funnel', body: 'Use free live streams to hook viewers, then convert them to paid subscribers on OnlyFans or ManyVids for stable monthly income.' },
+                    { icon: '💬', title: 'Engage Your Regulars', body: 'Remember usernames. Use their names in chat. Give shout-outs to top tippers. Loyalty compounds faster than new viewers.' },
+                  ].map(c => (
+                    <div key={c.title} className="glass p-6 rounded-3xl border border-white/5 card-hover">
+                      <span className="text-3xl block mb-4">{c.icon}</span>
+                      <h3 className="text-white font-bold mb-2">{c.title}</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">{c.body}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="glass p-8 rounded-3xl border border-white/5">
+                  <h3 className="text-xl font-bold text-white mb-6">Social Teaser Content</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    Teaser content on Reddit, Twitter/X, and TikTok (within their ToS) is the highest-ROI free marketing available. Rules to follow:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { do: true,  text: 'Post SFW previews that link to your profile' },
+                      { do: true,  text: 'Pin your platform link in your bio' },
+                      { do: true,  text: 'Use niche subreddits relevant to your content style' },
+                      { do: false, text: 'Post explicit content on platforms that ban it' },
+                      { do: false, text: 'Buy followers — platforms detect it and it hurts reach' },
+                      { do: false, text: 'Share content that reveals your real location or face if you want anonymity' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 text-sm">
+                        <span className={`font-bold shrink-0 ${item.do ? 'text-green-400' : 'text-red-400'}`}>{item.do ? '✓' : '✗'}</span>
+                        <span className="text-gray-400">{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rope-light rounded-3xl p-1">
+                  <div className="glass p-8 rounded-[calc(1.5rem-1px)]">
+                    <h3 className="text-xl font-bold text-white mb-4">When to Raise Your Rates</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                      Most new models underprice themselves. Here are the signals that you're ready to charge more:
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {[
+                        'Your private show slots are consistently full',
+                        'You\'re turning down requests due to time',
+                        'Regulars are tipping above your menu prices',
+                        'You\'ve been streaming consistently for 60+ days',
+                      ].map((signal, i) => (
+                        <div key={i} className="flex items-center gap-3 text-sm">
+                          <span className="w-2 h-2 rounded-full bg-pink-500 shrink-0"></span>
+                          <span className="text-gray-300">{signal}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
