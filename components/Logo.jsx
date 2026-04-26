@@ -107,7 +107,7 @@ export default function Logo({ size = 'md' }) {
 
       {/* Wordmark */}
       <g className="logo-neon" filter="url(#text-neon-glow)">
-        <text x="56" y="27"
+        <text x="58" y="27"
           fontFamily="Sora, sans-serif"
           fontWeight="800"
           fontSize="20"

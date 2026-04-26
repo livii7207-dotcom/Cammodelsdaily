@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
   background-image: linear-gradient(135deg, #ff1493 0%, #d4198a 20%, #a855f7 45%, #d4198a 70%, #ff1493 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
-  box-shadow: 0 0 22px rgba(255,20,147,0.45), 0 0 45px rgba(255,20,147,0.18);
+  box-shadow: 0 0 20px rgba(255,20,147,0.38), 0 0 42px rgba(255,20,147,0.15);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 .shimmer-btn:hover {
@@ -70,9 +70,9 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
 
 /* ── Glass card ──────────────────────────────────────────────────── */
 .glass {
-  background: rgba(255,255,255,0.065);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.09);
 }
 
 /* ── Neon & Rope Light Effects ──────────────────────────────────── */
@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
 }
 
 .rope-light {
-  border: 1px solid rgba(255, 0, 128, 0.35);
+  border: 1px solid rgba(255, 0, 128, 0.28);
   animation: rope-light 5s ease-in-out infinite;
   position: relative;
 }
@@ -131,8 +131,8 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
 }
 
 .neon-border {
-  border: 1px solid rgba(255, 0, 128, 0.4);
-  box-shadow: 0 0 14px rgba(255, 0, 128, 0.22), inset 0 0 6px rgba(255, 0, 128, 0.04);
+  border: 1px solid rgba(255, 0, 128, 0.32);
+  box-shadow: 0 0 12px rgba(255, 0, 128, 0.18), inset 0 0 5px rgba(255, 0, 128, 0.03);
 }
 
 .card-hover {
@@ -154,7 +154,7 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Sora', sans-serif; }
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.3;
+  opacity: 0.24;
   animation: aurora 14s ease-in-out infinite;
 }
 
