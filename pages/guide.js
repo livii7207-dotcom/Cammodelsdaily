@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Logo from '../components/Logo';
 import LogoPinup from '../components/LogoPinup';
+import AdSlot from '../components/AdSlot';
 
 const SECTIONS = [
   { id: 'getting-started', title: 'Getting Started', icon: '🚀' },
@@ -231,6 +232,15 @@ export default function Guide() {
               </div>
             </section>
 
+            {/* Ad — between Choosing a Platform and Your First Week */}
+            <div className="mb-16 flex justify-center">
+              <AdSlot
+                tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_BANNER}
+                exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_BANNER}
+                height={90}
+              />
+            </div>
+
             {/* Section 3 - Your First Week */}
             <section id="your-first-week" className="mb-24 scroll-mt-24">
               <div className="flex items-center gap-4 mb-8">
@@ -329,6 +339,15 @@ export default function Guide() {
                 </div>
               </div>
             </section>
+
+            {/* Ad — between Getting Paid and Privacy & Safety */}
+            <div className="mb-16 flex justify-center">
+              <AdSlot
+                tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_RECT}
+                exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_RECT}
+                height={250}
+              />
+            </div>
 
             {/* Section 5 - Privacy & Safety */}
             <section id="privacy-safety" className="mb-24 scroll-mt-24">
@@ -464,6 +483,15 @@ export default function Guide() {
 
           </main>
         </div>
+      </div>
+
+      {/* Ad — before footer */}
+      <div className="max-w-5xl mx-auto px-4 py-6 flex justify-center">
+        <AdSlot
+          tjZoneId={process.env.NEXT_PUBLIC_TJ_ZONE_BANNER}
+          exoZoneId={process.env.NEXT_PUBLIC_EXO_ZONE_BANNER}
+          height={90}
+        />
       </div>
 
       {/* Footer */}
