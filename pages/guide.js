@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Logo from '../components/Logo';
 import LogoPinup from '../components/LogoPinup';
 import AdSlot from '../components/AdSlot';
+import { PLATFORM_AFFILIATE_LINKS } from '../lib/platforms';
 
 const SECTIONS = [
   { id: 'getting-started', title: 'Getting Started', icon: '🚀' },
@@ -13,16 +14,7 @@ const SECTIONS = [
   { id: 'growing-your-audience', title: 'Growing Your Audience', icon: '🔥' }
 ];
 
-const PLATFORM_LINKS = {
-  Chaturbate: 'https://chaturbate.com/in/?tour=OT2s&campaign=DddwF&track=default',
-  OnlyFans: 'https://onlyfans.com?ref=40962198',
-  Stripchat: 'https://stripchat.com/affiliates',
-  Cam4: 'https://cam4.com/',
-  ManyVids: 'https://manyvids.com/',
-  IWantClips: 'https://iwantclips.com/',
-  LoyalFans: 'https://loyalfans.com/',
-  SkyPrivate: 'https://skyprivate.com/',
-};
+const PLATFORM_LINKS = PLATFORM_AFFILIATE_LINKS;
 
 function PlatformLink({ name }) {
   return (

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import AdSlot from './AdSlot';
 import Logo from './Logo';
 import LogoPinup from './LogoPinup';
+import { PLATFORM_AFFILIATE_LINKS } from '../lib/platforms';
 
 const MODELS = [
   { name: 'Aria', tag: 'Top Earner', earnings: '$4,200 this week', src: '/models/model1.jpg', color: '#ff1493' },
@@ -11,14 +12,14 @@ const MODELS = [
 ];
 
 const PLATFORMS = [
-  { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/in/?tour=OT2s&campaign=DddwF&track=default' },
-  { name: 'OnlyFans', abbr: 'OF', category: 'Content', desc: 'Subscriptions, pay-per-view & direct tips', color: '#00aff0', href: 'https://onlyfans.com?ref=40962198' },
-  { name: 'Stripchat', abbr: 'SC', category: 'Live Stream', desc: 'Tips, privates & group shows with global reach', color: '#00b4a0', href: 'https://stripchat.com/affiliates' },
-  { name: 'Cam4', abbr: 'C4', category: 'Live Stream', desc: 'Live broadcasts with built-in analytics', color: '#e8173a', href: 'https://cam4.com/' },
-  { name: 'ManyVids', abbr: 'MV', category: 'Content', desc: 'Sell clips, photo sets & custom content', color: '#e91e8c', href: 'https://manyvids.com/' },
-  { name: 'IWantClips', abbr: 'IW', category: 'Content', desc: 'Custom clips & wish lists — high buyer intent', color: '#8b5cf6', href: 'https://iwantclips.com/' },
-  { name: 'LoyalFans', abbr: 'LF', category: 'Content', desc: 'Subscriptions, fan messaging & exclusive drops', color: '#ff6b35', href: 'https://loyalfans.com/' },
-  { name: 'SkyPrivate', abbr: 'SP', category: 'Independent', desc: 'Private 1-on-1 video calls at your own rate', color: '#1a73e8', href: 'https://skyprivate.com/' },
+  { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: PLATFORM_AFFILIATE_LINKS.Chaturbate },
+  { name: 'OnlyFans',   abbr: 'OF', category: 'Content',     desc: 'Subscriptions, pay-per-view & direct tips',                color: '#00aff0', href: PLATFORM_AFFILIATE_LINKS.OnlyFans },
+  { name: 'Stripchat',  abbr: 'SC', category: 'Live Stream', desc: 'Tips, privates & group shows with global reach',           color: '#00b4a0', href: PLATFORM_AFFILIATE_LINKS.Stripchat },
+  { name: 'Cam4',       abbr: 'C4', category: 'Live Stream', desc: 'Live broadcasts with built-in analytics',                  color: '#e8173a', href: PLATFORM_AFFILIATE_LINKS.Cam4 },
+  { name: 'ManyVids',   abbr: 'MV', category: 'Content',     desc: 'Sell clips, photo sets & custom content',                  color: '#e91e8c', href: PLATFORM_AFFILIATE_LINKS.ManyVids },
+  { name: 'IWantClips', abbr: 'IW', category: 'Content',     desc: 'Custom clips & wish lists — high buyer intent',            color: '#8b5cf6', href: PLATFORM_AFFILIATE_LINKS.IWantClips },
+  { name: 'LoyalFans',  abbr: 'LF', category: 'Content',     desc: 'Subscriptions, fan messaging & exclusive drops',           color: '#ff6b35', href: PLATFORM_AFFILIATE_LINKS.LoyalFans },
+  { name: 'SkyPrivate', abbr: 'SP', category: 'Independent', desc: 'Private 1-on-1 video calls at your own rate',              color: '#1a73e8', href: PLATFORM_AFFILIATE_LINKS.SkyPrivate },
 ];
 
 const STEPS = [
