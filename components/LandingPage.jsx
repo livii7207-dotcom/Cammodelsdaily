@@ -108,6 +108,7 @@ export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState(null);
   const [onlineCount, setOnlineCount] = useState(187);
   const [activityIdx, setActivityIdx] = useState(0);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -124,6 +125,7 @@ export default function LandingPage() {
   const heroRef = useFadeIn();
   const modelsRef = useFadeIn();
   const howRef = useFadeIn();
+  const videoRef = useFadeIn();
   const platformsRef = useFadeIn();
   const revenueRef = useFadeIn();
   const testimonialsRef = useFadeIn();
@@ -322,6 +324,93 @@ export default function LandingPage() {
                   <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tutorial Video */}
+      <section id="tutorial" className="py-24 px-4 sm:px-6" style={{ background: 'rgba(168,85,247,0.025)' }}>
+        <div className="max-w-4xl mx-auto">
+          <div ref={videoRef} className="fade-up">
+            <div className="text-center mb-10">
+              <p className="text-pink-500 text-sm font-semibold uppercase tracking-widest mb-3">Video Guide</p>
+              <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-4">
+                Watch How to <span className="neon-text">Get Started</span>
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                Watch our guide walk you through signing up, setting up your profile, and making your first payout — in under 10 minutes.
+              </p>
+            </div>
+
+            {/* 16:9 video wrapper */}
+            <div className="relative w-full rounded-3xl overflow-hidden rope-light"
+              style={{ paddingBottom: '56.25%', background: '#0d0e1d' }}>
+
+              {videoPlaying ? (
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&rel=0"
+                  title="How to sign up — XCamModels tutorial"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div
+                  className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer group"
+                  onClick={() => setVideoPlaying(true)}
+                  style={{ background: 'linear-gradient(135deg, #0d0820 0%, #150a2a 50%, #0a0d20 100%)' }}
+                >
+                  {/* glow blobs */}
+                  <div className="absolute pointer-events-none"
+                    style={{ width: '60%', height: '70%', top: '15%', left: '20%',
+                      background: 'radial-gradient(ellipse, rgba(255,20,147,0.18) 0%, transparent 70%)',
+                      filter: 'blur(40px)' }} />
+                  <div className="absolute pointer-events-none"
+                    style={{ width: '40%', height: '50%', top: '25%', right: '5%',
+                      background: 'radial-gradient(ellipse, rgba(168,85,247,0.15) 0%, transparent 70%)',
+                      filter: 'blur(50px)' }} />
+
+                  {/* decorative presenter silhouette */}
+                  <div className="absolute bottom-0 right-8 pointer-events-none select-none"
+                    style={{ opacity: 0.18 }}>
+                    <svg width="160" height="260" viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <ellipse cx="80" cy="60" rx="36" ry="40" fill="#ff69b4"/>
+                      <ellipse cx="80" cy="175" rx="58" ry="80" fill="#ff69b4"/>
+                    </svg>
+                  </div>
+
+                  {/* play button + label */}
+                  <div className="relative z-10 flex flex-col items-center gap-5">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shimmer-btn flex items-center justify-center
+                      group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                      <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-white font-display font-bold text-lg sm:text-xl">Watch the Tutorial</p>
+                      <p className="text-gray-400 text-sm mt-1">Step-by-step sign-up walkthrough · ~8 min</p>
+                    </div>
+                  </div>
+
+                  {/* corner badge */}
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs text-green-400 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    Free to watch
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* below-video trust row */}
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              {[['🎬', 'Sign-up walkthrough'], ['💸', 'First payout explained'], ['🔒', 'Privacy tips included'], ['📱', 'Works on phone too']].map(([icon, label]) => (
+                <span key={label} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-gray-400"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                  {icon} {label}
+                </span>
               ))}
             </div>
           </div>
