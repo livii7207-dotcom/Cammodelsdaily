@@ -16,7 +16,7 @@ const SECTIONS = [
 const PLATFORM_LINKS = {
   Chaturbate: 'https://chaturbate.com/in/?tour=OT2s&campaign=DddwF&track=default',
   OnlyFans: 'https://onlyfans.com?ref=40962198',
-  Stripchat: 'https://stripchat.com/affiliates',
+  Stripchat: 'https://stripchat.com/S_A_V_A_G_E/follow-me',
   Cam4: 'https://cam4.com/',
   ManyVids: 'https://manyvids.com/',
   IWantClips: 'https://iwantclips.com/',
