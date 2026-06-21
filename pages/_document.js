@@ -50,6 +50,7 @@ export default function Document() {
         <meta name="description" content={DESCRIPTION} />
         <meta name="keywords" content="how to become a cam model, cam model 2026, Chaturbate model signup, OnlyFans model signup, how much do cam models make, best cam sites for models, cam modeling guide, webcam model jobs, start cam modeling, cam model daily pay" />
         <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="canonical" href={SITE_URL} />
 
         <meta property="og:type" content="website" />

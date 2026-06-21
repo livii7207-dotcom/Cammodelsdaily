@@ -13,7 +13,7 @@ const MODELS = [
 const PLATFORMS = [
   { name: 'Chaturbate', abbr: 'CB', category: 'Live Stream', desc: "World's #1 cam platform — massive audience, tips & privates", color: '#f47321', href: 'https://chaturbate.com/in/?tour=OT2s&campaign=DddwF&track=default' },
   { name: 'OnlyFans', abbr: 'OF', category: 'Content', desc: 'Subscriptions, pay-per-view & direct tips', color: '#00aff0', href: 'https://onlyfans.com?ref=40962198' },
-  { name: 'Stripchat', abbr: 'SC', category: 'Live Stream', desc: 'Tips, privates & group shows with global reach', color: '#00b4a0', href: 'https://stripchat.com/affiliates' },
+  { name: 'Stripchat', abbr: 'SC', category: 'Live Stream', desc: 'Tips, privates & group shows with global reach', color: '#00b4a0', href: 'https://stripchat.com/S_A_V_A_G_E/follow-me' },
   { name: 'Cam4', abbr: 'C4', category: 'Live Stream', desc: 'Live broadcasts with built-in analytics', color: '#e8173a', href: 'https://cam4.com/' },
   { name: 'ManyVids', abbr: 'MV', category: 'Content', desc: 'Sell clips, photo sets & custom content', color: '#e91e8c', href: 'https://manyvids.com/' },
   { name: 'IWantClips', abbr: 'IW', category: 'Content', desc: 'Custom clips & wish lists — high buyer intent', color: '#8b5cf6', href: 'https://iwantclips.com/' },
@@ -131,7 +131,7 @@ export default function LandingPage() {
   const ctaRef = useFadeIn();
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
+    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#07080f' }}>
 
       {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
@@ -192,7 +192,7 @@ export default function LandingPage() {
             {onlineCount} models online right now
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
             Earn More.{' '}
             <span className="neon-text">Stream Smarter.</span>
             <br />Get Paid Daily.
