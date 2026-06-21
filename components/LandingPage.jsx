@@ -133,7 +133,7 @@ export default function LandingPage() {
   const ctaRef = useFadeIn();
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#07080f' }}>
+    <div className="min-h-screen w-full" style={{ backgroundColor: '#07080f', overflowX: 'clip', contain: 'paint' }}>
 
       {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
@@ -168,14 +168,15 @@ export default function LandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="aurora-blob w-[900px] h-[900px]"
-            style={{ top: '-10%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, #ff1493 0%, transparent 65%)' }} />
-          <div className="aurora-blob w-[500px] h-[500px]"
-            style={{ bottom: '10%', right: '-10%', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
-          <div className="aurora-blob w-[400px] h-[400px]"
-            style={{ top: '40%', left: '-8%', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
+      <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-16"
+        style={{ overflow: 'hidden', clipPath: 'inset(0)' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ overflow: 'hidden', clipPath: 'inset(0)' }}>
+          <div className="aurora-blob"
+            style={{ width: 'min(900px, 150vw)', height: 'min(900px, 150vw)', top: '-10%', left: '50%', transform: 'translateX(-50%)', background: 'radial-gradient(circle, #ff1493 0%, transparent 65%)' }} />
+          <div className="aurora-blob"
+            style={{ width: 'min(500px, 100vw)', height: 'min(500px, 100vw)', bottom: '10%', right: '0', background: 'radial-gradient(circle, #a855f7 0%, transparent 65%)', animationDelay: '5s', animationDuration: '16s' }} />
+          <div className="aurora-blob"
+            style={{ width: 'min(400px, 80vw)', height: 'min(400px, 80vw)', top: '40%', left: '0', background: 'radial-gradient(circle, #c026d3 0%, transparent 65%)', animationDelay: '9s', animationDuration: '19s' }} />
         </div>
 
         {/* Martini girl — desktop decoration */}
