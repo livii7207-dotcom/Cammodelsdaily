@@ -131,7 +131,7 @@ export default function LandingPage() {
   const ctaRef = useFadeIn();
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#07080f' }}>
+    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: '#07080f' }}>
 
       {/* Nav */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
@@ -192,7 +192,7 @@ export default function LandingPage() {
             {onlineCount} models online right now
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-tight mb-6">
             Earn More.{' '}
             <span className="neon-text">Stream Smarter.</span>
             <br />Get Paid Daily.
